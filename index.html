@@ -28,9 +28,19 @@
                     I bridge the gap between complex technical challenges and actionable business automations, 
                     delivering intelligent, scalable systems that handle the heavy lifting for you.
                 </p>
-                <div class="mt-8 bg-blue-600 text-white p-4 rounded-lg shadow-inner">
-                    <h4 class="text-sm font-bold uppercase tracking-wider mb-1">Live Weather</h4>
-                    <p class="text-2xl font-mono">Los Angeles: 22°C</p>
+                <div class="mt-8 grid grid-cols-3 gap-4">
+                    <div class="bg-blue-600 text-white p-3 rounded-lg shadow-inner text-center">
+                        <p class="text-xs font-bold uppercase">LA ☀️</p>
+                        <p class="text-lg font-mono">22°C</p>
+                    </div>
+                    <div class="bg-indigo-700 text-white p-3 rounded-lg shadow-inner text-center">
+                        <p class="text-xs font-bold uppercase">TYO 🌙</p>
+                        <p class="text-lg font-mono">15°C</p>
+                    </div>
+                    <div class="bg-orange-600 text-white p-3 rounded-lg shadow-inner text-center">
+                        <p class="text-xs font-bold uppercase">KOL ☀️</p>
+                        <p class="text-lg font-mono">32°C</p>
+                    </div>
                 </div>
             </div>
             <div class="bg-slate-900 h-64 rounded-2xl flex items-center justify-center relative overflow-hidden">
@@ -124,5 +134,3 @@
 
 </body>
 </html>
-EOF
-cd website && git add index.html && git commit -m "Update layout with Crypto prices and 2-column AI on X" && git push origin main
