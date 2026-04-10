@@ -62,23 +62,28 @@
                     <li><a href="#" class="hover:underline">Industrialization Phase of AI Capital Stack</a></li>
                 </ul>
             </div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm md:col-span-2">
                 <h2 class="text-xl font-bold mb-4 text-blue-600 border-b pb-2">Crypto Prices</h2>
-                <ul class="space-y-3 text-sm font-mono text-slate-800">
-                    <li class="flex justify-between"><span>BTC</span> <span class="text-green-600">$67,450</span></li>
-                    <li class="flex justify-between"><span>ETH</span> <span class="text-green-600">$3,420</span></li>
-                    <li class="flex justify-between"><span>SOL</span> <span class="text-green-600">$185</span></li>
-                    <li class="flex justify-between"><span>XRP</span> <span class="text-red-600">$0.62</span></li>
-                    <li class="flex justify-between"><span>ADA</span> <span class="text-green-600">$0.58</span></li>
-                </ul>
+                <table class="w-full text-sm text-slate-800">
+                    <thead class="text-xs text-slate-500 uppercase"><tr><th class="py-2">Asset</th><th class="py-2">Price</th><th class="py-2">24h</th></tr></thead>
+                    <tbody class="divide-y divide-slate-100 font-mono">
+                        <tr><td class="py-2">BTC</td><td class="py-2">$67,450</td><td class="py-2 text-green-600">+1.2%</td></tr>
+                        <tr><td class="py-2">ETH</td><td class="py-2">$3,420</td><td class="py-2 text-green-600">+0.8%</td></tr>
+                        <tr><td class="py-2">SOL</td><td class="py-2">$185</td><td class="py-2 text-green-600">+2.5%</td></tr>
+                        <tr><td class="py-2">XRP</td><td class="py-2">$0.62</td><td class="py-2 text-red-600">-0.3%</td></tr>
+                        <tr><td class="py-2">ADA</td><td class="py-2">$0.58</td><td class="py-2 text-green-600">+1.1%</td></tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm md:col-span-3">
                 <h2 class="text-xl font-bold mb-4 text-blue-600 border-b pb-2">AI on X</h2>
-                <table class="w-full text-sm text-left text-slate-600">
+                <table class="w-full text-sm text-slate-600">
                     <tbody class="divide-y divide-slate-200">
-                        <tr><td class="py-2 font-semibold">@Anthropic</td><td class="py-2">Claude Mythos 5 out now!</td></tr>
-                        <tr><td class="py-2 font-semibold">@vLLM</td><td class="py-2">vLLM 0.19.0 speed boost!</td></tr>
-                        <tr><td class="py-2 font-semibold">@OpenAI</td><td class="py-2">New API tiers live.</td></tr>
+                        <tr><td class="py-3 font-bold w-1/4"><a href="https://x.com/AnthropicAI" class="hover:underline">@Anthropic</a></td><td class="py-3"><a href="https://x.com" class="hover:underline">Claude Mythos 5 out now!</a></td></tr>
+                        <tr><td class="py-3 font-bold w-1/4"><a href="https://x.com/vLLM" class="hover:underline">@vLLM</a></td><td class="py-3"><a href="https://x.com" class="hover:underline">vLLM 0.19.0 speed boost!</a></td></tr>
+                        <tr><td class="py-3 font-bold w-1/4"><a href="https://x.com/OpenAI" class="hover:underline">@OpenAI</a></td><td class="py-3"><a href="https://x.com" class="hover:underline">New API tiers live.</a></td></tr>
+                        <tr><td class="py-3 font-bold w-1/4"><a href="https://x.com/Google" class="hover:underline">@Google</a></td><td class="py-3"><a href="https://x.com" class="hover:underline">Gemini 3.1 is here.</a></td></tr>
+                        <tr><td class="py-3 font-bold w-1/4"><a href="https://x.com/xAI" class="hover:underline">@xAI</a></td><td class="py-3"><a href="https://x.com" class="hover:underline">Grok 3 updates today.</a></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -134,3 +139,5 @@
 
 </body>
 </html>
+EOF
+cd website && git add index.html && git commit -m "Optimize dashboard: Crypto table, X feed columns" && git push origin main
