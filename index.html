@@ -50,22 +50,80 @@
             </div>
         </section>
 
-        <!-- Dashboard widgets ... (omitted for brevity, assume unchanged) -->
+        <section id="dashboard" class="mb-16 grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                <h2 class="text-lg font-bold mb-4 text-blue-600 border-b pb-2">Industry News</h2>
+                <ul class="space-y-3 text-xs text-slate-600">
+                    <li><a href="#" class="hover:underline">Anthropic Claude Code CLI Source Leak</a></li>
+                    <li><a href="#" class="hover:underline">vLLM 0.19.0 Hugging Face Integration</a></li>
+                    <li><a href="#" class="hover:underline">Claude Mythos 5 & Gemini 3.1 Update</a></li>
+                    <li><a href="#" class="hover:underline">OpenAI API Support Cost Adjustments</a></li>
+                    <li><a href="#" class="hover:underline">Industrialization Phase of AI Capital Stack</a></li>
+                </ul>
+            </div>
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                <h2 class="text-lg font-bold mb-4 text-blue-600 border-b pb-2">Crypto Prices</h2>
+                <table class="w-full text-xs text-slate-800">
+                    <thead class="text-slate-500 uppercase"><tr><th class="py-1">Asset</th><th class="py-1 text-right">Price</th><th class="py-1 text-right">24h</th></tr></thead>
+                    <tbody class="divide-y divide-slate-100 font-mono">
+                        <tr><td class="py-2">BTC</td><td class="py-2 text-right">$67,450</td><td class="py-2 text-right text-green-600">+1.2%</td></tr>
+                        <tr><td class="py-2">ETH</td><td class="py-2 text-right">$3,420</td><td class="py-2 text-right text-green-600">+0.8%</td></tr>
+                        <tr><td class="py-2">SOL</td><td class="py-2 text-right">$185</td><td class="py-2 text-right text-green-600">+2.5%</td></tr>
+                        <tr><td class="py-2">XRP</td><td class="py-2 text-right">$0.62</td><td class="py-2 text-right text-red-600">-0.3%</td></tr>
+                        <tr><td class="py-2">ADA</td><td class="py-2 text-right">$0.58</td><td class="py-2 text-right text-green-600">+1.1%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                <h2 class="text-lg font-bold mb-4 text-blue-600 border-b pb-2">AI on X</h2>
+                <table class="w-full text-xs text-slate-600">
+                    <tbody class="divide-y divide-slate-200">
+                        <tr><td class="py-2 font-bold w-1/4"><a href="#" class="hover:underline">@Anthropic</a></td><td class="py-2"><a href="#" class="hover:underline">Claude Mythos 5 out now!</a></td></tr>
+                        <tr><td class="py-2 font-bold w-1/4"><a href="#" class="hover:underline">@vLLM</a></td><td class="py-2"><a href="#" class="hover:underline">vLLM 0.19.0 speed boost!</a></td></tr>
+                        <tr><td class="py-2 font-bold w-1/4"><a href="#" class="hover:underline">@OpenAI</a></td><td class="py-2"><a href="#" class="hover:underline">New API tiers live.</a></td></tr>
+                        <tr><td class="py-2 font-bold w-1/4"><a href="#" class="hover:underline">@Google</a></td><td class="py-2"><a href="#" class="hover:underline">Gemini 3.1 is here.</a></td></tr>
+                        <tr><td class="py-2 font-bold w-1/4"><a href="#" class="hover:underline">@xAI</a></td><td class="py-2"><a href="#" class="hover:underline">Grok 3 updates today.</a></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm md:col-span-3">
+                <h2 class="text-xl font-bold mb-4 text-blue-600 border-b pb-2">Southern California AI Meetups</h2>
+                <table class="w-full text-sm text-left text-slate-600">
+                    <thead class="text-xs text-slate-700 uppercase bg-slate-50">
+                        <tr>
+                            <th class="px-4 py-3">Date/Time</th>
+                            <th class="px-4 py-3">Title</th>
+                            <th class="px-4 py-3">Venue</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        <tr>
+                            <td class="px-4 py-3">Apr 15, 6:00 PM</td>
+                            <td class="px-4 py-3"><a href="#" class="text-blue-600 hover:underline font-medium">LA AI Founders Mixer</a></td>
+                            <td class="px-4 py-3"><a href="#" class="text-blue-600 hover:underline">Santa Monica, CA</a></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3">Apr 18, 5:30 PM</td>
+                            <td class="px-4 py-3"><a href="#" class="text-blue-600 hover:underline font-medium">SoCal GenAI Developers</a></td>
+                            <td class="px-4 py-3"><a href="#" class="text-blue-600 hover:underline">Irvine, CA</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
         <section id="engagement" class="mb-16 grid md:grid-cols-2 gap-8">
-            <!-- Newsletter Widget -->
             <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
                 <h2 class="text-2xl font-bold text-blue-600 mb-4">Stay Ahead with AI Insights</h2>
                 <p class="text-slate-600 mb-6">Get weekly automation workflows and AI tips delivered directly to your inbox.</p>
-                <a href="mailto:updates@agentmail.to?subject=Subscribe" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-                    Subscribe to Weekly Digest
-                </a>
+                <form action="https://formspree.io/f/mqkrvkpq" method="POST" class="space-y-4">
+                    <input type="email" name="email" placeholder="you@example.com" class="w-full p-2 border rounded" required>
+                    <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Subscribe</button>
+                </form>
             </div>
-
-            <!-- AI Request Form Widget -->
             <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
                 <h2 class="text-2xl font-bold text-blue-600 mb-4">Request AI Service</h2>
-                <form action="mailto:tok@eastwesthelp.com" method="post" enctype="text/plain" class="space-y-4">
+                <form action="https://formspree.io/f/mqkrvkpq" method="POST" class="space-y-4">
                     <div>
                         <label class="block text-sm font-medium">1. What is your automation goal?</label>
                         <input type="text" name="goal" class="w-full mt-1 p-2 border border-slate-300 rounded" required>
@@ -75,17 +133,29 @@
                         <input type="number" name="hours" class="w-full mt-1 p-2 border border-slate-300 rounded" required>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium">3. What is your primary tool/software stack?</label>
+                        <label class="block text-sm font-medium">3. What is your primary tool stack?</label>
                         <input type="text" name="tools" class="w-full mt-1 p-2 border border-slate-300 rounded" required>
                     </div>
-                    <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-                        Submit Request
-                    </button>
+                    <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Submit Request</button>
                 </form>
             </div>
         </section>
     </main>
-    <!-- Footer omitted -->
+
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8 text-sm">
+            <div>
+                <h4 class="text-white font-semibold mb-2">Contact</h4>
+                <p>Ready to automate? Let's discuss your project.</p>
+                <a href="mailto:tok@eastwesthelp.com" class="text-blue-400 hover:underline">tok@eastwesthelp.com</a>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-2">Mailing List</h4>
+                <p><a href="mailto:updates@agentmail.to?subject=Subscribe" class="hover:text-white underline">Add me to the list</a></p>
+                <p><a href="mailto:updates@agentmail.to?subject=Unsubscribe" class="hover:text-white underline">Unsubscribe</a></p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
-EOF
