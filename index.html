@@ -51,7 +51,7 @@
         </section>
 
         <section id="dashboard" class="mb-16 grid md:grid-cols-3 gap-6">
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm overflow-hidden">
                 <h2 class="text-lg font-bold mb-4 text-blue-600 border-b pb-2">Industry News</h2>
                 <ul class="space-y-3 text-xs text-slate-600">
                     <li><a href="#" class="hover:underline">Anthropic Claude Code CLI Source Leak</a></li>
@@ -61,7 +61,7 @@
                     <li><a href="#" class="hover:underline">Industrialization Phase of AI Capital Stack</a></li>
                 </ul>
             </div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm overflow-hidden">
                 <h2 class="text-lg font-bold mb-4 text-blue-600 border-b pb-2">Crypto Prices</h2>
                 <table class="w-full text-xs text-slate-800">
                     <thead class="text-slate-500 uppercase"><tr><th class="py-1">Asset</th><th class="py-1 text-right">Price</th><th class="py-1 text-right">24h</th></tr></thead>
@@ -74,7 +74,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm overflow-hidden">
                 <h2 class="text-lg font-bold mb-4 text-blue-600 border-b pb-2">AI on X</h2>
                 <table class="w-full text-xs text-slate-600">
                     <tbody class="divide-y divide-slate-200">
@@ -99,13 +99,13 @@
                     <tbody class="divide-y divide-slate-200">
                         <tr>
                             <td class="px-4 py-3">Apr 15, 6:00 PM</td>
-                            <td class="px-4 py-3"><a href="#" class="text-blue-600 hover:underline font-medium">LA AI Founders Mixer</a></td>
-                            <td class="px-4 py-3"><a href="#" class="text-blue-600 hover:underline">Santa Monica, CA</a></td>
+                            <td class="px-4 py-3"><a href="https://www.meetup.com/los-angeles-ai/" class="text-blue-600 hover:underline font-medium">LA AI Founders Mixer</a></td>
+                            <td class="px-4 py-3"><a href="https://www.google.com/maps/search/?api=1&query=Santa+Monica,CA" class="text-blue-600 hover:underline">Santa Monica, CA</a></td>
                         </tr>
                         <tr>
                             <td class="px-4 py-3">Apr 18, 5:30 PM</td>
-                            <td class="px-4 py-3"><a href="#" class="text-blue-600 hover:underline font-medium">SoCal GenAI Developers</a></td>
-                            <td class="px-4 py-3"><a href="#" class="text-blue-600 hover:underline">Irvine, CA</a></td>
+                            <td class="px-4 py-3"><a href="https://www.meetup.com/socal-genai/" class="text-blue-600 hover:underline font-medium">SoCal GenAI Developers</a></td>
+                            <td class="px-4 py-3"><a href="https://www.google.com/maps/search/?api=1&query=Irvine,CA" class="text-blue-600 hover:underline">Irvine, CA</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -122,19 +122,12 @@
                 </form>
             </div>
             <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                <h2 class="text-2xl font-bold text-blue-600 mb-4">Request AI Service</h2>
+                <h2 class="text-2xl font-bold text-blue-600 mb-4">Do you have any questions?</h2>
+                <p class="text-slate-600 mb-4">Please provide some details below and we will get back to you.</p>
                 <form action="https://formspree.io/f/mqkrvkpq" method="POST" class="space-y-4">
                     <div>
-                        <label class="block text-sm font-medium">1. What is your automation goal?</label>
-                        <input type="text" name="goal" class="w-full mt-1 p-2 border border-slate-300 rounded" required>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium">2. How many hours a week does this task take?</label>
-                        <input type="number" name="hours" class="w-full mt-1 p-2 border border-slate-300 rounded" required>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium">3. What is your primary tool stack?</label>
-                        <input type="text" name="tools" class="w-full mt-1 p-2 border border-slate-300 rounded" required>
+                        <label class="block text-sm font-medium">What would you like to do:</label>
+                        <textarea name="request" class="w-full mt-1 p-2 border border-slate-300 rounded" rows="3" required></textarea>
                     </div>
                     <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Submit Request</button>
                 </form>
