@@ -17,11 +17,11 @@
     }
     .form-input:focus { outline: none; border-color: #38bdf8; }
     .form-input::placeholder { color: #94a3b8; }
-    .btn { background: linear-gradient(135deg, #0ea5e9, #38bdf8); color: #0a0f1a;
+    .btn { background: #1d4ed8; color: #ffffff;
       font-weight: 700; padding: 12px 28px; border-radius: 8px; border: none;
       cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem;
       transition: opacity 0.2s; width: 100%; }
-    .btn:hover { opacity: 0.85; }
+    .btn:hover { background: #1e40af; }
     .section-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
       text-transform: uppercase; color: #38bdf8; margin-bottom: 4px; }
     .urgency-btn { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px;
@@ -110,7 +110,7 @@
       <div class="grid grid-cols-2 gap-4 mb-4">
         <div>
           <label class="block text-slate-600 text-xs mb-1">Your Name</label>
-          <input type="text" name="name" class="form-input" placeholder="Full name" required />
+          <input type="text" name="name" class="form-input" placeholder="Full name" aria-label="Full name" required />
         </div>
         <div>
           <label class="block text-slate-600 text-xs mb-1">Unit / Address</label>
@@ -199,6 +199,7 @@
 
 </body>
 </html>
+
 
 
 
