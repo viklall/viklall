@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tenant Portal | EastWest Help</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #0a0f1a; color: #e2e8f0; }
+    h1, h2, .brand { font-family: 'Space Grotesk', sans-serif; }
+    .accent { color: #38bdf8; }
+    .form-input {
+      background: #1e293b; border: 1px solid #334155; border-radius: 8px;
+      color: #e2e8f0; padding: 10px 14px; width: 100%; font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus { outline: none; border-color: #38bdf8; }
+    .form-input::placeholder { color: #64748b; }
+    .btn { background: linear-gradient(135deg, #0ea5e9, #38bdf8); color: #0a0f1a;
+      font-weight: 700; padding: 12px 28px; border-radius: 8px; border: none;
+      cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem;
+      transition: opacity 0.2s; width: 100%; }
+    .btn:hover { opacity: 0.85; }
+    .section-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #38bdf8; margin-bottom: 4px; }
+    .urgency-btn { background: #1e293b; border: 1px solid #334155; border-radius: 8px;
+      color: #94a3b8; padding: 10px 16px; cursor: pointer; font-size: 0.85rem;
+      transition: all 0.15s; text-align: center; }
+    .urgency-btn:hover { border-color: #38bdf8; color: #e2e8f0; }
+    .urgency-btn.selected { color: #0a0f1a; font-weight: 600; }
+    .u-low.selected { background: #34d399; border-color: #34d399; }
+    .u-med.selected { background: #fbbf24; border-color: #fbbf24; }
+    .u-high.selected { background: #f87171; border-color: #f87171; }
+    #repair-section { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="border-b border-slate-800 bg-black/70 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="brand text-white font-bold text-lg">EastWest<span class="accent">Help</span></a>
+      <span class="text-slate-500 text-sm">Tenant Portal</span>
+    </div>
+  </nav>
+
+  <div class="max-w-2xl mx-auto px-6 py-12">
+
+    <div class="mb-8">
+      <div class="section-label">Tenant Portal</div>
+      <h1 class="text-3xl font-bold text-white mb-2">Contact Your Property Manager</h1>
+      <p class="text-slate-400 text-sm">Submit a repair request, ask a question, or leave feedback. We'll get back to you promptly.</p>
+    </div>
+
+    <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+
+      <!-- Hidden formsubmit config -->
+      <input type="hidden" name="_subject" id="email-subject" value="Tenant Request" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value="https://eastwesthelp.com/tenant-thanks.html" />
+
+      <!-- REQUEST TYPE -->
+      <div class="mb-5">
+        <label class="block text-slate-300 text-sm font-medium mb-2">What's this about?</label>
+        <select id="request-type" class="form-input" onchange="handleTypeChange()">
+          <option value="" disabled selected>Select request type...</option>
+          <option value="repair">Repair / Maintenance</option>
+          <option value="question">Question</option>
+          <option value="feedback">Feedback</option>
+          <option value="complaint">Complaint</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <!-- REPAIR SECTION -->
+      <div id="repair-section" class="mb-5 bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+        <label class="block text-slate-300 text-sm font-medium mb-3">How urgent is this repair?</label>
+        <div class="grid grid-cols-3 gap-3 mb-1">
+          <div class="urgency-btn u-low" onclick="setUrgency('low', this)">🟢 Not urgent<br/><span class="text-xs opacity-70">Can wait a few days</span></div>
+          <div class="urgency-btn u-med" onclick="setUrgency('medium', this)">🟡 Moderate<br/><span class="text-xs opacity-70">Within 48 hours</span></div>
+          <div class="urgency-btn u-high" onclick="setUrgency('high', this)">🔴 Emergency<br/><span class="text-xs opacity-70">Needs immediate attention</span></div>
+        </div>
+        <input type="hidden" id="urgency-value" name="urgency" value="" />
+
+        <div class="mt-4">
+          <label class="block text-slate-300 text-sm font-medium mb-2">Best times to allow access for repair</label>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-slate-400 text-xs mb-1">Preferred Day(s)</label>
+              <input type="text" name="access_days" class="form-input" placeholder="e.g. Mon, Wed, Fri" />
+            </div>
+            <div>
+              <label class="block text-slate-400 text-xs mb-1">Preferred Time Window</label>
+              <select name="access_time" class="form-input">
+                <option value="" disabled selected>Select...</option>
+                <option>Morning (8am – 12pm)</option>
+                <option>Afternoon (12pm – 5pm)</option>
+                <option>Evening (5pm – 8pm)</option>
+                <option>Anytime</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT INFO -->
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <label class="block text-slate-400 text-xs mb-1">Your Name</label>
+          <input type="text" name="name" class="form-input" placeholder="Full name" required />
+        </div>
+        <div>
+          <label class="block text-slate-400 text-xs mb-1">Unit / Address</label>
+          <input type="text" name="unit" class="form-input" placeholder="e.g. 123 Main St, Unit 2" required />
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <label class="block text-slate-400 text-xs mb-1">Phone</label>
+          <input type="tel" name="phone" class="form-input" placeholder="(555) 000-0000" />
+        </div>
+        <div>
+          <label class="block text-slate-400 text-xs mb-1">Email</label>
+          <input type="email" name="email" class="form-input" placeholder="you@email.com" />
+        </div>
+      </div>
+
+      <!-- MESSAGE -->
+      <div class="mb-5">
+        <label class="block text-slate-400 text-xs mb-1">Details</label>
+        <textarea name="message" class="form-input" rows="4" placeholder="Describe your request, issue, or feedback..." required></textarea>
+      </div>
+
+      <!-- SUBMIT via formsubmit.co -->
+      <form id="tenant-form" action="https://formsubmit.co/info@eastwesthelp.com" method="POST" onsubmit="prepareSubmit()">
+        <input type="hidden" name="_subject" id="fs-subject" value="Tenant Request" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="request_type" id="fs-type" value="" />
+        <input type="hidden" name="urgency" id="fs-urgency" value="" />
+        <input type="hidden" name="_next" value="https://eastwesthelp.com/property" />
+
+        <input type="hidden" name="name" id="fs-name" />
+        <input type="hidden" name="unit" id="fs-unit" />
+        <input type="hidden" name="phone" id="fs-phone" />
+        <input type="hidden" name="email_from" id="fs-email" />
+        <input type="hidden" name="access_days" id="fs-days" />
+        <input type="hidden" name="access_time" id="fs-time" />
+        <input type="hidden" name="message" id="fs-message" />
+
+        <button type="submit" class="btn">Send →</button>
+      </form>
+
+      <p class="text-slate-600 text-xs mt-3 text-center">For emergencies (fire, flood, gas leak) call 911 first, then contact us.</p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800 mt-10 py-6 px-6 text-center text-slate-600 text-sm">
+    <span class="brand text-white font-bold">EastWest<span class="accent">Help</span></span>
+    <span class="mx-3 text-slate-700">·</span>
+    <a href="/" class="hover:text-slate-300">← Home</a>
+    <span class="mx-3 text-slate-700">·</span>
+    © 2026 EastWest Help
+  </footer>
+
+  <script>
+    function handleTypeChange() {
+      const type = document.getElementById('request-type').value;
+      const repairSection = document.getElementById('repair-section');
+      repairSection.style.display = type === 'repair' ? 'block' : 'none';
+    }
+
+    let selectedUrgency = '';
+    function setUrgency(level, el) {
+      document.querySelectorAll('.urgency-btn').forEach(b => b.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedUrgency = level;
+    }
+
+    function prepareSubmit() {
+      const type = document.getElementById('request-type').value;
+      const label = type ? type.charAt(0).toUpperCase() + type.slice(1) : 'Request';
+      document.getElementById('fs-subject').value = `Tenant ${label} — ${document.querySelector('[name="unit"]') ? document.querySelector('[placeholder="e.g. 123 Main St, Unit 2"]').value || '' : ''}`;
+      document.getElementById('fs-type').value = type;
+      document.getElementById('fs-urgency').value = selectedUrgency;
+      document.getElementById('fs-name').value = document.querySelector('[placeholder="Full name"]').value;
+      document.getElementById('fs-unit').value = document.querySelector('[placeholder="e.g. 123 Main St, Unit 2"]').value;
+      document.getElementById('fs-phone').value = document.querySelector('[placeholder="(555) 000-0000"]').value;
+      document.getElementById('fs-email').value = document.querySelector('[placeholder="you@email.com"]').value;
+      document.getElementById('fs-days').value = document.querySelector('[placeholder="e.g. Mon, Wed, Fri"]') ? document.querySelector('[placeholder="e.g. Mon, Wed, Fri"]').value : '';
+      document.getElementById('fs-message').value = document.querySelector('textarea').value;
+    }
+  </script>
+
+</body>
+</html>
