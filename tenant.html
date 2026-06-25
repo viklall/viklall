@@ -57,7 +57,8 @@
 
       <!-- Hidden formsubmit config -->
       <input type="hidden" name="_subject" id="email-subject" value="Tenant Request" />
-      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_captcha" value="true" />
+                    <input type="text" name="_honey" style="display:none" />
       <input type="hidden" name="_next" value="https://eastwesthelp.com/thankyou" />
 
       <!-- REQUEST TYPE -->
@@ -135,7 +136,8 @@
       <!-- SUBMIT via formsubmit.co -->
       <form id="tenant-form" action="https://formsubmit.co/info@eastwesthelp.com" method="POST" onsubmit="prepareSubmit()">
         <input type="hidden" name="_subject" id="fs-subject" value="Tenant Request" />
-        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_captcha" value="true" />
+                    <input type="text" name="_honey" style="display:none" />
         <input type="hidden" name="request_type" id="fs-type" value="" />
         <input type="hidden" name="urgency" id="fs-urgency" value="" />
         <input type="hidden" name="_next" value="https://eastwesthelp.com/thankyou" />
@@ -196,4 +198,5 @@
 
 </body>
 </html>
+
 
