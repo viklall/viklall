@@ -1,0 +1,91 @@
+name: Weekly Content Refresh
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'  # Every Monday 6am UTC
+  workflow_dispatch:       # Allow manual trigger too
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Refresh news and AI on X
+        run: |
+          python3 << 'PYEOF'
+          import urllib.request, json, re, datetime
+
+          with open('index.html', 'r') as f:
+              html = f.read()
+
+          # ── Fetch AI news from RSS feeds ──────────────────────────────
+          feeds = [
+              ('https://feeds.feedburner.com/venturebeat/SZYF', 'VentureBeat AI'),
+              ('https://techcrunch.com/tag/artificial-intelligence/feed/', 'TechCrunch AI'),
+              ('https://www.theverge.com/rss/ai-artificial-intelligence/index.xml', 'The Verge AI'),
+          ]
+
+          articles = []
+          for url, source in feeds:
+              try:
+                  req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+                  with urllib.request.urlopen(req, timeout=10) as r:
+                      content = r.read().decode('utf-8', errors='ignore')
+                  titles = re.findall(r'<title><!\[CDATA\[(.+?)\]\]></title>|<title>(.+?)</title>', content)
+                  links = re.findall(r'<link>(?!http://www\.w3)(https?://[^<]+)</link>|<link href="(https?://[^"]+)"', content)
+                  for i, (t1, t2) in enumerate(titles[1:6]):
+                      title = (t1 or t2).strip()
+                      if not title or len(title) < 10:
+                          continue
+                      link = ''
+                      if i < len(links):
+                          link = (links[i][0] or links[i][1]).strip()
+                      if title and link:
+                          articles.append((title[:80], link, source))
+                      if len(articles) >= 5:
+                          break
+                  if len(articles) >= 5:
+                      break
+              except Exception as e:
+                  print(f"Feed error {source}: {e}")
+
+          if len(articles) >= 3:
+              items = ''
+              for title, link, source in articles[:5]:
+                  items += f'<li><a href="{link}" class="hover:underline text-blue-600" target="_blank" rel="noopener">{title}</a></li>\n                    '
+              # Replace news list content
+              html = re.sub(
+                  r'(<ul id="news-list"[^>]*>)(.*?)(</ul>)',
+                  r'\1\n                    ' + items.strip() + r'\n                </ul>',
+                  html, flags=re.DOTALL
+              )
+              print(f"Updated {len(articles)} news items")
+          else:
+              print("Not enough articles fetched, keeping existing")
+
+          # ── Update last-refreshed timestamp in footer ─────────────────
+          now = datetime.datetime.utcnow().strftime('%b %d, %Y')
+          html = re.sub(
+              r'<!-- REFRESH_DATE -->.*?<!-- /REFRESH_DATE -->',
+              f'<!-- REFRESH_DATE -->Last updated {now}<!-- /REFRESH_DATE -->',
+              html
+          )
+
+          with open('index.html', 'w') as f:
+              f.write(html)
+
+          print("Done")
+          PYEOF
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "EastWest Bot"
+          git config user.email "info@eastwesthelp.com"
+          git add index.html
+          git diff --staged --quiet || git commit -m "Auto: weekly content refresh $(date +'%Y-%m-%d')"
+          git push
