@@ -17,11 +17,11 @@
     }
     .form-input:focus { outline: none; border-color: #38bdf8; }
     .form-input::placeholder { color: #94a3b8; }
-    .btn { background: linear-gradient(135deg, #0ea5e9, #38bdf8); color: #0a0f1a;
+    .btn { background: #1d4ed8; color: #ffffff;
       font-weight: 700; padding: 12px 28px; border-radius: 8px; border: none;
       cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem;
       transition: opacity 0.2s; width: 100%; }
-    .btn:hover { opacity: 0.85; }
+    .btn:hover { background: #1e40af; }
     .doc-list { list-style: none; padding: 0; margin: 0; }
     .doc-list li { padding: 4px 0; color: #475569; font-size: 0.85rem; }
     .doc-list li::before { content: "→ "; color: #38bdf8; }
@@ -70,21 +70,21 @@
           <div class="grid md:grid-cols-3 gap-4 mb-4">
             <div>
               <label class="block text-slate-600 text-xs mb-1">Your Name</label>
-              <input type="text" name="name" class="form-input" placeholder="Full name" required />
+              <input type="text" name="name" class="form-input" placeholder="Full name" aria-label="Full name" required />
             </div>
             <div>
               <label class="block text-slate-600 text-xs mb-1">Email</label>
-              <input type="email" name="email" class="form-input" placeholder="you@email.com" required />
+              <input type="email" name="email" class="form-input" placeholder="you@email.com" aria-label="Email address" required />
             </div>
             <div>
               <label class="block text-slate-600 text-xs mb-1">Property Location</label>
-              <input type="text" name="location" class="form-input" placeholder="City, County, State" required />
+              <input type="text" name="location" class="form-input" placeholder="City, County, State" aria-label="Property location" required />
             </div>
           </div>
           <div class="grid md:grid-cols-2 gap-4 mb-4">
             <div>
               <label class="block text-slate-600 text-xs mb-1">Document Needed</label>
-              <select name="document_type" class="form-input" required>
+              <select name="document_type" class="form-input" aria-label="Document type" required>
                 <option value="" disabled selected>Select...</option>
                 <option>3-Day Notice to Pay Rent or Quit</option>
                 <option>3-Day Notice to Perform or Quit</option>
@@ -181,6 +181,7 @@
 
 </body>
 </html>
+
 
 
 
