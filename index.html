@@ -36,16 +36,16 @@
                     </p>
                     <div class="mt-4 grid grid-cols-3 gap-2">
                         <div class="bg-blue-600 text-white p-2 rounded-lg text-center">
-                            <p class="text-xs font-bold uppercase">LA ☀️</p>
-                            <p class="text-sm font-mono">22°C</p>
+                            <p class="text-xs font-bold uppercase">LA</p>
+                            <p class="text-sm font-mono" id="weather-la">--°C</p>
                         </div>
                         <div class="bg-indigo-700 text-white p-2 rounded-lg text-center">
-                            <p class="text-xs font-bold uppercase">TYO 🌙</p>
-                            <p class="text-sm font-mono">15°C</p>
+                            <p class="text-xs font-bold uppercase">TYO</p>
+                            <p class="text-sm font-mono" id="weather-tyo">--°C</p>
                         </div>
                         <div class="bg-orange-600 text-white p-2 rounded-lg text-center">
-                            <p class="text-xs font-bold uppercase">KOL ☀️</p>
-                            <p class="text-sm font-mono">32°C</p>
+                            <p class="text-xs font-bold uppercase">KOL</p>
+                            <p class="text-sm font-mono" id="weather-kol">--°C</p>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
         <section id="dashboard" class="mb-16 grid md:grid-cols-3 gap-6">
             <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm overflow-hidden">
                 <h2 class="text-lg font-bold mb-4 text-blue-600 border-b pb-2">Industry News</h2>
-                <ul class="space-y-3 text-xs text-slate-600">
+                <ul id="news-list" class="space-y-3 text-xs text-slate-600">
                     <li><a href="https://www.buildfastwithai.com/blogs/ai-news-today-june-22-2026" class="hover:underline text-blue-600">US export controls block Anthropic Fable 5 &amp; Mythos 5 globally</a></li>
                     <li><a href="https://www.devflokers.com/blog/ai-tech-news-model-releases-june-2026" class="hover:underline text-blue-600">GLM-5.2 open-weight model rivals GPT-5.5 at 6.8x lower cost</a></li>
                     <li><a href="https://www.anthropic.com/news/claude-3-5" class="hover:underline">Claude Mythos 5 & Gemini 3.1 Update</a></li>
@@ -93,12 +93,12 @@
                 <h2 class="text-lg font-bold mb-4 text-blue-600 border-b pb-2">Crypto Prices</h2>
                 <table class="w-full text-xs text-slate-800">
                     <thead class="text-slate-500 uppercase"><tr><th class="py-1">Asset</th><th class="py-1 text-right">Price</th><th class="py-1 text-right">24h</th></tr></thead>
-                    <tbody class="divide-y divide-slate-100 font-mono">
-                        <tr><td class="py-2">BTC</td><td class="py-2 text-right">$64,541</td><td class="py-2 text-right text-green-600">+0.6%</td></tr>
-                        <tr><td class="py-2">ETH</td><td class="py-2 text-right">$1,741</td><td class="py-2 text-right text-green-600">+0.8%</td></tr>
-                        <tr><td class="py-2">SOL</td><td class="py-2 text-right">$73.43</td><td class="py-2 text-right text-red-600">-1.1%</td></tr>
-                        <tr><td class="py-2">XRP</td><td class="py-2 text-right">$1.14</td><td class="py-2 text-right text-red-600">-0.4%</td></tr>
-                        <tr><td class="py-2">BNB</td><td class="py-2 text-right">$595.94</td><td class="py-2 text-right text-green-600">+0.8%</td></tr>
+                    <tbody id="crypto-tbody" class="divide-y divide-slate-100 font-mono">
+                        <tr><td class="py-2">BTC</td><td class="py-2 text-right" id="btc-price">--</td><td class="py-2 text-right" id="btc-change">--</td></tr>
+                        <tr><td class="py-2">ETH</td><td class="py-2 text-right" id="eth-price">--</td><td class="py-2 text-right" id="eth-change">--</td></tr>
+                        <tr><td class="py-2">SOL</td><td class="py-2 text-right" id="sol-price">--</td><td class="py-2 text-right" id="sol-change">--</td></tr>
+                        <tr><td class="py-2">XRP</td><td class="py-2 text-right" id="xrp-price">--</td><td class="py-2 text-right" id="xrp-change">--</td></tr>
+                        <tr><td class="py-2">BNB</td><td class="py-2 text-right" id="bnb-price">--</td><td class="py-2 text-right" id="bnb-change">--</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -196,8 +196,61 @@
         </p>
     </div>
 </footer>
+
+<script>
+// Live Weather via Open-Meteo (free, no key)
+async function fetchWeather() {
+  const cities = [
+    { id: 'weather-la',  lat: 34.05,  lon: -118.24 },
+    { id: 'weather-tyo', lat: 35.68,  lon: 139.69  },
+    { id: 'weather-kol', lat: 22.57,  lon: 88.36   },
+  ];
+  for (const c of cities) {
+    try {
+      const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${c.lat}&longitude=${c.lon}&current_weather=true`);
+      const d = await r.json();
+      const temp = Math.round(d.current_weather.temperature);
+      const code = d.current_weather.weathercode;
+      const icon = code <= 1 ? '☀️' : code <= 3 ? '⛅' : code < 60 ? '☁️' : '🌧️';
+      document.getElementById(c.id).textContent = `${icon} ${temp}°C`;
+    } catch(e) { console.warn('weather fetch failed', c.id, e); }
+  }
+}
+
+// Live Crypto via CoinGecko (free, no key)
+async function fetchCrypto() {
+  try {
+    const r = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,ripple,binancecoin&vs_currencies=usd&include_24hr_change=true');
+    const d = await r.json();
+    const coins = [
+      ['bitcoin',     'btc'],
+      ['ethereum',    'eth'],
+      ['solana',      'sol'],
+      ['ripple',      'xrp'],
+      ['binancecoin', 'bnb'],
+    ];
+    for (const [id, sym] of coins) {
+      const price = d[id]?.usd;
+      const change = d[id]?.usd_24h_change;
+      if (price == null) continue;
+      const pe = document.getElementById(`${sym}-price`);
+      const ce = document.getElementById(`${sym}-change`);
+      if (pe) pe.textContent = price >= 1000 ? '$' + price.toLocaleString('en-US', {maximumFractionDigits:0}) : '$' + price.toFixed(2);
+      if (ce) {
+        const pct = change.toFixed(2);
+        ce.textContent = (change >= 0 ? '+' : '') + pct + '%';
+        ce.className = 'py-2 text-right ' + (change >= 0 ? 'text-green-600' : 'text-red-600');
+      }
+    }
+  } catch(e) { console.warn('crypto fetch failed', e); }
+}
+
+fetchWeather();
+fetchCrypto();
+</script>
 </body>
 </html>
+
 
 
 
