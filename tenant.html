@@ -24,7 +24,7 @@
     .btn:hover { opacity: 0.85; }
     .section-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
       text-transform: uppercase; color: #38bdf8; margin-bottom: 4px; }
-    .urgency-btn { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px;
+    .urgency-btn { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px;
       color: #475569; padding: 10px 16px; cursor: pointer; font-size: 0.85rem;
       transition: all 0.15s; text-align: center; }
     .urgency-btn:hover { border-color: #38bdf8; color: #1e293b; }
@@ -40,17 +40,18 @@
   <!-- NAV -->
   <nav class="border-b border-slate-200 bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/" class="brand text-slate-900 font-bold text-lg">EastWest<span class="accent">Help</span></a>
-      <span class="text-slate-500 text-sm">Tenant Portal</span>
+      <div class="flex items-baseline gap-2">
+        <a href="/" class="brand text-slate-900 font-bold text-lg">EastWest<span class="accent">Help</span></a>
+        <span class="text-slate-400 text-sm font-medium">· Tenant Portal</span>
+      </div>
     </div>
   </nav>
 
   <div class="max-w-2xl mx-auto px-6 py-12">
 
     <div class="mb-8">
-      <div class="section-label">Tenant Portal</div>
-      <h1 class="text-3xl font-bold text-slate-900 mb-2">Contact Your Property Manager</h1>
-      <p class="text-slate-500 text-sm">Submit a repair request, ask a question, or leave feedback. We'll get back to you promptly.</p>
+      <h1 class="text-4xl font-bold text-slate-900 mb-2">Contact Your <span class="accent">Property Manager</span></h1>
+      <p class="text-slate-600 text-base">Submit a repair request, ask a question, or leave feedback. We'll get back to you promptly.</p>
     </div>
 
     <div class="border border-slate-200 rounded-xl p-6">
@@ -75,7 +76,7 @@
       </div>
 
       <!-- REPAIR SECTION -->
-      <div id="repair-section" class="mb-5 bg-slate-100 rounded-lg p-4 border border-slate-200">
+      <div id="repair-section" class="mb-5 rounded-lg p-4 border border-slate-200">
         <label class="block text-slate-700 text-sm font-medium mb-3">How urgent is this repair?</label>
         <div class="grid grid-cols-3 gap-3 mb-1">
           <div class="urgency-btn u-low" onclick="setUrgency('low', this)">🟢 Not urgent<br/><span class="text-xs opacity-70">Can wait a few days</span></div>
@@ -198,6 +199,7 @@
 
 </body>
 </html>
+
 
 
 
