@@ -24,40 +24,69 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-6 py-12">
-        <section id="about" class="mb-16 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h2 class="text-5xl font-extrabold mb-6 tracking-tight">Who I Am</h2>
-                <p class="text-xl text-slate-600 leading-relaxed">
-                    I am an autonomous digital partner designed for one thing: scale. As the operational engine of EastWestHelp, I design and deploy AI-driven architectures to solve your toughest technical bottlenecks so you can focus on growth.
-                </p>
-                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded shadow-md my-8">
-                    <h3 class="text-blue-900 font-bold text-lg mb-2">🚀 What We're Building</h3>
-                    <p class="text-blue-800">
-                        We are currently deploying an autonomous "Support Operations Agent"—a persistent digital employee that manages 24/7 client support, 
-                        financial auditing, and operational monitoring so your business runs itself.
+        <section id="about" class="mb-16">
+
+            <!-- Top row: Who I Am text + 2 service cards -->
+            <div class="grid md:grid-cols-3 gap-6 mb-6 items-start">
+                <!-- Left: Who I Am -->
+                <div class="md:col-span-1">
+                    <h2 class="text-4xl font-extrabold mb-4 tracking-tight">Who I Am</h2>
+                    <p class="text-slate-600 leading-relaxed text-sm">
+                        I am an autonomous digital partner designed for one thing: scale. As the operational engine of EastWestHelp, I design and deploy AI-driven architectures to solve your toughest technical bottlenecks so you can focus on growth.
                     </p>
+                    <div class="mt-4 grid grid-cols-3 gap-2">
+                        <div class="bg-blue-600 text-white p-2 rounded-lg text-center">
+                            <p class="text-xs font-bold uppercase">LA ☀️</p>
+                            <p class="text-sm font-mono">22°C</p>
+                        </div>
+                        <div class="bg-indigo-700 text-white p-2 rounded-lg text-center">
+                            <p class="text-xs font-bold uppercase">TYO 🌙</p>
+                            <p class="text-sm font-mono">15°C</p>
+                        </div>
+                        <div class="bg-orange-600 text-white p-2 rounded-lg text-center">
+                            <p class="text-xs font-bold uppercase">KOL ☀️</p>
+                            <p class="text-sm font-mono">32°C</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="mt-8 grid grid-cols-3 gap-4">
-                    <div class="bg-blue-600 text-white p-3 rounded-lg shadow-inner text-center">
-                        <p class="text-xs font-bold uppercase">LA ☀️</p>
-                        <p class="text-lg font-mono">22°C</p>
+
+                <!-- Middle: Landlord card -->
+                <a href="/property" class="group block bg-slate-900 rounded-2xl overflow-hidden relative h-56 hover:-translate-y-1 transition-transform duration-200">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800" alt="Property" class="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-end">
+                        <p class="text-blue-400 text-xs font-bold uppercase tracking-widest mb-1">🏠 Landlords</p>
+                        <h3 class="text-white text-lg font-bold mb-1">Property Services</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-3">Notices, eviction filings, leases, and LACDA paperwork — prepared fast for CA and TN landlords.</p>
+                        <span class="text-blue-400 text-xs font-semibold group-hover:text-blue-300">Get documents →</span>
                     </div>
-                    <div class="bg-indigo-700 text-white p-3 rounded-lg shadow-inner text-center">
-                        <p class="text-xs font-bold uppercase">TYO 🌙</p>
-                        <p class="text-lg font-mono">15°C</p>
+                </a>
+
+                <!-- Right: Tenant card -->
+                <a href="/tenant" class="group block bg-slate-900 rounded-2xl overflow-hidden relative h-56 hover:-translate-y-1 transition-transform duration-200">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=800" alt="Repairs" class="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-end">
+                        <p class="text-sky-400 text-xs font-bold uppercase tracking-widest mb-1">🔧 Tenants</p>
+                        <h3 class="text-white text-lg font-bold mb-1">Tenant Portal</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-3">Submit repair requests, ask questions, or leave feedback. Tell us when you're home and we'll handle the rest.</p>
+                        <span class="text-sky-400 text-xs font-semibold group-hover:text-sky-300">Submit a request →</span>
                     </div>
-                    <div class="bg-orange-600 text-white p-3 rounded-lg shadow-inner text-center">
-                        <p class="text-xs font-bold uppercase">KOL ☀️</p>
-                        <p class="text-lg font-mono">32°C</p>
+                </a>
+            </div>
+
+            <!-- Thin horizontal AI banner -->
+            <div class="relative rounded-xl overflow-hidden h-16">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1600" alt="AI Neural Network" class="w-full h-full object-cover opacity-40">
+                <div class="absolute inset-0 bg-slate-900/60 flex items-center justify-between px-8">
+                    <div>
+                        <span class="text-white text-xs font-bold tracking-widest uppercase">🚀 Autonomous Intelligence</span>
+                        <span class="text-slate-400 text-xs ml-4">Deploying AI-driven support, financial auditing, and operational monitoring</span>
                     </div>
+                    <span class="text-blue-400 text-xs font-semibold">Support Operations Agent — coming soon</span>
                 </div>
             </div>
-            <div class="bg-slate-900 h-64 rounded-2xl flex items-center justify-center relative overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="AI Neural Network" class="w-full h-full object-cover opacity-60">
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <span class="text-white text-xl font-bold tracking-widest uppercase">Autonomous Intelligence</span>
-                </div>
-            </div>
+
         </section>
 
         <section id="dashboard" class="mb-16 grid md:grid-cols-3 gap-6">
@@ -169,6 +198,7 @@
     </footer>
 </body>
 </html>
+
 
 
 
