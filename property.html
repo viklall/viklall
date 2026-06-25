@@ -27,22 +27,25 @@
     .doc-list li::before { content: "→ "; color: #38bdf8; }
     .section-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
       text-transform: uppercase; color: #38bdf8; margin-bottom: 4px; }
-    .col-head { font-size: 0.8rem; font-weight: 600; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid #e2e8f0; }
+    .col-head { font-size: 1rem; font-weight: 700; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid #e2e8f0; }
   </style>
 </head>
 <body>
 
   <nav class="border-b border-slate-200 bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/" class="brand text-slate-900 font-bold text-lg">EastWest<span class="accent">Help</span></a>
-      <a href="#contact" class="text-sky-400 text-sm font-semibold hover:text-sky-300">Get Started →</a>
+      <div class="flex items-baseline gap-2">
+        <a href="/" class="brand text-slate-900 font-bold text-lg">EastWest<span class="accent">Help</span></a>
+        <span class="text-slate-400 text-sm font-medium">· Property Services</span>
+      </div>
+      <a href="#contact" class="text-sky-500 text-sm font-semibold hover:text-sky-400">Get Started →</a>
     </div>
   </nav>
 
   <div class="max-w-5xl mx-auto px-6 py-12">
 
+    <!-- HERO -->
     <div class="mb-10">
-      <div class="section-label">EastWest Property Services</div>
       <h1 class="text-4xl font-bold text-slate-900 mb-3 leading-tight">Landlord Document <span class="accent">Support</span></h1>
       <p class="text-slate-600 text-base max-w-2xl mb-4">
         We prepare the notices, leases, and eviction paperwork California and Tennessee landlords need — accurate, jurisdiction-specific, and fast.
@@ -55,73 +58,15 @@
       </div>
     </div>
 
-    <div class="mb-10">
-      <div class="section-label mb-3">What We Prepare</div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 border border-slate-200 rounded-xl p-6">
-        <div>
-          <div class="col-head text-amber-400">📋 Notices</div>
-          <ul class="doc-list">
-            <li>3-Day Pay or Quit</li>
-            <li>3-Day Perform or Quit</li>
-            <li>3-Day Unconditional Quit</li>
-            <li>30/60-Day Notice to Vacate</li>
-            <li>Notice of Entry</li>
-            <li>Rent Increase Notice</li>
-            <li>Change of Terms</li>
-            <li>Proof of Service</li>
-          </ul>
-        </div>
-        <div>
-          <div class="col-head text-red-400">⚖️ Eviction / UD</div>
-          <ul class="doc-list">
-            <li>UD Complaint (UD-100)</li>
-            <li>Summons (UD-105)</li>
-            <li>Case Cover Sheet (CM-010)</li>
-            <li>Request for Default (UD-107)</li>
-            <li>Default Judgment (UD-110)</li>
-            <li>Writ of Possession (EJ-130)</li>
-            <li>AB 2347 Declaration</li>
-            <li>Memphis Detainer Warrant</li>
-            <li>UD Filing Checklist</li>
-          </ul>
-        </div>
-        <div>
-          <div class="col-head text-green-400">📄 Leases</div>
-          <ul class="doc-list">
-            <li>Residential Lease</li>
-            <li>Lease Renewal</li>
-            <li>Pet Addendum</li>
-            <li>Co-Tenant Addendum</li>
-            <li>Section 8 / HCV Addendum</li>
-            <li>Move-In/Out Checklist</li>
-          </ul>
-        </div>
-        <div>
-          <div class="col-head text-sky-400">🏠 Management</div>
-          <ul class="doc-list">
-            <li>PM Agreement</li>
-            <li>Security Deposit Statement</li>
-            <li>Rent Ledger</li>
-            <li>Demand Letter</li>
-            <li>Maintenance Request Log</li>
-            <li>LACDA / HACLA Letters</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- CONTACT — now uses formsubmit.co, no mailto -->
-    <div id="contact">
-      <div class="section-label mb-2">Get Started</div>
+    <!-- CONTACT FORM — above doc list -->
+    <div id="contact" class="mb-12">
       <h2 class="text-2xl font-bold text-slate-900 mb-6">Request Your Documents</h2>
-
       <div class="border border-slate-200 rounded-xl p-6">
         <form action="https://formsubmit.co/info@eastwesthelp.com" method="POST">
           <input type="hidden" name="_subject" value="Landlord Document Request" />
           <input type="hidden" name="_captcha" value="true" />
-                    <input type="text" name="_honey" style="display:none" />
+          <input type="text" name="_honey" style="display:none" />
           <input type="hidden" name="_next" value="https://eastwesthelp.com/thankyou" />
-
           <div class="grid md:grid-cols-3 gap-4 mb-4">
             <div>
               <label class="block text-slate-600 text-xs mb-1">Your Name</label>
@@ -163,12 +108,68 @@
             </div>
           </div>
           <button type="submit" class="btn">Send Request →</button>
-          <p class="text-slate-600 text-xs mt-3 text-center">Document preparation only — not a law firm. Consult a licensed attorney for legal advice.</p>
+          <p class="text-slate-500 text-xs mt-3 text-center">Document preparation only — not a law firm. Consult a licensed attorney for legal advice.</p>
         </form>
       </div>
     </div>
 
-  </div>
+    <!-- DOC LIST — below form -->
+    <div class="mb-10">
+      <h2 class="text-2xl font-bold text-slate-900 mb-6">What We Prepare</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 border border-slate-200 rounded-xl p-6">
+        <div>
+          <div class="col-head text-amber-500">📋 Notices</div>
+          <ul class="doc-list">
+            <li>3-Day Pay or Quit</li>
+            <li>3-Day Perform or Quit</li>
+            <li>3-Day Unconditional Quit</li>
+            <li>30/60-Day Notice to Vacate</li>
+            <li>Notice of Entry</li>
+            <li>Rent Increase Notice</li>
+            <li>Change of Terms</li>
+            <li>Proof of Service</li>
+          </ul>
+        </div>
+        <div>
+          <div class="col-head text-red-500">⚖️ Eviction / UD</div>
+          <ul class="doc-list">
+            <li>UD Complaint (UD-100)</li>
+            <li>Summons (UD-105)</li>
+            <li>Case Cover Sheet (CM-010)</li>
+            <li>Request for Default (UD-107)</li>
+            <li>Default Judgment (UD-110)</li>
+            <li>Writ of Possession (EJ-130)</li>
+            <li>AB 2347 Declaration</li>
+            <li>Memphis Detainer Warrant</li>
+            <li>UD Filing Checklist</li>
+          </ul>
+        </div>
+        <div>
+          <div class="col-head text-green-600">📄 Leases</div>
+          <ul class="doc-list">
+            <li>Residential Lease</li>
+            <li>Lease Renewal</li>
+            <li>Pet Addendum</li>
+            <li>Co-Tenant Addendum</li>
+            <li>Section 8 / HCV Addendum</li>
+            <li>Move-In/Out Checklist</li>
+          </ul>
+        </div>
+        <div>
+          <div class="col-head text-sky-600">🏠 Management</div>
+          <ul class="doc-list">
+            <li>PM Agreement</li>
+            <li>Security Deposit Statement</li>
+            <li>Rent Ledger</li>
+            <li>Demand Letter</li>
+            <li>Maintenance Request Log</li>
+            <li>LACDA / HACLA Letters</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    </div>
 
   <footer class="border-t border-slate-200 mt-10 py-6 px-6 text-center text-slate-500 text-sm">
     <span class="brand text-slate-900 font-bold">EastWest<span class="accent">Help</span></span>
@@ -180,6 +181,7 @@
 
 </body>
 </html>
+
 
 
 
