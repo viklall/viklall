@@ -32,7 +32,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="border-b border-slate-800 bg-black/70 backdrop-blur sticky top-0 z-50">
     <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="/" class="brand text-white font-bold text-lg">EastWest<span class="accent">Help</span></a>
@@ -42,7 +41,6 @@
 
   <div class="max-w-5xl mx-auto px-6 py-12">
 
-    <!-- HERO -->
     <div class="mb-10">
       <div class="section-label">EastWest Property Services</div>
       <h1 class="text-4xl font-bold text-white mb-3 leading-tight">Landlord Document <span class="accent">Support</span></h1>
@@ -57,11 +55,9 @@
       </div>
     </div>
 
-    <!-- DOCUMENTS — 4 columns -->
     <div class="mb-10">
       <div class="section-label mb-3">What We Prepare</div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 bg-slate-900 border border-slate-800 rounded-xl p-6">
-
         <div>
           <div class="col-head text-amber-400">📋 Notices</div>
           <ul class="doc-list">
@@ -75,7 +71,6 @@
             <li>Proof of Service</li>
           </ul>
         </div>
-
         <div>
           <div class="col-head text-red-400">⚖️ Eviction / UD</div>
           <ul class="doc-list">
@@ -90,7 +85,6 @@
             <li>UD Filing Checklist</li>
           </ul>
         </div>
-
         <div>
           <div class="col-head text-green-400">📄 Leases</div>
           <ul class="doc-list">
@@ -102,7 +96,6 @@
             <li>Move-In/Out Checklist</li>
           </ul>
         </div>
-
         <div>
           <div class="col-head text-sky-400">🏠 Management</div>
           <ul class="doc-list">
@@ -114,65 +107,68 @@
             <li>LACDA / HACLA Letters</li>
           </ul>
         </div>
-
       </div>
     </div>
 
-    <!-- CONTACT -->
+    <!-- CONTACT — now uses formsubmit.co, no mailto -->
     <div id="contact">
       <div class="section-label mb-2">Get Started</div>
       <h2 class="text-2xl font-bold text-white mb-6">Request Your Documents</h2>
 
       <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
-        <div class="grid md:grid-cols-3 gap-4 mb-4">
-          <div>
-            <label class="block text-slate-400 text-xs mb-1">Your Name</label>
-            <input type="text" id="name" class="form-input" placeholder="Full name" />
+        <form action="https://formsubmit.co/info@eastwesthelp.com" method="POST">
+          <input type="hidden" name="_subject" value="Landlord Document Request" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="https://eastwesthelp.com/property" />
+
+          <div class="grid md:grid-cols-3 gap-4 mb-4">
+            <div>
+              <label class="block text-slate-400 text-xs mb-1">Your Name</label>
+              <input type="text" name="name" class="form-input" placeholder="Full name" required />
+            </div>
+            <div>
+              <label class="block text-slate-400 text-xs mb-1">Email</label>
+              <input type="email" name="email" class="form-input" placeholder="you@email.com" required />
+            </div>
+            <div>
+              <label class="block text-slate-400 text-xs mb-1">Property Location</label>
+              <input type="text" name="location" class="form-input" placeholder="City, County, State" required />
+            </div>
           </div>
-          <div>
-            <label class="block text-slate-400 text-xs mb-1">Email</label>
-            <input type="email" id="email" class="form-input" placeholder="you@email.com" />
+          <div class="grid md:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-slate-400 text-xs mb-1">Document Needed</label>
+              <select name="document_type" class="form-input" required>
+                <option value="" disabled selected>Select...</option>
+                <option>3-Day Notice to Pay Rent or Quit</option>
+                <option>3-Day Notice to Perform or Quit</option>
+                <option>3-Day Unconditional Notice to Quit</option>
+                <option>30/60-Day Notice to Vacate</option>
+                <option>Notice of Entry</option>
+                <option>Rent Increase Notice</option>
+                <option>UD / Eviction Filing Package</option>
+                <option>Memphis Detainer Warrant</option>
+                <option>Lease Agreement</option>
+                <option>Lease Renewal</option>
+                <option>Security Deposit Itemization</option>
+                <option>Property Management Agreement</option>
+                <option>LACDA / Housing Authority Letter</option>
+                <option>Other / Not Sure</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 text-xs mb-1">Details</label>
+              <input type="text" name="details" class="form-input" placeholder="Brief situation, tenant name, timeline..." />
+            </div>
           </div>
-          <div>
-            <label class="block text-slate-400 text-xs mb-1">Property Location</label>
-            <input type="text" id="location" class="form-input" placeholder="City, County, State" />
-          </div>
-        </div>
-        <div class="grid md:grid-cols-2 gap-4 mb-4">
-          <div>
-            <label class="block text-slate-400 text-xs mb-1">Document Needed</label>
-            <select id="doctype" class="form-input">
-              <option value="" disabled selected>Select...</option>
-              <option>3-Day Notice to Pay Rent or Quit</option>
-              <option>3-Day Notice to Perform or Quit</option>
-              <option>3-Day Unconditional Notice to Quit</option>
-              <option>30/60-Day Notice to Vacate</option>
-              <option>Notice of Entry</option>
-              <option>Rent Increase Notice</option>
-              <option>UD / Eviction Filing Package</option>
-              <option>Memphis Detainer Warrant</option>
-              <option>Lease Agreement</option>
-              <option>Lease Renewal</option>
-              <option>Security Deposit Itemization</option>
-              <option>Property Management Agreement</option>
-              <option>LACDA / Housing Authority Letter</option>
-              <option>Other / Not Sure</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-slate-400 text-xs mb-1">Details</label>
-            <input type="text" id="details" class="form-input" placeholder="Brief situation, tenant name, timeline..." />
-          </div>
-        </div>
-        <button onclick="submitForm()" class="btn">Send Request →</button>
-        <div id="success" style="display:none" class="mt-3 text-green-400 text-sm font-medium">✅ Request sent! We'll be in touch within one business day.</div>
-        <p class="text-slate-600 text-xs mt-3 text-center">Document preparation only — not a law firm. Consult a licensed attorney for legal advice.</p>
+          <button type="submit" class="btn">Send Request →</button>
+          <p class="text-slate-600 text-xs mt-3 text-center">Document preparation only — not a law firm. Consult a licensed attorney for legal advice.</p>
+        </form>
       </div>
     </div>
 
   </div>
 
-  <!-- FOOTER -->
   <footer class="border-t border-slate-800 mt-10 py-6 px-6 text-center text-slate-600 text-sm">
     <span class="brand text-white font-bold">EastWest<span class="accent">Help</span></span>
     <span class="mx-3 text-slate-700">·</span>
@@ -180,24 +176,6 @@
     <span class="mx-3 text-slate-700">·</span>
     © 2026 EastWest Help
   </footer>
-
-  <script>
-    function submitForm() {
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const location = document.getElementById('location').value.trim();
-      const doctype = document.getElementById('doctype').value;
-      const details = document.getElementById('details').value.trim();
-      if (!name || !email || !location || !doctype) {
-        alert('Please fill in all required fields.');
-        return;
-      }
-      const subject = encodeURIComponent(`Property Services Request: ${doctype}`);
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nLocation: ${location}\nDocument: ${doctype}\n\nDetails:\n${details}`);
-      window.location.href = `mailto:info@eastwesthelp.com?subject=${subject}&body=${body}`;
-      document.getElementById('success').style.display = 'block';
-    }
-  </script>
 
 </body>
 </html>
