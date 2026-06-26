@@ -182,6 +182,17 @@
     © 2026 EastWest Help
   </footer>
 
+
+<div id="success-banner" style="display:none" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-green-600 text-white text-sm font-semibold px-6 py-3 rounded-xl shadow-lg">
+  ✅ Your request was received — we will be in touch shortly.
+</div>
+<script>
+  if (window.location.search.includes('submitted=1')) {
+    document.getElementById('success-banner').style.display = 'block';
+    setTimeout(() => document.getElementById('success-banner').style.display = 'none', 6000);
+    window.history.replaceState({}, '', window.location.pathname);
+  }
+</script>
 </body>
 </html>
 
