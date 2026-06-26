@@ -60,7 +60,8 @@
 
     <!-- CONTACT FORM — above doc list -->
     <div id="contact" class="mb-12">
-      <h2 class="text-2xl font-bold text-slate-900 mb-6">Request Your Documents</h2>
+      <h2 class="text-2xl font-bold text-slate-900 mb-2">Request Your Documents</h2>
+      <p class="text-xs text-slate-500 mb-6"><span class="text-red-500 font-bold">*</span> Required fields</p>
       <div class="border border-slate-200 rounded-xl p-6">
         <form action="https://formsubmit.co/info@eastwesthelp.com" method="POST">
           <input type="hidden" name="_subject" value="Landlord Document Request" />
@@ -72,21 +73,21 @@
           <input type="hidden" name="_replyto" value="" />
           <div class="grid md:grid-cols-3 gap-4 mb-4">
             <div>
-              <label class="block text-slate-600 text-xs mb-1">Your Name</label>
+              <label class="block text-slate-600 text-xs mb-1">Your Name <span class="text-red-500">*</span></label>
               <input type="text" name="name" class="form-input" placeholder="Full name" aria-label="Full name" required />
             </div>
             <div>
-              <label class="block text-slate-600 text-xs mb-1">Email</label>
+              <label class="block text-slate-600 text-xs mb-1">Email <span class="text-red-500">*</span></label>
               <input type="email" name="email" id="prop-email" class="form-input" placeholder="you@email.com" aria-label="Email address" required />
             </div>
             <div>
-              <label class="block text-slate-600 text-xs mb-1">Property Location</label>
+              <label class="block text-slate-600 text-xs mb-1">Property Location <span class="text-red-500">*</span></label>
               <input type="text" name="location" class="form-input" placeholder="City, County, State" aria-label="Property location" required />
             </div>
           </div>
           <div class="grid md:grid-cols-2 gap-4 mb-4">
             <div>
-              <label class="block text-slate-600 text-xs mb-1">Document Needed</label>
+              <label class="block text-slate-600 text-xs mb-1">Document Needed <span class="text-red-500">*</span></label>
               <select name="document_type" class="form-input" aria-label="Document type" required>
                 <option value="" disabled selected>Select...</option>
                 <option>3-Day Notice to Pay Rent or Quit</option>
@@ -195,6 +196,7 @@
 </script>
 </body>
 </html>
+
 
 
 
