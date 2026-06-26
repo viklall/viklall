@@ -87,11 +87,11 @@
           <div class="grid grid-cols-2 gap-3">
             <div>
               <label class="block text-slate-600 text-xs mb-1">Preferred Day(s)</label>
-              <input type="text" name="access_days" class="form-input" placeholder="e.g. Mon, Wed, Fri" />
+              <input type="text" name="access_days" class="form-input" placeholder="e.g. Mon, Wed, Fri" aria-label="Preferred days for access" />
             </div>
             <div>
               <label class="block text-slate-600 text-xs mb-1">Preferred Time Window</label>
-              <select name="access_time" class="form-input">
+              <select name="access_time" class="form-input" aria-label="Preferred time window">
                 <option value="" disabled selected>Select...</option>
                 <option>Morning (8am – 12pm)</option>
                 <option>Afternoon (12pm – 5pm)</option>
@@ -111,24 +111,24 @@
         </div>
         <div>
           <label class="block text-slate-600 text-xs mb-1">Unit / Address</label>
-          <input type="text" name="unit" class="form-input" placeholder="e.g. 123 Main St, Unit 2" required />
+          <input type="text" name="unit" class="form-input" placeholder="e.g. 123 Main St, Unit 2" aria-label="Unit or address" />
         </div>
       </div>
       <div class="grid grid-cols-2 gap-4 mb-4">
         <div>
           <label class="block text-slate-600 text-xs mb-1">Phone</label>
-          <input type="tel" name="phone" class="form-input" placeholder="(555) 000-0000" />
+          <input type="tel" name="phone" class="form-input" placeholder="(555) 000-0000" aria-label="Phone number" />
         </div>
         <div>
           <label class="block text-slate-600 text-xs mb-1">Email</label>
-          <input type="email" name="email" class="form-input" placeholder="you@email.com" />
+          <input type="email" name="email" class="form-input" placeholder="you@email.com" aria-label="Email address" required />
         </div>
       </div>
 
       <!-- MESSAGE -->
       <div class="mb-5">
         <label class="block text-slate-600 text-xs mb-1">Details</label>
-        <textarea name="message" class="form-input" rows="4" placeholder="Describe your request, issue, or feedback..." required></textarea>
+        <textarea name="message" class="form-input" rows="4" placeholder="Describe your request, issue, or feedback..." aria-label="Details"></textarea>
       </div>
 
       <!-- SUBMIT via formsubmit.co -->
@@ -209,6 +209,7 @@
 </script>
 </body>
 </html>
+
 
 
 
