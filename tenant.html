@@ -52,7 +52,7 @@
     <div class="mb-8">
       <h1 class="text-4xl font-bold text-slate-900 mb-2">Contact Your <span class="accent">Property Manager</span></h1>
       <p class="text-slate-600 text-base">Submit a repair request, ask a question, or leave feedback. We'll get back to you promptly.</p>
-      <p class="text-xs text-slate-500 mt-2"><span class="text-red-500 font-bold">*</span> Required fields</p>
+      
     </div>
 
     <div class="border border-slate-200 rounded-xl p-6">
@@ -65,6 +65,7 @@
 
       <!-- REQUEST TYPE -->
       <div class="mb-5">
+        <p class="text-xs text-slate-500 mb-4"><span class="text-red-500 font-bold">*</span> Required fields</p>
         <label class="block text-slate-700 text-sm font-medium mb-2">What's this about?</label>
         <select id="request-type" class="form-input" onchange="handleTypeChange()">
           <option value="" disabled selected>Select request type...</option>
@@ -107,8 +108,8 @@
       <!-- CONTACT INFO -->
       <div class="grid grid-cols-2 gap-4 mb-4">
         <div>
-          <label class="block text-slate-600 text-xs mb-1">Your Name</label>
-          <input type="text" name="name" class="form-input" placeholder="Full name" aria-label="Full name" required required />
+          <label class="block text-slate-600 text-xs mb-1">Your Name <span class="text-red-500">*</span></label>
+          <input type="text" name="name" class="form-input" placeholder="Full name" aria-label="Full name" required />
         </div>
         <div>
           <label class="block text-slate-600 text-xs mb-1">Unit / Address</label>
@@ -121,7 +122,7 @@
           <input type="tel" name="phone" class="form-input" placeholder="(555) 000-0000" aria-label="Phone number" />
         </div>
         <div>
-          <label class="block text-slate-600 text-xs mb-1">Email</label>
+          <label class="block text-slate-600 text-xs mb-1">Email <span class="text-red-500">*</span></label>
           <input type="email" name="email" class="form-input" placeholder="you@email.com" aria-label="Email address" required />
         </div>
       </div>
@@ -210,6 +211,7 @@
 </script>
 </body>
 </html>
+
 
 
 
