@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Tenant Intake | EastWest Help</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1e293b; }
+    h1, h2, .brand { font-family: 'Space Grotesk', sans-serif; }
+    .accent { color: #38bdf8; }
+    .form-input {
+      background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px;
+      color: #1e293b; padding: 10px 14px; width: 100%; font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus { outline: none; border-color: #38bdf8; }
+    .form-input::placeholder { color: #94a3b8; }
+    .btn { background: #1d4ed8; color: #ffffff;
+      font-weight: 700; padding: 12px 28px; border-radius: 8px; border: none;
+      cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem;
+      transition: opacity 0.2s; width: 100%; }
+    .btn:hover { background: #1e40af; }
+    .section-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #38bdf8; margin-bottom: 4px; }
+    .req { color: #dc2626; }
+    .field-label { display: block; color: #334155; font-size: 0.875rem; font-weight: 500; margin-bottom: 6px; }
+    .section-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="border-b border-slate-200 bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-baseline gap-2">
+        <a href="/" class="brand text-slate-900 font-bold text-lg">EastWest<span class="accent">Help</span></a>
+        <span class="text-slate-400 text-sm font-medium">· New Tenant Intake</span>
+      </div>
+      <a href="/tenant" class="text-slate-500 text-sm font-medium hover:text-slate-800">Tenant Portal →</a>
+    </div>
+  </nav>
+
+  <div class="max-w-2xl mx-auto px-6 py-12">
+
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-slate-900 mb-2">New Tenant <span class="accent">Intake Application</span></h1>
+      <p class="text-slate-600 text-base">Please complete all sections below. Fields marked with a <span class="req">*</span> are required.</p>
+    </div>
+
+    <!-- SUCCESS BANNER -->
+    <div id="success-banner" class="hidden mb-8 rounded-xl border border-emerald-300 bg-emerald-50 p-4">
+      <p class="text-emerald-800 font-medium text-sm">✅ Your application has been submitted. We will contact you shortly.</p>
+    </div>
+
+    <form action="https://formsubmit.co/info@eastwesthelp.com" method="POST">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="text" name="_honey" style="display:none">
+      <input type="hidden" name="_blacklist" value="viagra, casino, crypto pump, loan offer">
+      <input type="hidden" name="_autoresponse" value="Thank you for submitting your tenant intake application to EastWest Help. We have received it and will contact you shortly.">
+      <input type="hidden" name="_next" value="https://eastwesthelp.com/intake?submitted=1">
+      <input type="hidden" name="_subject" value="New Tenant Intake Application">
+
+      <!-- SECTION 1: APPLICANT INFO -->
+      <div class="section-card">
+        <div class="section-label">Section 1</div>
+        <h2 class="text-xl font-bold text-slate-900 mb-5">Applicant Information</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="sm:col-span-2">
+            <label class="field-label" for="full_name">Full Name <span class="req">*</span></label>
+            <input class="form-input" type="text" id="full_name" name="Full Name" required aria-label="Full Name" placeholder="First Middle Last">
+          </div>
+          <div>
+            <label class="field-label" for="email">Email <span class="req">*</span></label>
+            <input class="form-input" type="email" id="email" name="Email" required aria-label="Email" placeholder="you@example.com">
+          </div>
+          <div>
+            <label class="field-label" for="phone">Phone <span class="req">*</span></label>
+            <input class="form-input" type="tel" id="phone" name="Phone" required aria-label="Phone" placeholder="(555) 555-5555">
+          </div>
+          <div class="sm:col-span-2">
+            <label class="field-label" for="current_address">Current Address <span class="req">*</span></label>
+            <input class="form-input" type="text" id="current_address" name="Current Address" required aria-label="Current Address" placeholder="Street, City, State, ZIP">
+          </div>
+          <div>
+            <label class="field-label" for="time_at_address">Time at Current Address</label>
+            <input class="form-input" type="text" id="time_at_address" name="Time at Current Address" aria-label="Time at Current Address" placeholder="e.g. 2 years">
+          </div>
+          <div>
+            <label class="field-label" for="move_in_date">Desired Move-In Date</label>
+            <input class="form-input" type="date" id="move_in_date" name="Desired Move-In Date" aria-label="Desired Move-In Date">
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: IDENTIFICATION -->
+      <div class="section-card">
+        <div class="section-label">Section 2</div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Identification</h2>
+        <div class="rounded-lg border-l-4 border-sky-400 bg-sky-50 p-4">
+          <p class="text-slate-700 text-sm">📞 Please call <span class="font-semibold">(213) 302-6757</span> to provide the following two numbers: <span class="font-semibold">Driver's License number</span> and <span class="font-semibold">Social Security number</span>. For your security, please do not enter them online.</p>
+        </div>
+      </div>
+
+      <!-- SECTION 3: EMPLOYMENT & INCOME -->
+      <div class="section-card">
+        <div class="section-label">Section 3</div>
+        <h2 class="text-xl font-bold text-slate-900 mb-5">Employment &amp; Income</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="field-label" for="employer_name">Employer / Company Name <span class="req">*</span></label>
+            <input class="form-input" type="text" id="employer_name" name="Employer Name" required aria-label="Employer Name" placeholder="Company name">
+          </div>
+          <div>
+            <label class="field-label" for="employer_contact">Supervisor / Contact Person</label>
+            <input class="form-input" type="text" id="employer_contact" name="Employer Contact Person" aria-label="Employer Contact Person" placeholder="Name">
+          </div>
+          <div class="sm:col-span-2">
+            <label class="field-label" for="employer_address">Employer Address</label>
+            <input class="form-input" type="text" id="employer_address" name="Employer Address" aria-label="Employer Address" placeholder="Street, City, State, ZIP">
+          </div>
+          <div>
+            <label class="field-label" for="employer_phone">Employer Phone</label>
+            <input class="form-input" type="tel" id="employer_phone" name="Employer Phone" aria-label="Employer Phone" placeholder="(555) 555-5555">
+          </div>
+          <div>
+            <label class="field-label" for="position">Position / Title</label>
+            <input class="form-input" type="text" id="position" name="Position" aria-label="Position" placeholder="Job title">
+          </div>
+          <div>
+            <label class="field-label" for="employment_length">Length of Employment</label>
+            <input class="form-input" type="text" id="employment_length" name="Length of Employment" aria-label="Length of Employment" placeholder="e.g. 3 years">
+          </div>
+          <div>
+            <label class="field-label" for="monthly_income">Monthly Gross Income</label>
+            <input class="form-input" type="text" id="monthly_income" name="Monthly Gross Income" aria-label="Monthly Gross Income" placeholder="$">
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 4: HOUSEHOLD -->
+      <div class="section-card">
+        <div class="section-label">Section 4</div>
+        <h2 class="text-xl font-bold text-slate-900 mb-5">Household</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="field-label" for="occupants">Number of Occupants</label>
+            <input class="form-input" type="number" id="occupants" name="Number of Occupants" aria-label="Number of Occupants" min="1" placeholder="e.g. 3">
+          </div>
+          <div>
+            <label class="field-label" for="pets">Pets (type &amp; number)</label>
+            <input class="form-input" type="text" id="pets" name="Pets" aria-label="Pets" placeholder="e.g. 1 dog, none">
+          </div>
+          <div class="sm:col-span-2">
+            <label class="field-label" for="vehicles">Vehicle(s) — Make / Model / Plate</label>
+            <input class="form-input" type="text" id="vehicles" name="Vehicles" aria-label="Vehicles" placeholder="e.g. Toyota Camry, 7ABC123">
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 5: REFERENCES -->
+      <div class="section-card">
+        <div class="section-label">Section 5</div>
+        <h2 class="text-xl font-bold text-slate-900 mb-5">References</h2>
+
+        <p class="text-slate-600 text-sm font-medium mb-3">Reference 1 — Prior Landlord (if applicable)</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          <div>
+            <label class="field-label" for="ref1_name">Name</label>
+            <input class="form-input" type="text" id="ref1_name" name="Reference 1 Name" aria-label="Reference 1 Name">
+          </div>
+          <div>
+            <label class="field-label" for="ref1_rel">Relationship</label>
+            <input class="form-input" type="text" id="ref1_rel" name="Reference 1 Relationship" aria-label="Reference 1 Relationship" placeholder="e.g. Prior landlord">
+          </div>
+          <div>
+            <label class="field-label" for="ref1_phone">Phone</label>
+            <input class="form-input" type="tel" id="ref1_phone" name="Reference 1 Phone" aria-label="Reference 1 Phone">
+          </div>
+        </div>
+
+        <p class="text-slate-600 text-sm font-medium mb-3">Reference 2 — Personal or Professional</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label class="field-label" for="ref2_name">Name</label>
+            <input class="form-input" type="text" id="ref2_name" name="Reference 2 Name" aria-label="Reference 2 Name">
+          </div>
+          <div>
+            <label class="field-label" for="ref2_rel">Relationship</label>
+            <input class="form-input" type="text" id="ref2_rel" name="Reference 2 Relationship" aria-label="Reference 2 Relationship" placeholder="e.g. Colleague">
+          </div>
+          <div>
+            <label class="field-label" for="ref2_phone">Phone</label>
+            <input class="form-input" type="tel" id="ref2_phone" name="Reference 2 Phone" aria-label="Reference 2 Phone">
+          </div>
+        </div>
+      </div>
+
+      <!-- CONSENT + SUBMIT -->
+      <div class="section-card">
+        <label class="flex items-start gap-3 cursor-pointer mb-5">
+          <input type="checkbox" name="Verification Consent" value="Yes" required aria-label="Verification Consent" class="mt-1 h-4 w-4">
+          <span class="text-slate-700 text-sm">I authorize verification of the information provided in this application, including contacting employers, landlords, and references. <span class="req">*</span></span>
+        </label>
+        <p class="text-slate-500 text-xs mb-5"><span class="req">*</span> Required fields</p>
+        <button type="submit" class="btn" aria-label="Submit Application">Submit Application</button>
+      </div>
+    </form>
+
+    <!-- FOOTER -->
+  </div>
+
+  <footer class="border-t border-slate-200 mt-10 py-6 px-6 text-center text-slate-500 text-sm">
+    <span class="brand text-slate-900 font-bold">EastWest<span class="accent">Help</span></span>
+    <span class="mx-3 text-slate-700">·</span>
+    <a href="/" class="hover:text-slate-700">← Home</a>
+    <span class="mx-3 text-slate-700">·</span>
+    © 2026 EastWest Help
+  </footer>
+
+  <script>
+    // Success banner on ?submitted=1, auto-dismiss after 6s
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('submitted') === '1') {
+        var b = document.getElementById('success-banner');
+        b.classList.remove('hidden');
+        window.scrollTo({ top: 0 });
+        setTimeout(function () { b.classList.add('hidden'); }, 6000);
+      }
+    })();
+  </script>
+
+</body>
+</html>
