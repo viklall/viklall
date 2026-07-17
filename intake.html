@@ -109,8 +109,8 @@
         <h2 class="text-xl font-bold text-slate-900 mb-5">Employment &amp; Income</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="field-label" for="employer_name">Employer / Company Name <span class="req">*</span></label>
-            <input class="form-input" type="text" id="employer_name" name="Employer Name" required aria-label="Employer Name" placeholder="Company name">
+            <label class="field-label" for="employer_name">Employer / Company Name</label>
+            <input class="form-input" type="text" id="employer_name" name="Employer Name" aria-label="Employer Name" placeholder="Company name">
           </div>
           <div>
             <label class="field-label" for="employer_contact">Supervisor / Contact Person</label>
@@ -148,10 +148,6 @@
             <label class="field-label" for="occupants">Number of Occupants</label>
             <input class="form-input" type="number" id="occupants" name="Number of Occupants" aria-label="Number of Occupants" min="1" placeholder="e.g. 3">
           </div>
-          <div>
-            <label class="field-label" for="pets">Pets (type &amp; number)</label>
-            <input class="form-input" type="text" id="pets" name="Pets" aria-label="Pets" placeholder="e.g. 1 dog, none">
-          </div>
           <div class="sm:col-span-2">
             <label class="field-label" for="vehicles">Vehicle(s) — Make / Model / Plate</label>
             <input class="form-input" type="text" id="vehicles" name="Vehicles" aria-label="Vehicles" placeholder="e.g. Toyota Camry, 7ABC123">
@@ -159,9 +155,50 @@
         </div>
       </div>
 
-      <!-- SECTION 5: REFERENCES -->
+      <!-- SECTION 5: PET INFORMATION -->
       <div class="section-card">
         <div class="section-label">Section 5</div>
+        <h2 class="text-xl font-bold text-slate-900 mb-5">Pet Information</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="field-label" for="has_pets">Do you have pets? <span class="req">*</span></label>
+            <select class="form-input" id="has_pets" name="Has Pets" required aria-label="Do you have pets">
+              <option value="" disabled selected>Select one</option>
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+          <div>
+            <label class="field-label" for="pet_type">Pet Type</label>
+            <input class="form-input" type="text" id="pet_type" name="Pet Type" aria-label="Pet Type" placeholder="e.g. Dog, Cat">
+          </div>
+          <div>
+            <label class="field-label" for="pet_breed">Breed</label>
+            <input class="form-input" type="text" id="pet_breed" name="Pet Breed" aria-label="Pet Breed" placeholder="e.g. Labrador">
+          </div>
+          <div>
+            <label class="field-label" for="pet_count">Number of Pets</label>
+            <input class="form-input" type="number" id="pet_count" name="Number of Pets" aria-label="Number of Pets" min="0" placeholder="e.g. 1">
+          </div>
+          <div>
+            <label class="field-label" for="pet_weight">Weight (approx.)</label>
+            <input class="form-input" type="text" id="pet_weight" name="Pet Weight" aria-label="Pet Weight" placeholder="e.g. 40 lbs">
+          </div>
+          <div>
+            <label class="field-label" for="pet_fixed">Spayed / Neutered?</label>
+            <select class="form-input" id="pet_fixed" name="Spayed or Neutered" aria-label="Spayed or Neutered">
+              <option value="" disabled selected>Select one</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="N/A">N/A</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 6: REFERENCES -->
+      <div class="section-card">
+        <div class="section-label">Section 6</div>
         <h2 class="text-xl font-bold text-slate-900 mb-5">References</h2>
 
         <p class="text-slate-600 text-sm font-medium mb-3">Reference 1 — Prior Landlord (if applicable)</p>
