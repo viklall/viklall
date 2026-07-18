@@ -1,297 +1,204 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>New Tenant Intake | EastWest Help</title>
+  <title>Intake Form | EastWest Help</title>
+  <meta name="description" content="Submit your property management or tenant application intake form with EastWest Help. Quick, secure, and easy.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
-  <style>
-    body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1e293b; }
-    h1, h2, .brand { font-family: 'Space Grotesk', sans-serif; }
-    .accent { color: #38bdf8; }
-    .form-input {
-      background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px;
-      color: #1e293b; padding: 10px 14px; width: 100%; font-size: 0.9rem;
-      transition: border-color 0.2s;
-    }
-    .form-input:focus { outline: none; border-color: #38bdf8; }
-    .form-input::placeholder { color: #94a3b8; }
-    .btn { background: #1d4ed8; color: #ffffff;
-      font-weight: 700; padding: 12px 28px; border-radius: 8px; border: none;
-      cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem;
-      transition: opacity 0.2s; width: 100%; }
-    .btn:hover { background: #1e40af; }
-    .section-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: #38bdf8; margin-bottom: 4px; }
-    .req { color: #dc2626; }
-    .field-label { display: block; color: #334155; font-size: 0.875rem; font-weight: 500; margin-bottom: 6px; }
-    .section-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
-  </style>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "EastWest Help",
-      "description": "AI Automation, IT Consulting, and Property Management Services",
-      "url": "https://eastwesthelp.com",
-      "telephone": "+1-213-302-6757",
-      "email": "info@eastwesthelp.com",
-      "areaServed": ["California", "Tennessee"],
-      "serviceType": ["Property Management", "AI Consulting", "IT Services"]
-    }
-    </script>
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-</head>
-<body>
-
-  <!-- NAV -->
-  <nav class="border-b border-slate-200 bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="flex items-baseline gap-2">
-        <a href="/" class="brand text-slate-900 font-bold text-lg">EastWest<span class="accent">Help</span></a>
-        <span class="text-slate-400 text-sm font-medium">· New Tenant Intake</span>
-      </div>
-      <a href="/tenant" class="text-slate-500 text-sm font-medium hover:text-slate-800">Tenant Portal →</a>
-    </div>
-  </nav>
-
-  <div class="max-w-2xl mx-auto px-6 py-12">
-
-    <div class="mb-8">
-      <h1 class="text-4xl font-bold text-slate-900 mb-2">New Tenant <span class="accent">Intake Application</span></h1>
-      <p class="text-slate-600 text-base">Please complete all sections below. Fields marked with a <span class="req">*</span> are required.</p>
-    </div>
-
-    <!-- SUCCESS BANNER -->
-    <div id="success-banner" class="hidden mb-8 rounded-xl border border-emerald-300 bg-emerald-50 p-4">
-      <p class="text-emerald-800 font-medium text-sm">✅ Your application has been submitted. We will contact you shortly.</p>
-    </div>
-
-    <form action="https://formsubmit.co/info@eastwesthelp.com" method="POST">
-      <input type="hidden" name="_captcha" value="true">
-      <input type="hidden" name="_template" value="table">
-      <input type="text" name="_honey" style="display:none">
-      <input type="hidden" name="_blacklist" value="viagra, casino, crypto pump, loan offer">
-      <input type="hidden" name="_autoresponse" value="Thank you for submitting your tenant intake application to EastWest Help. We have received it and will contact you shortly.">
-      <input type="hidden" name="_next" value="https://eastwesthelp.com/intake?submitted=1">
-      <input type="hidden" name="_subject" value="New Tenant Intake Application">
-
-      <!-- SECTION 1: APPLICANT INFO -->
-      <div class="section-card">
-        <div class="section-label">Section 1</div>
-        <h2 class="text-xl font-bold text-slate-900 mb-5">Applicant Information</h2>
-        <input type="hidden" name="■■■ SECTION 1 — APPLICANT INFORMATION ■■■" value="―――――――――――">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="sm:col-span-2">
-            <label class="field-label" for="full_name">Full Name <span class="req">*</span></label>
-            <input class="form-input" type="text" id="full_name" name="Full Name" required aria-label="Full Name" placeholder="First Middle Last">
-          </div>
-          <div>
-            <label class="field-label" for="email">Email <span class="req">*</span></label>
-            <input class="form-input" type="email" id="email" name="Email" required aria-label="Email" placeholder="you@example.com">
-          </div>
-          <div>
-            <label class="field-label" for="phone">Phone <span class="req">*</span></label>
-            <input class="form-input" type="tel" id="phone" name="Phone" required aria-label="Phone" placeholder="(555) 555-5555">
-          </div>
-          <div class="sm:col-span-2">
-            <label class="field-label" for="current_address">Current Address <span class="req">*</span></label>
-            <input class="form-input" type="text" id="current_address" name="Current Address" required aria-label="Current Address" placeholder="Street, City, State, ZIP">
-          </div>
-          <div>
-            <label class="field-label" for="time_at_address">Time at Current Address</label>
-            <input class="form-input" type="text" id="time_at_address" name="Time at Current Address" aria-label="Time at Current Address" placeholder="e.g. 2 years">
-          </div>
-          <div>
-            <label class="field-label" for="move_in_date">Desired Move-In Date</label>
-            <input class="form-input" type="date" id="move_in_date" name="Desired Move-In Date" aria-label="Desired Move-In Date">
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION 2: IDENTIFICATION -->
-      <div class="section-card">
-        <div class="section-label">Section 2</div>
-        <h2 class="text-xl font-bold text-slate-900 mb-3">Identification</h2>
-        <div class="rounded-lg border-l-4 border-sky-400 bg-sky-50 p-4">
-          <p class="text-slate-700 text-sm">📞 Please call <span class="font-semibold">(213) 302-6757</span> to provide the following two numbers: <span class="font-semibold">Driver's License number</span> and <span class="font-semibold">Social Security number</span>.</p>
-          <p class="text-slate-700 text-sm mt-3">If we don't answer, it's okay to leave them on our secure voicemail — please speak slowly and include your full name.</p>
-          <p class="text-slate-700 text-sm mt-3">For your security, please do not enter them online.</p>
-        </div>
-      </div>
-
-      <!-- SECTION 3: EMPLOYMENT & INCOME -->
-      <div class="section-card">
-        <div class="section-label">Section 3</div>
-        <h2 class="text-xl font-bold text-slate-900 mb-5">Employment &amp; Income</h2>
-        <input type="hidden" name="■■■ SECTION 3 — EMPLOYMENT AND INCOME ■■■" value="―――――――――――">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="field-label" for="employer_name">Employer / Company Name</label>
-            <input class="form-input" type="text" id="employer_name" name="Employer Name" aria-label="Employer Name" placeholder="Company name">
-          </div>
-          <div>
-            <label class="field-label" for="employer_contact">Supervisor / Contact Person</label>
-            <input class="form-input" type="text" id="employer_contact" name="Employer Contact Person" aria-label="Employer Contact Person" placeholder="Name">
-          </div>
-          <div class="sm:col-span-2">
-            <label class="field-label" for="employer_address">Employer Address</label>
-            <input class="form-input" type="text" id="employer_address" name="Employer Address" aria-label="Employer Address" placeholder="Street, City, State, ZIP">
-          </div>
-          <div>
-            <label class="field-label" for="employer_phone">Employer Phone</label>
-            <input class="form-input" type="tel" id="employer_phone" name="Employer Phone" aria-label="Employer Phone" placeholder="(555) 555-5555">
-          </div>
-          <div>
-            <label class="field-label" for="position">Position / Title</label>
-            <input class="form-input" type="text" id="position" name="Position" aria-label="Position" placeholder="Job title">
-          </div>
-          <div>
-            <label class="field-label" for="employment_length">Length of Employment</label>
-            <input class="form-input" type="text" id="employment_length" name="Length of Employment" aria-label="Length of Employment" placeholder="e.g. 3 years">
-          </div>
-          <div>
-            <label class="field-label" for="monthly_income">Monthly Gross Income</label>
-            <input class="form-input" type="text" id="monthly_income" name="Monthly Gross Income" aria-label="Monthly Gross Income" placeholder="$">
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION 4: HOUSEHOLD -->
-      <div class="section-card">
-        <div class="section-label">Section 4</div>
-        <h2 class="text-xl font-bold text-slate-900 mb-5">Household</h2>
-        <input type="hidden" name="■■■ SECTION 4 — HOUSEHOLD ■■■" value="―――――――――――">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="field-label" for="occupants">Number of Occupants</label>
-            <input class="form-input" type="number" id="occupants" name="Number of Occupants" aria-label="Number of Occupants" min="1" placeholder="e.g. 3">
-          </div>
-          <div class="sm:col-span-2">
-            <label class="field-label" for="vehicles">Vehicle(s) — Make / Model / Plate</label>
-            <input class="form-input" type="text" id="vehicles" name="Vehicles" aria-label="Vehicles" placeholder="e.g. Toyota Camry, 7ABC123">
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION 5: PET INFORMATION -->
-      <div class="section-card">
-        <div class="section-label">Section 5</div>
-        <h2 class="text-xl font-bold text-slate-900 mb-5">Pet Information</h2>
-        <input type="hidden" name="■■■ SECTION 5 — PET INFORMATION ■■■" value="―――――――――――">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="field-label" for="has_pets">Do you have pets? <span class="req">*</span></label>
-            <select class="form-input" id="has_pets" name="Has Pets" required aria-label="Do you have pets">
-              <option value="" disabled selected>Select one</option>
-              <option value="No">No</option>
-              <option value="Yes">Yes</option>
-            </select>
-          </div>
-          <div>
-            <label class="field-label" for="pet_type">Pet Type</label>
-            <input class="form-input" type="text" id="pet_type" name="Pet Type" aria-label="Pet Type" placeholder="e.g. Dog, Cat">
-          </div>
-          <div>
-            <label class="field-label" for="pet_breed">Breed</label>
-            <input class="form-input" type="text" id="pet_breed" name="Pet Breed" aria-label="Pet Breed" placeholder="e.g. Labrador">
-          </div>
-          <div>
-            <label class="field-label" for="pet_count">Number of Pets</label>
-            <input class="form-input" type="number" id="pet_count" name="Number of Pets" aria-label="Number of Pets" min="0" placeholder="e.g. 1">
-          </div>
-          <div>
-            <label class="field-label" for="pet_weight">Weight (approx.)</label>
-            <input class="form-input" type="text" id="pet_weight" name="Pet Weight" aria-label="Pet Weight" placeholder="e.g. 40 lbs">
-          </div>
-          <div>
-            <label class="field-label" for="pet_fixed">Spayed / Neutered?</label>
-            <select class="form-input" id="pet_fixed" name="Spayed or Neutered" aria-label="Spayed or Neutered">
-              <option value="" disabled selected>Select one</option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-              <option value="N/A">N/A</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION 6: REFERENCES -->
-      <div class="section-card">
-        <div class="section-label">Section 6</div>
-        <h2 class="text-xl font-bold text-slate-900 mb-5">References</h2>
-        <input type="hidden" name="■■■ SECTION 6 — REFERENCES ■■■" value="―――――――――――">
-
-        <p class="text-slate-600 text-sm font-medium mb-3">Reference 1 — Prior Landlord (if applicable)</p>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-          <div>
-            <label class="field-label" for="ref1_name">Name</label>
-            <input class="form-input" type="text" id="ref1_name" name="Reference 1 Name" aria-label="Reference 1 Name">
-          </div>
-          <div>
-            <label class="field-label" for="ref1_rel">Relationship</label>
-            <input class="form-input" type="text" id="ref1_rel" name="Reference 1 Relationship" aria-label="Reference 1 Relationship" placeholder="e.g. Prior landlord">
-          </div>
-          <div>
-            <label class="field-label" for="ref1_phone">Phone</label>
-            <input class="form-input" type="tel" id="ref1_phone" name="Reference 1 Phone" aria-label="Reference 1 Phone">
-          </div>
-        </div>
-
-        <p class="text-slate-600 text-sm font-medium mb-3">Reference 2 — Personal or Professional</p>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div>
-            <label class="field-label" for="ref2_name">Name</label>
-            <input class="form-input" type="text" id="ref2_name" name="Reference 2 Name" aria-label="Reference 2 Name">
-          </div>
-          <div>
-            <label class="field-label" for="ref2_rel">Relationship</label>
-            <input class="form-input" type="text" id="ref2_rel" name="Reference 2 Relationship" aria-label="Reference 2 Relationship" placeholder="e.g. Colleague">
-          </div>
-          <div>
-            <label class="field-label" for="ref2_phone">Phone</label>
-            <input class="form-input" type="tel" id="ref2_phone" name="Reference 2 Phone" aria-label="Reference 2 Phone">
-          </div>
-        </div>
-      </div>
-
-      <!-- CONSENT + SUBMIT -->
-      <div class="section-card">
-        <label class="flex items-start gap-3 cursor-pointer mb-5">
-          <input type="checkbox" name="Verification Consent" value="Yes" required aria-label="Verification Consent" class="mt-1 h-4 w-4">
-          <span class="text-slate-700 text-sm">I authorize verification of the information provided in this application, including contacting employers, landlords, and references. <span class="req">*</span></span>
-        </label>
-        <p class="text-slate-500 text-xs mb-5"><span class="req">*</span> Required fields</p>
-        <button type="submit" class="btn" aria-label="Submit Application">Submit Application</button>
-      </div>
-    </form>
-
-    <!-- FOOTER -->
-  </div>
-
-  <footer class="border-t border-slate-200 mt-10 py-6 px-6 text-center text-slate-500 text-sm">
-    <span class="brand text-slate-900 font-bold">EastWest<span class="accent">Help</span></span>
-    <span class="mx-3 text-slate-700">·</span>
-    <a href="/" class="hover:text-slate-700">← Home</a>
-    <span class="mx-3 text-slate-700">·</span>
-    © 2026 EastWest Help
-  </footer>
-
   <script>
-    // Success banner on ?submitted=1, auto-dismiss after 6s
-    (function () {
-      var params = new URLSearchParams(window.location.search);
-      if (params.get('submitted') === '1') {
-        var b = document.getElementById('success-banner');
-        b.classList.remove('hidden');
-        window.scrollTo({ top: 0 });
-        setTimeout(function () { b.classList.add('hidden'); }, 6000);
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          }
+        }
       }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
+  </style>
+</head>
+<body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased transition-colors duration-300">
+
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 dark:bg-slate-900/90 dark:border-slate-700 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-sky-400 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <span class="text-xl font-bold text-slate-800 dark:text-white" style="font-family:'Space Grotesk',sans-serif;">EastWest Help</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="index.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Home</a>
+          <a href="property.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Property</a>
+          <a href="tenant.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Tenant</a>
+          <a href="intake.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Intake</a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle dark mode">
+            <svg id="theme-icon-sun" class="w-5 h-5 text-amber-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg id="theme-icon-moon" class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+        </nav>
+        <div class="flex md:hidden items-center gap-2">
+          <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle dark mode">
+            <svg id="theme-icon-sun-mobile" class="w-5 h-5 text-amber-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg id="theme-icon-moon-mobile" class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+          <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+      <div class="px-4 py-3 space-y-2">
+        <a href="index.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Home</a>
+        <a href="property.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Property</a>
+        <a href="tenant.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Tenant</a>
+        <a href="intake.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Intake</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="bg-gradient-to-br from-sky-50 to-white dark:from-slate-900 dark:to-slate-950 py-12 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Intake Form</h1>
+      <p class="text-slate-600 dark:text-slate-300 max-w-xl mx-auto">Tell us about your needs and we'll get back to you within 24 hours.</p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white dark:bg-slate-950 transition-colors duration-300">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <form class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 shadow-sm" action="thankyou.html" method="GET">
+        <div class="mb-6">
+          <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">I am a...</label>
+          <div class="grid grid-cols-2 gap-4">
+            <label class="cursor-pointer">
+              <input type="radio" name="type" value="owner" class="peer sr-only" checked>
+              <div class="text-center py-4 rounded-xl border-2 border-slate-200 dark:border-slate-600 peer-checked:border-sky-500 peer-checked:bg-sky-50 dark:peer-checked:bg-sky-900/20 transition-all">
+                <svg class="w-6 h-6 mx-auto mb-2 text-slate-400 peer-checked:text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <span class="text-sm font-medium text-slate-700 dark:text-slate-300 peer-checked:text-sky-600 dark:peer-checked:text-sky-400">Property Owner</span>
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="type" value="tenant" class="peer sr-only">
+              <div class="text-center py-4 rounded-xl border-2 border-slate-200 dark:border-slate-600 peer-checked:border-sky-500 peer-checked:bg-sky-50 dark:peer-checked:bg-sky-900/20 transition-all">
+                <svg class="w-6 h-6 mx-auto mb-2 text-slate-400 peer-checked:text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                <span class="text-sm font-medium text-slate-700 dark:text-slate-300 peer-checked:text-sky-600 dark:peer-checked:text-sky-400">Prospective Tenant</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label for="firstName" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">First Name</label>
+            <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all" placeholder="John">
+          </div>
+          <div>
+            <label for="lastName" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Last Name</label>
+            <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all" placeholder="Doe">
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Email Address</label>
+          <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all" placeholder="john@example.com">
+        </div>
+
+        <div class="mb-6">
+          <label for="phone" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Phone Number</label>
+          <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all" placeholder="(555) 123-4567">
+        </div>
+
+        <div class="mb-6">
+          <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">How can we help?</label>
+          <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all resize-none" placeholder="Tell us about your property or what you're looking for..."></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-4 px-6 text-base font-semibold text-white bg-blue-700 hover:bg-blue-800 rounded-xl transition-all shadow-lg shadow-blue-700/25 hover:shadow-xl">
+          Submit Intake
+          <svg class="inline ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+
+        <p class="text-xs text-slate-400 dark:text-slate-500 text-center mt-4">Your information is secure and will never be shared with third parties.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-50 border-t border-slate-200 dark:bg-slate-900 dark:border-slate-700 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-slate-500 dark:text-slate-400">
+          &copy; <span id="footer-year">2026</span> EastWest Help. All rights reserved.
+        </p>
+        <p class="text-xs text-slate-400 dark:text-slate-500" data-last-updated>
+          Last updated: <span id="last-updated-date">--</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- Shared Scripts -->
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Dark Mode Toggle
+    (function() {
+      const html = document.documentElement;
+      const toggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+      function updateIcons(isDark) {
+        ['theme-icon-sun', 'theme-icon-sun-mobile'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.toggle('hidden', !isDark);
+        });
+        ['theme-icon-moon', 'theme-icon-moon-mobile'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.toggle('hidden', isDark);
+        });
+      }
+      function setTheme(dark) {
+        if (dark) html.classList.add('dark');
+        else html.classList.remove('dark');
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+        updateIcons(dark);
+      }
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = saved === 'dark' || (!saved && prefersDark);
+      setTheme(isDark);
+      toggleBtns.forEach(btn => {
+        if (btn) btn.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
+      });
+    })();
+
+    // Dynamic Last Updated
+    (function() {
+      const dateEl = document.getElementById('last-updated-date');
+      const yearEl = document.getElementById('footer-year');
+      if (dateEl) {
+        const now = new Date();
+        dateEl.textContent = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      }
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
     })();
   </script>
-
-    <script src="/chat.js" defer></script>
 </body>
 </html>
