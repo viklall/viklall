@@ -1,222 +1,212 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EastWest Property Services | Landlord Document Support</title>
+  <title>Property Services | EastWest Help</title>
+  <meta name="description" content="Professional property management services for residential and commercial properties. Marketing, tenant placement, maintenance, and financial reporting.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1e293b; }
-    h1, h2, .brand { font-family: 'Space Grotesk', sans-serif; }
-    .accent { color: #38bdf8; }
-    .form-input {
-      background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px;
-      color: #1e293b; padding: 10px 14px; width: 100%; font-size: 0.9rem;
-      transition: border-color 0.2s;
-    }
-    .form-input:focus { outline: none; border-color: #38bdf8; }
-    .form-input::placeholder { color: #94a3b8; }
-    .btn { background: #1d4ed8; color: #ffffff;
-      font-weight: 700; padding: 12px 28px; border-radius: 8px; border: none;
-      cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem;
-      transition: opacity 0.2s; width: 100%; }
-    .btn:hover { background: #1e40af; }
-    .doc-list { list-style: none; padding: 0; margin: 0; }
-    .doc-list li { padding: 4px 0; color: #475569; font-size: 0.85rem; }
-    .doc-list li::before { content: "→ "; color: #38bdf8; }
-    .section-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: #38bdf8; margin-bottom: 4px; }
-    .col-head { font-size: 1rem; font-weight: 700; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid #e2e8f0; }
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
   </style>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "EastWest Help",
-      "description": "AI Automation, IT Consulting, and Property Management Services",
-      "url": "https://eastwesthelp.com",
-      "telephone": "+1-213-302-6757",
-      "email": "info@eastwesthelp.com",
-      "areaServed": ["California", "Tennessee"],
-      "serviceType": ["Property Management", "AI Consulting", "IT Services"]
-    }
-    </script>
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 </head>
-<body>
+<body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased transition-colors duration-300">
 
-  <nav class="border-b border-slate-200 bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="flex items-baseline gap-2">
-        <a href="/" class="brand text-slate-900 font-bold text-lg">EastWest<span class="accent">Help</span></a>
-        <span class="text-slate-400 text-sm font-medium">· Property Services</span>
-      </div>
-      <a href="#contact" class="text-sky-500 text-sm font-semibold hover:text-sky-400">Get Started →</a>
-    </div>
-  </nav>
-
-  <div class="max-w-5xl mx-auto px-6 py-12">
-
-    <!-- HERO -->
-    <div class="mb-10">
-      <h1 class="text-4xl font-bold text-slate-900 mb-3 leading-tight">Landlord Document <span class="accent">Support</span></h1>
-      <p class="text-slate-600 text-base max-w-2xl mb-4">
-        We prepare the notices, leases, and eviction paperwork California and Tennessee landlords need — accurate, jurisdiction-specific, and fast.
-      </p>
-      <div class="flex flex-wrap gap-2">
-        <span class="text-xs border border-slate-300 text-slate-600 px-3 py-1 rounded-full">Los Angeles County</span>
-        <span class="text-xs border border-slate-300 text-slate-600 px-3 py-1 rounded-full">All CA Counties</span>
-        <span class="text-xs border border-slate-300 text-slate-600 px-3 py-1 rounded-full">Memphis / Shelby County TN</span>
-        <span class="text-xs border border-slate-300 text-slate-600 px-3 py-1 rounded-full">Section 8 / LACDA / HACLA</span>
-      </div>
-    </div>
-
-    <!-- CONTACT FORM — above doc list -->
-    <div id="contact" class="mb-12">
-      <h2 class="text-2xl font-bold text-slate-900 mb-2">Request Your Documents</h2>
-      <p class="text-xs text-slate-500 mb-6"><span class="text-red-500 font-bold">*</span> Required fields</p>
-      <div class="border border-slate-200 rounded-xl p-6">
-        <form action="https://formsubmit.co/info@eastwesthelp.com" method="POST">
-          <input type="hidden" name="_subject" value="Landlord Document Request" />
-          <input type="hidden" name="_captcha" value="true" />
-          <input type="text" name="_honey" style="display:none" />
-          <input type="hidden" name="_next" value="https://eastwesthelp.com/property?submitted=1" />
-          <input type="hidden" name="_blacklist" value="viagra, casino, crypto investment, click here, make money, free offer, winner, congratulations, loan, refinance, SEO, buy now, discount, limited time, act now, unsub" />
-          <input type="hidden" name="_autoresponse" value="Thank you for contacting EastWest Property Services. We received your document request and will follow up within one business day. Please do not reply to this email — contact us at info@eastwesthelp.com." />
-          <input type="hidden" name="_replyto" value="" />
-          <div class="grid md:grid-cols-3 gap-4 mb-4">
-            <div>
-              <label class="block text-slate-600 text-xs mb-1">Your Name <span class="text-red-500">*</span></label>
-              <input type="text" name="name" class="form-input" placeholder="Full name" aria-label="Full name" required />
-            </div>
-            <div>
-              <label class="block text-slate-600 text-xs mb-1">Email <span class="text-red-500">*</span></label>
-              <input type="email" name="email" id="prop-email" class="form-input" placeholder="you@email.com" aria-label="Email address" required />
-            </div>
-            <div>
-              <label class="block text-slate-600 text-xs mb-1">Property Location <span class="text-red-500">*</span></label>
-              <input type="text" name="location" class="form-input" placeholder="City, County, State" aria-label="Property location" required />
-            </div>
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 dark:bg-slate-900/90 dark:border-slate-700 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-sky-400 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
-          <div class="grid md:grid-cols-2 gap-4 mb-4">
-            <div>
-              <label class="block text-slate-600 text-xs mb-1">Document Needed <span class="text-red-500">*</span></label>
-              <select name="document_type" class="form-input" aria-label="Document type" required>
-                <option value="" disabled selected>Select...</option>
-                <option>3-Day Notice to Pay Rent or Quit</option>
-                <option>3-Day Notice to Perform or Quit</option>
-                <option>3-Day Unconditional Notice to Quit</option>
-                <option>30/60-Day Notice to Vacate</option>
-                <option>Notice of Entry</option>
-                <option>Rent Increase Notice</option>
-                <option>UD / Eviction Filing Package</option>
-                <option>Memphis Detainer Warrant</option>
-                <option>Lease Agreement</option>
-                <option>Lease Renewal</option>
-                <option>Security Deposit Itemization</option>
-                <option>Property Management Agreement</option>
-                <option>LACDA / Housing Authority Letter</option>
-                <option>Other / Not Sure</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-slate-600 text-xs mb-1">Details</label>
-              <input type="text" name="details" class="form-input" placeholder="Brief situation, tenant name, timeline..." />
-            </div>
+          <span class="text-xl font-bold text-slate-800 dark:text-white" style="font-family:'Space Grotesk',sans-serif;">EastWest Help</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="index.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Home</a>
+          <a href="property.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Property</a>
+          <a href="tenant.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Tenant</a>
+          <a href="intake.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Intake</a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle dark mode">
+            <svg id="theme-icon-sun" class="w-5 h-5 text-amber-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg id="theme-icon-moon" class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+        </nav>
+        <div class="flex md:hidden items-center gap-2">
+          <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle dark mode">
+            <svg id="theme-icon-sun-mobile" class="w-5 h-5 text-amber-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg id="theme-icon-moon-mobile" class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+          <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+      <div class="px-4 py-3 space-y-2">
+        <a href="index.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Home</a>
+        <a href="property.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Property</a>
+        <a href="tenant.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Tenant</a>
+        <a href="intake.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Intake</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="bg-gradient-to-br from-sky-50 to-white dark:from-slate-900 dark:to-slate-950 py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Property Services</h1>
+      <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">End-to-end property management that protects your investment and maximizes returns.</p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white dark:bg-slate-950 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
+        <div>
+          <div class="w-12 h-12 bg-sky-100 dark:bg-sky-900/30 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
           </div>
-          <button type="submit" class="btn">Send Request →</button>
-          <p class="text-slate-500 text-xs mt-3 text-center">Document preparation only — not a law firm. Consult a licensed attorney for legal advice.</p>
-        </form>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Full-Service Management</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">We handle every aspect of property management so you don't have to. From marketing vacant units and screening applicants to coordinating repairs and collecting rent, our team ensures your property operates smoothly.</p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-sky-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600 dark:text-slate-400 text-sm">Professional photography and listing syndication</span></li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-sky-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600 dark:text-slate-400 text-sm">24/7 maintenance request handling</span></li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-sky-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600 dark:text-slate-400 text-sm">Monthly financial reporting and rent collection</span></li>
+          </ul>
+        </div>
+        <div class="bg-slate-100 dark:bg-slate-800 rounded-2xl h-80 flex items-center justify-center">
+          <svg class="w-24 h-24 text-slate-300 dark:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+        </div>
       </div>
-    </div>
 
-    <!-- DOC LIST — below form -->
-    <div class="mb-10">
-      <h2 class="text-2xl font-bold text-slate-900 mb-6">What We Prepare</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 border border-slate-200 rounded-xl p-6">
-        <div>
-          <div class="col-head text-amber-500">📋 Notices</div>
-          <ul class="doc-list">
-            <li>3-Day Pay or Quit</li>
-            <li>3-Day Perform or Quit</li>
-            <li>3-Day Unconditional Quit</li>
-            <li>30/60-Day Notice to Vacate</li>
-            <li>Notice of Entry</li>
-            <li>Rent Increase Notice</li>
-            <li>Change of Terms</li>
-            <li>Proof of Service</li>
-          </ul>
+      <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
+        <div class="order-2 lg:order-1 bg-slate-100 dark:bg-slate-800 rounded-2xl h-80 flex items-center justify-center">
+          <svg class="w-24 h-24 text-slate-300 dark:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
-        <div>
-          <div class="col-head text-red-500">⚖️ Eviction / UD</div>
-          <ul class="doc-list">
-            <li>UD Complaint (UD-100)</li>
-            <li>Summons (UD-105)</li>
-            <li>Case Cover Sheet (CM-010)</li>
-            <li>Request for Default (UD-107)</li>
-            <li>Default Judgment (UD-110)</li>
-            <li>Writ of Possession (EJ-130)</li>
-            <li>AB 2347 Declaration</li>
-            <li>Memphis Detainer Warrant</li>
-            <li>UD Filing Checklist</li>
-          </ul>
-        </div>
-        <div>
-          <div class="col-head text-green-600">📄 Leases</div>
-          <ul class="doc-list">
-            <li>Residential Lease</li>
-            <li>Lease Renewal</li>
-            <li>Pet Addendum</li>
-            <li>Co-Tenant Addendum</li>
-            <li>Section 8 / HCV Addendum</li>
-            <li>Move-In/Out Checklist</li>
-          </ul>
-        </div>
-        <div>
-          <div class="col-head text-sky-600">🏠 Management</div>
-          <ul class="doc-list">
-            <li>PM Agreement</li>
-            <li>Security Deposit Statement</li>
-            <li>Rent Ledger</li>
-            <li>Demand Letter</li>
-            <li>Maintenance Request Log</li>
-            <li>LACDA / HACLA Letters</li>
+        <div class="order-1 lg:order-2">
+          <div class="w-12 h-12 bg-sky-100 dark:bg-sky-900/30 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Tenant Screening</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Our rigorous screening process includes comprehensive background checks, credit verification, employment confirmation, and previous landlord references to ensure only qualified tenants occupy your property.</p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-sky-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600 dark:text-slate-400 text-sm">Credit score and history analysis</span></li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-sky-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600 dark:text-slate-400 text-sm">Criminal background checks</span></li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-sky-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600 dark:text-slate-400 text-sm">Income verification and reference checks</span></li>
           </ul>
         </div>
       </div>
-    </div>
 
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="w-12 h-12 bg-sky-100 dark:bg-sky-900/30 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Financial Reporting</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Stay informed with detailed monthly statements, expense tracking, and performance analytics. Our transparent reporting gives you complete visibility into your property's financial health.</p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-sky-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600 dark:text-slate-400 text-sm">Monthly income and expense statements</span></li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-sky-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600 dark:text-slate-400 text-sm">Year-end tax documentation</span></li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-sky-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600 dark:text-slate-400 text-sm">Online owner portal access</span></li>
+          </ul>
+        </div>
+        <div class="bg-slate-100 dark:bg-slate-800 rounded-2xl h-80 flex items-center justify-center">
+          <svg class="w-24 h-24 text-slate-300 dark:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        </div>
+      </div>
     </div>
+  </section>
 
-  <footer class="border-t border-slate-200 mt-10 py-6 px-6 text-center text-slate-500 text-sm">
-    <span class="brand text-slate-900 font-bold">EastWest<span class="accent">Help</span></span>
-    <span class="mx-3 text-slate-700">·</span>
-    <a href="/" class="hover:text-slate-700">← Home</a>
-    <span class="mx-3 text-slate-700">·</span>
-    © 2026 EastWest Help
+  <section class="py-16 bg-blue-700 dark:bg-blue-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Ready to maximize your property's potential?</h2>
+      <a href="intake.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-blue-700 bg-white hover:bg-blue-50 rounded-xl transition-all shadow-lg mt-6">
+        Get Started Today
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-50 border-t border-slate-200 dark:bg-slate-900 dark:border-slate-700 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-slate-500 dark:text-slate-400">
+          &copy; <span id="footer-year">2026</span> EastWest Help. All rights reserved.
+        </p>
+        <p class="text-xs text-slate-400 dark:text-slate-500" data-last-updated>
+          Last updated: <span id="last-updated-date">--</span>
+        </p>
+      </div>
+    </div>
   </footer>
+  <!-- Shared Scripts -->
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
 
+    // Dark Mode Toggle
+    (function() {
+      const html = document.documentElement;
+      const toggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+      function updateIcons(isDark) {
+        ['theme-icon-sun', 'theme-icon-sun-mobile'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.toggle('hidden', !isDark);
+        });
+        ['theme-icon-moon', 'theme-icon-moon-mobile'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.toggle('hidden', isDark);
+        });
+      }
+      function setTheme(dark) {
+        if (dark) html.classList.add('dark');
+        else html.classList.remove('dark');
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+        updateIcons(dark);
+      }
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = saved === 'dark' || (!saved && prefersDark);
+      setTheme(isDark);
+      toggleBtns.forEach(btn => {
+        if (btn) btn.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
+      });
+    })();
 
-<div id="success-banner" style="display:none" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-green-600 text-white text-sm font-semibold px-6 py-3 rounded-xl shadow-lg">
-  ✅ Your request was received — we will be in touch shortly.
-</div>
-<script>
-  if (window.location.search.includes('submitted=1')) {
-    document.getElementById('success-banner').style.display = 'block';
-    setTimeout(() => document.getElementById('success-banner').style.display = 'none', 6000);
-    window.history.replaceState({}, '', window.location.pathname);
-  }
-</script>
-    <script src="/chat.js" defer></script>
+    // Dynamic Last Updated
+    (function() {
+      const dateEl = document.getElementById('last-updated-date');
+      const yearEl = document.getElementById('footer-year');
+      if (dateEl) {
+        const now = new Date();
+        dateEl.textContent = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      }
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
