@@ -89,13 +89,40 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-slate-50 border-t border-slate-200 dark:bg-slate-900 dark:border-slate-700 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <p class="text-sm text-slate-500 dark:text-slate-400">
-          &copy; <span id="footer-year">2026</span> EastWest Help. All rights reserved.
-        </p>
-        <p class="text-xs text-slate-400 dark:text-slate-500" data-last-updated>
+  <footer class="w-full bg-slate-900 border-t border-slate-800 mt-12">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <!-- Brand -->
+        <div>
+          <p class="font-space-grotesk font-bold text-xl text-white tracking-tight">EastWest <span class="text-[#38bdf8]">Help</span></p>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed">Property management services for landlords and tenants across California and Tennessee.</p>
+          <div class="mt-4 flex items-center gap-2 text-xs text-slate-500">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
+            All systems operational
+          </div>
+        </div>
+        <!-- Navigation -->
+        <nav aria-label="Footer">
+          <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Navigate</p>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="/" class="hover:text-[#38bdf8] transition-colors">Home</a></li>
+            <li><a href="/property" class="hover:text-[#38bdf8] transition-colors">Property Services</a></li>
+            <li><a href="/tenant" class="hover:text-[#38bdf8] transition-colors">Tenant Requests</a></li>
+            <li><a href="/intake" class="hover:text-[#38bdf8] transition-colors">Tenant Intake</a></li>
+          </ul>
+        </nav>
+        <!-- Accessibility -->
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Accessibility</p>
+          <p class="text-sm text-slate-400 leading-relaxed">EastWest Help is committed to making this site accessible to all users. We have worked to meet WCAG 2.1 AA standards including sufficient color contrast, keyboard navigation, and screen reader support. If you encounter an issue, please reach out via our <a href="/tenant" class="text-[#38bdf8] hover:underline">Tenant Requests</a> page.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom bar -->
+    <div class="border-t border-slate-800">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+        <p class="text-xs text-slate-500">&copy; <span id="footer-year">2026</span> EastWest Help. All rights reserved.</p>
+        <p class="text-xs text-slate-600 border border-slate-700 px-3 py-1 rounded-full" data-last-updated>
           Last updated: <span id="last-updated-date">--</span>
         </p>
       </div>
