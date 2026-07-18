@@ -378,7 +378,7 @@
       const yearEl = document.getElementById('footer-year');
       if (dateEl) {
         const now = new Date();
-        dateEl.textContent = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        dateEl.textContent = now.toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
       }
       if (yearEl) yearEl.textContent = new Date().getFullYear();
     })();
