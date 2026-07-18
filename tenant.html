@@ -1,269 +1,211 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tenant Portal | EastWest Help</title>
+  <title>Tenant Services | EastWest Help</title>
+  <meta name="description" content="Find your next home with EastWest Help. Quality rental properties, easy application process, and responsive property management.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
-  <style>
-    body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1e293b; }
-    h1, h2, .brand { font-family: 'Space Grotesk', sans-serif; }
-    .accent { color: #38bdf8; }
-    .form-input {
-      background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px;
-      color: #1e293b; padding: 10px 14px; width: 100%; font-size: 0.9rem;
-      transition: border-color 0.2s;
-    }
-    .form-input:focus { outline: none; border-color: #38bdf8; }
-    .form-input::placeholder { color: #94a3b8; }
-    .btn { background: #1d4ed8; color: #ffffff;
-      font-weight: 700; padding: 12px 28px; border-radius: 8px; border: none;
-      cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem;
-      transition: opacity 0.2s; width: 100%; }
-    .btn:hover { background: #1e40af; }
-    .section-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: #38bdf8; margin-bottom: 4px; }
-    .urgency-btn { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px;
-      color: #475569; padding: 10px 16px; cursor: pointer; font-size: 0.85rem;
-      transition: all 0.15s; text-align: center; }
-    .urgency-btn:hover { border-color: #38bdf8; color: #1e293b; }
-    .urgency-btn.selected { color: #0a0f1a; font-weight: 600; }
-    .u-low.selected { background: #34d399; border-color: #34d399; }
-    .u-med.selected { background: #fbbf24; border-color: #fbbf24; }
-    .u-high.selected { background: #f87171; border-color: #f87171; }
-    #repair-section { display: none; }
-  </style>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "EastWest Help",
-      "description": "AI Automation, IT Consulting, and Property Management Services",
-      "url": "https://eastwesthelp.com",
-      "telephone": "+1-213-302-6757",
-      "email": "info@eastwesthelp.com",
-      "areaServed": ["California", "Tennessee"],
-      "serviceType": ["Property Management", "AI Consulting", "IT Services"]
-    }
-    </script>
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-</head>
-<body>
-
-  <!-- NAV -->
-  <nav class="border-b border-slate-200 bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="flex items-baseline gap-2">
-        <a href="/" class="brand text-slate-900 font-bold text-lg">EastWest<span class="accent">Help</span></a>
-        <span class="text-slate-400 text-sm font-medium">· Tenant Portal</span>
-      </div>
-    </div>
-  </nav>
-
-  <div class="max-w-2xl mx-auto px-6 py-12">
-
-    <div class="mb-8">
-      <h1 class="text-4xl font-bold text-slate-900 mb-2">Contact Your <span class="accent">Property Manager</span></h1>
-      <p class="text-slate-600 text-base mb-4">Submit a repair request, ask a question, or leave feedback. We'll get back to you promptly.</p>
-      <a href="/intake" class="inline-block bg-[#1d4ed8] hover:bg-[#1e40af] text-white font-bold px-6 py-3 rounded-lg" style="font-family:'Space Grotesk',sans-serif; font-size:0.95rem;" aria-label="New Tenant Intake Application">📝 New Tenant Intake</a>
-    </div>
-
-    <!-- COMMUNICATION PROTOCOL BLOCK -->
-    <div class="mb-8 rounded-xl border-l-4 border-sky-400 bg-white border border-slate-200 p-6 shadow-sm">
-      <div class="section-label mb-3" style="font-size:0.8rem;">Tenant Communication Protocol</div>
-      <p class="text-slate-700 mb-5" style="font-size:1rem;">All communication must follow the designated channels below. Requests submitted outside these channels may experience delayed response times.</p>
-      <div class="space-y-5">
-        <div class="flex items-start gap-4">
-          <span class="text-2xl mt-0.5">🔧</span>
-          <div>
-            <p class="font-semibold text-slate-800 mb-1" style="font-size:1.05rem;">Maintenance Requests — Portal First, Always</p>
-            <p class="text-slate-600" style="font-size:0.975rem;">Submit via this page before contacting us by any other means: <a href="https://eastwesthelp.com/tenant" class="text-sky-500 underline font-medium">eastwesthelp.com/tenant</a></p>
-          </div>
-        </div>
-        <div class="flex items-start gap-4">
-          <span class="text-2xl mt-0.5">✉️</span>
-          <div>
-            <p class="font-semibold text-slate-800 mb-1" style="font-size:1.05rem;">General Inquiries — Email</p>
-            <p class="text-slate-600" style="font-size:0.975rem;">Non-urgent questions: <span class="font-medium text-slate-700">eastwesthelp1@gmail.com</span></p>
-          </div>
-        </div>
-        <div class="flex items-start gap-4">
-          <span class="text-2xl mt-0.5">📞</span>
-          <div>
-            <p class="font-semibold text-slate-800 mb-1" style="font-size:1.05rem;">Phone — Urgent Maintenance Emergencies Only</p>
-            <p class="text-slate-600" style="font-size:0.975rem;">Call <span class="font-medium text-slate-700">(213) 302-6757</span> for active property emergencies (major leak, no heat, no hot water, electrical hazard). We will respond immediately — no portal entry required for genuine emergencies. For non-emergency repairs, please submit via the portal first so we can track and schedule properly.</p>
-          </div>
-        </div>
-      </div>
-      <p class="mt-5 text-slate-500 italic" style="font-size:0.875rem;">For life-safety emergencies (fire, gas leak, flood) call 911 first.</p>
-    </div>
-
-    <div class="border border-slate-200 rounded-xl p-6">
-
-      <!-- Hidden formsubmit config -->
-      <input type="hidden" name="_subject" id="email-subject" value="Tenant Request" />
-      <input type="hidden" name="_captcha" value="true" />
-                    <input type="text" name="_honey" style="display:none" />
-      <input type="hidden" name="_next" value="https://eastwesthelp.com/tenant?submitted=1" />
-
-      <!-- REQUEST TYPE -->
-      <div class="mb-5">
-        <p class="text-xs text-slate-500 mb-4"><span class="text-red-500 font-bold">*</span> Required fields</p>
-        <label class="block text-slate-700 text-sm font-medium mb-2">What's this about?</label>
-        <select id="request-type" class="form-input" onchange="handleTypeChange()">
-          <option value="" disabled selected>Select request type...</option>
-          <option value="repair">Repair / Maintenance</option>
-          <option value="question">Question</option>
-        </select>
-      </div>
-
-      <!-- REPAIR SECTION -->
-      <div id="repair-section" class="mb-5 rounded-lg p-4 border border-slate-200">
-        <label class="block text-slate-700 text-sm font-medium mb-3">How urgent is this repair?</label>
-        <div class="grid grid-cols-3 gap-3 mb-1">
-          <div class="urgency-btn u-low" onclick="setUrgency('low', this)">🟢 Not urgent<br/><span class="text-xs opacity-70">Can wait a few days</span></div>
-          <div class="urgency-btn u-med" onclick="setUrgency('medium', this)">🟡 Moderate<br/><span class="text-xs opacity-70">Within 48 hours</span></div>
-          <div class="urgency-btn u-high" onclick="setUrgency('high', this)">🔴 Emergency<br/><span class="text-xs opacity-70">Needs immediate attention</span></div>
-        </div>
-        <input type="hidden" id="urgency-value" name="urgency" value="" />
-
-        <div class="mt-4">
-          <label class="block text-slate-700 text-sm font-medium mb-2">Your Availability for Repair Access</label>
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="block text-slate-600 text-xs mb-1">Days You're Available</label>
-              <input type="text" name="access_days" class="form-input" placeholder="e.g. Mon, Wed, Fri" aria-label="Preferred days for access" />
-            </div>
-            <div>
-              <label class="block text-slate-600 text-xs mb-1">Available Time Window</label>
-              <select name="access_time" class="form-input" aria-label="Preferred time window">
-                <option value="" disabled selected>Select...</option>
-                <option>Morning (8am – 12pm)</option>
-                <option>Afternoon (12pm – 5pm)</option>
-                <option>Evening (5pm – 8pm)</option>
-                <option>Anytime</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CONTACT INFO -->
-      <div class="grid grid-cols-2 gap-4 mb-4">
-        <div>
-          <label class="block text-slate-600 text-xs mb-1">Your Name <span class="text-red-500">*</span></label>
-          <input type="text" name="name" class="form-input" placeholder="Full name" aria-label="Full name" required />
-        </div>
-        <div>
-          <label class="block text-slate-600 text-xs mb-1">Unit / Address</label>
-          <input type="text" name="unit" class="form-input" placeholder="e.g. 123 Main St, Unit 2" aria-label="Unit or address" />
-        </div>
-      </div>
-      <div class="grid grid-cols-2 gap-4 mb-4">
-        <div>
-          <label class="block text-slate-600 text-xs mb-1">Phone</label>
-          <input type="tel" name="phone" class="form-input" placeholder="(555) 000-0000" aria-label="Phone number" />
-        </div>
-        <div>
-          <label class="block text-slate-600 text-xs mb-1">Email <span class="text-red-500">*</span></label>
-          <input type="email" name="email" class="form-input" placeholder="you@email.com" aria-label="Email address" required />
-        </div>
-      </div>
-
-      <!-- MESSAGE -->
-      <div class="mb-5">
-        <label class="block text-slate-600 text-xs mb-1">Details</label>
-        <textarea name="message" class="form-input" rows="4" placeholder="Describe your request, issue, or feedback..." aria-label="Details"></textarea>
-      </div>
-
-      <!-- SUBMIT via formsubmit.co -->
-      <form id="tenant-form" action="https://formsubmit.co/info@eastwesthelp.com" method="POST" onsubmit="prepareSubmit()">
-        <input type="hidden" name="_subject" id="fs-subject" value="Tenant Request" />
-        <input type="hidden" name="_captcha" value="true" />
-                    <input type="text" name="_honey" style="display:none" />
-        <input type="hidden" name="request_type" id="fs-type" value="" />
-        <input type="hidden" name="urgency" id="fs-urgency" value="" />
-        <input type="hidden" name="_next" value="https://eastwesthelp.com/tenant?submitted=1" />
-        <input type="hidden" name="_blacklist" value="viagra, casino, crypto investment, click here, make money, free offer, winner, congratulations, loan, refinance, SEO, buy now, discount, limited time, act now, unsub" />
-        <input type="hidden" name="_autoresponse" value="Thank you for reaching out to EastWest Property Services. We received your request and will be in touch shortly. For emergencies call 911." />
-
-        <input type="hidden" name="name" id="fs-name" />
-        <input type="hidden" name="unit" id="fs-unit" />
-        <input type="hidden" name="phone" id="fs-phone" />
-        <input type="hidden" name="email_from" id="fs-email" />
-        <input type="hidden" name="access_days" id="fs-days" />
-        <input type="hidden" name="access_time" id="fs-time" />
-        <input type="hidden" name="message" id="fs-message" />
-
-        <button type="submit" class="btn">Send →</button>
-      </form>
-
-      <p class="text-slate-600 text-xs mt-3 text-center">For emergencies (fire, flood, gas leak) call 911 first, then contact us.</p>
-    </div>
-
-  </div>
-
-  <!-- FOOTER -->
-  <footer class="border-t border-slate-200 mt-10 py-6 px-6 text-center text-slate-500 text-sm">
-    <span class="brand text-slate-900 font-bold">EastWest<span class="accent">Help</span></span>
-    <span class="mx-3 text-slate-700">·</span>
-    <a href="/" class="hover:text-slate-700">← Home</a>
-    <span class="mx-3 text-slate-700">·</span>
-    © 2026 EastWest Help
-  </footer>
-
   <script>
-    function handleTypeChange() {
-      const type = document.getElementById('request-type').value;
-      const repairSection = document.getElementById('repair-section');
-      repairSection.style.display = type === 'repair' ? 'block' : 'none';
-    }
-
-    let selectedUrgency = '';
-    function setUrgency(level, el) {
-      document.querySelectorAll('.urgency-btn').forEach(b => b.classList.remove('selected'));
-      el.classList.add('selected');
-      selectedUrgency = level;
-    }
-
-    function prepareSubmit() {
-      const type = document.getElementById('request-type').value;
-      const label = type ? type.charAt(0).toUpperCase() + type.slice(1) : 'Request';
-      document.getElementById('fs-subject').value = `Tenant ${label} — ${document.querySelector('[name="unit"]') ? document.querySelector('[placeholder="e.g. 123 Main St, Unit 2"]').value || '' : ''}`;
-      document.getElementById('fs-type').value = type;
-      document.getElementById('fs-urgency').value = selectedUrgency;
-      document.getElementById('fs-name').value = document.querySelector('[placeholder="Full name"]').value;
-      document.getElementById('fs-unit').value = document.querySelector('[placeholder="e.g. 123 Main St, Unit 2"]').value;
-      document.getElementById('fs-phone').value = document.querySelector('[placeholder="(555) 000-0000"]').value;
-      document.getElementById('fs-email').value = document.querySelector('[placeholder="you@email.com"]').value;
-      document.getElementById('fs-days').value = document.querySelector('[placeholder="e.g. Mon, Wed, Fri"]') ? document.querySelector('[placeholder="e.g. Mon, Wed, Fri"]').value : '';
-      document.getElementById('fs-message').value = document.querySelector('textarea').value;
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          }
+        }
+      }
     }
   </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
+  </style>
+</head>
+<body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased transition-colors duration-300">
 
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 dark:bg-slate-900/90 dark:border-slate-700 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-sky-400 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <span class="text-xl font-bold text-slate-800 dark:text-white" style="font-family:'Space Grotesk',sans-serif;">EastWest Help</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="index.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Home</a>
+          <a href="property.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Property</a>
+          <a href="tenant.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Tenant</a>
+          <a href="intake.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Intake</a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle dark mode">
+            <svg id="theme-icon-sun" class="w-5 h-5 text-amber-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg id="theme-icon-moon" class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+        </nav>
+        <div class="flex md:hidden items-center gap-2">
+          <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle dark mode">
+            <svg id="theme-icon-sun-mobile" class="w-5 h-5 text-amber-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg id="theme-icon-moon-mobile" class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+          <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+      <div class="px-4 py-3 space-y-2">
+        <a href="index.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Home</a>
+        <a href="property.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Property</a>
+        <a href="tenant.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Tenant</a>
+        <a href="intake.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Intake</a>
+      </div>
+    </div>
+  </header>
 
-<div id="success-banner" style="display:none" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-green-600 text-white text-sm font-semibold px-6 py-3 rounded-xl shadow-lg">
-  ✅ Your request was received — we will be in touch shortly.
-</div>
-<script>
-  if (window.location.search.includes('submitted=1')) {
-    document.getElementById('success-banner').style.display = 'block';
-    setTimeout(() => document.getElementById('success-banner').style.display = 'none', 6000);
-    window.history.replaceState({}, '', window.location.pathname);
-  }
-</script>
-    <script src="/chat.js" defer></script>
+  <section class="bg-gradient-to-br from-sky-50 to-white dark:from-slate-900 dark:to-slate-950 py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">For Tenants</h1>
+      <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">Finding and maintaining your rental home should be simple, transparent, and stress-free.</p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white dark:bg-slate-950 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-700">
+          <div class="w-10 h-10 bg-sky-100 dark:bg-sky-900/30 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <h3 class="font-semibold text-slate-900 dark:text-white mb-2">Easy Search</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Browse verified listings with detailed photos, floor plans, and neighborhood info.</p>
+        </div>
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-700">
+          <div class="w-10 h-10 bg-sky-100 dark:bg-sky-900/30 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="font-semibold text-slate-900 dark:text-white mb-2">Digital Applications</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Apply online in minutes. Upload documents securely and track your application status.</p>
+        </div>
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-700">
+          <div class="w-10 h-10 bg-sky-100 dark:bg-sky-900/30 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </div>
+          <h3 class="font-semibold text-slate-900 dark:text-white mb-2">Fast Maintenance</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Submit maintenance requests online. Track progress and communicate with our team.</p>
+        </div>
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-700">
+          <div class="w-10 h-10 bg-sky-100 dark:bg-sky-900/30 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+          </div>
+          <h3 class="font-semibold text-slate-900 dark:text-white mb-2">Online Payments</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Pay rent securely online. Set up autopay and never miss a due date.</p>
+        </div>
+      </div>
+
+      <div class="bg-slate-50 dark:bg-slate-800/50 rounded-3xl p-8 lg:p-12 border border-slate-100 dark:border-slate-700">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white text-center mb-10">How It Works</h2>
+        <div class="grid md:grid-cols-3 gap-8 relative">
+          <div class="absolute top-8 left-[16%] right-[16%] h-0.5 bg-slate-200 dark:bg-slate-700 hidden md:block"></div>
+          <div class="relative text-center">
+            <div class="w-16 h-16 bg-sky-500 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 relative z-10">1</div>
+            <h3 class="font-semibold text-slate-900 dark:text-white mb-2">Search & Apply</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Browse available properties and submit your application with required documents.</p>
+          </div>
+          <div class="relative text-center">
+            <div class="w-16 h-16 bg-sky-500 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 relative z-10">2</div>
+            <h3 class="font-semibold text-slate-900 dark:text-white mb-2">Get Approved</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">We review your application and provide a decision quickly, keeping you informed.</p>
+          </div>
+          <div class="relative text-center">
+            <div class="w-16 h-16 bg-sky-500 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 relative z-10">3</div>
+            <h3 class="font-semibold text-slate-900 dark:text-white mb-2">Move In</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Sign your lease digitally, get your keys, and enjoy your new home.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-blue-700 dark:bg-blue-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Find your next home today</h2>
+      <a href="intake.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-blue-700 bg-white hover:bg-blue-50 rounded-xl transition-all shadow-lg mt-6">
+        Start Application
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-50 border-t border-slate-200 dark:bg-slate-900 dark:border-slate-700 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-slate-500 dark:text-slate-400">
+          &copy; <span id="footer-year">2026</span> EastWest Help. All rights reserved.
+        </p>
+        <p class="text-xs text-slate-400 dark:text-slate-500" data-last-updated>
+          Last updated: <span id="last-updated-date">--</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- Shared Scripts -->
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Dark Mode Toggle
+    (function() {
+      const html = document.documentElement;
+      const toggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+      function updateIcons(isDark) {
+        ['theme-icon-sun', 'theme-icon-sun-mobile'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.toggle('hidden', !isDark);
+        });
+        ['theme-icon-moon', 'theme-icon-moon-mobile'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.toggle('hidden', isDark);
+        });
+      }
+      function setTheme(dark) {
+        if (dark) html.classList.add('dark');
+        else html.classList.remove('dark');
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+        updateIcons(dark);
+      }
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = saved === 'dark' || (!saved && prefersDark);
+      setTheme(isDark);
+      toggleBtns.forEach(btn => {
+        if (btn) btn.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
+      });
+    })();
+
+    // Dynamic Last Updated
+    (function() {
+      const dateEl = document.getElementById('last-updated-date');
+      const yearEl = document.getElementById('footer-year');
+      if (dateEl) {
+        const now = new Date();
+        dateEl.textContent = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      }
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
