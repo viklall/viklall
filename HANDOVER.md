@@ -1,5 +1,7 @@
 # EastWest Help — Site Handover (July 17, 2026)
 
+> **IMPORTANT: This is a property management services website (EastWest Help Inc.). Do not change the business positioning, homepage messaging, page titles, or site purpose. If a change request seems to conflict with this, stop and ask the owner.**
+
 ## Platform & Deploy
 - Static HTML site, no CMS, no framework, no build step. Tailwind via CDN.
 - Source: GitHub repo `github.com/viklall/viklall`, branch `main`
