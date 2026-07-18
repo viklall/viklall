@@ -1,30 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>New Tenant Intake | EastWest Help</title>
-  <meta name="description" content="Submit your tenant intake application with EastWest Help. Quick, secure, and easy.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Space Grotesk', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
+    body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1e293b; }
+    h1, h2, .brand { font-family: 'Space Grotesk', sans-serif; }
+    .accent { color: #38bdf8; }
     .form-input {
       background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px;
       color: #1e293b; padding: 10px 14px; width: 100%; font-size: 0.9rem;
@@ -32,8 +17,6 @@
     }
     .form-input:focus { outline: none; border-color: #38bdf8; }
     .form-input::placeholder { color: #94a3b8; }
-    .dark .form-input { background: #1e293b; border-color: #475569; color: #f1f5f9; }
-    .dark .form-input::placeholder { color: #64748b; }
     .btn { background: #1d4ed8; color: #ffffff;
       font-weight: 700; padding: 12px 28px; border-radius: 8px; border: none;
       cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem;
@@ -43,78 +26,32 @@
       text-transform: uppercase; color: #38bdf8; margin-bottom: 4px; }
     .req { color: #dc2626; }
     .field-label { display: block; color: #334155; font-size: 0.875rem; font-weight: 500; margin-bottom: 6px; }
-    .dark .field-label { color: #cbd5e1; }
     .section-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
-    .dark .section-card { background: #1e293b; border-color: #334155; }
   </style>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "EastWest Help",
-    "description": "AI Automation, IT Consulting, and Property Management Services",
-    "url": "https://eastwesthelp.com",
-    "telephone": "+1-213-302-6757",
-    "email": "info@eastwesthelp.com",
-    "areaServed": ["California", "Tennessee"],
-    "serviceType": ["Property Management", "AI Consulting", "IT Services"]
-  }
-  </script>
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 </head>
-<body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased transition-colors duration-300">
+<body>
 
-  <!-- Header / Nav -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 dark:bg-slate-900/90 dark:border-slate-700 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="index.html" class="flex items-center gap-2">
-          <div class="w-8 h-8 bg-sky-400 rounded-lg flex items-center justify-center">
-            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <span class="text-xl font-bold text-slate-800 dark:text-white" style="font-family:'Space Grotesk',sans-serif;">EastWest Help</span>
-        </a>
-        <nav class="hidden md:flex items-center gap-6">
-          <a href="index.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Home</a>
-          <a href="property.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Property</a>
-          <a href="tenant.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Tenant</a>
-          <a href="intake.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Intake</a>
-          <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle dark mode">
-            <svg id="theme-icon-sun" class="w-5 h-5 text-amber-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-            <svg id="theme-icon-moon" class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-          </button>
-        </nav>
-        <div class="flex md:hidden items-center gap-2">
-          <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle dark mode">
-            <svg id="theme-icon-sun-mobile" class="w-5 h-5 text-amber-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-            <svg id="theme-icon-moon-mobile" class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-          </button>
-          <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-          </button>
-        </div>
+  <!-- NAV -->
+  <nav class="border-b border-slate-200 bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-baseline gap-2">
+        <a href="/" class="brand text-slate-900 font-bold text-lg">EastWest<span class="accent">Help</span></a>
+        <span class="text-slate-400 text-sm font-medium">· New Tenant Intake</span>
       </div>
+      <a href="/tenant" class="text-slate-500 text-sm font-medium hover:text-slate-800">Tenant Portal →</a>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
-      <div class="px-4 py-3 space-y-2">
-        <a href="index.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Home</a>
-        <a href="property.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Property</a>
-        <a href="tenant.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Tenant</a>
-        <a href="intake.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Intake</a>
-      </div>
-    </div>
-  </header>
+  </nav>
 
   <div class="max-w-2xl mx-auto px-6 py-12">
 
     <div class="mb-8">
-      <h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-2" style="font-family:'Space Grotesk',sans-serif;">New Tenant <span class="text-sky-400">Intake Application</span></h1>
-      <p class="text-slate-600 dark:text-slate-400 text-base">Please complete all sections below. Fields marked with a <span class="req">*</span> are required.</p>
+      <h1 class="text-4xl font-bold text-slate-900 mb-2">New Tenant <span class="accent">Intake Application</span></h1>
+      <p class="text-slate-600 text-base">Please complete all sections below. Fields marked with a <span class="req">*</span> are required.</p>
     </div>
 
     <!-- SUCCESS BANNER -->
-    <div id="success-banner" class="hidden mb-8 rounded-xl border border-emerald-300 bg-emerald-50 dark:bg-emerald-900/20 dark:border-emerald-700 p-4">
-      <p class="text-emerald-800 dark:text-emerald-300 font-medium text-sm">✅ Your application has been submitted. We will contact you shortly.</p>
+    <div id="success-banner" class="hidden mb-8 rounded-xl border border-emerald-300 bg-emerald-50 p-4">
+      <p class="text-emerald-800 font-medium text-sm">✅ Your application has been submitted. We will contact you shortly.</p>
     </div>
 
     <form action="https://formsubmit.co/info@eastwesthelp.com" method="POST">
@@ -129,7 +66,7 @@
       <!-- SECTION 1: APPLICANT INFO -->
       <div class="section-card">
         <div class="section-label">Section 1</div>
-        <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-5" style="font-family:'Space Grotesk',sans-serif;">Applicant Information</h2>
+        <h2 class="text-xl font-bold text-slate-900 mb-5">Applicant Information</h2>
         <input type="hidden" name="■■■ SECTION 1 — APPLICANT INFORMATION ■■■" value="―――――――――――">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="sm:col-span-2">
@@ -162,18 +99,18 @@
       <!-- SECTION 2: IDENTIFICATION -->
       <div class="section-card">
         <div class="section-label">Section 2</div>
-        <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-3" style="font-family:'Space Grotesk',sans-serif;">Identification</h2>
-        <div class="rounded-lg border-l-4 border-sky-400 bg-sky-50 dark:bg-sky-900/20 p-4">
-          <p class="text-slate-700 dark:text-slate-300 text-sm">📞 Please call <span class="font-semibold">(213) 302-6757</span> to provide the following two numbers: <span class="font-semibold">Driver's License number</span> and <span class="font-semibold">Social Security number</span>.</p>
-          <p class="text-slate-700 dark:text-slate-300 text-sm mt-3">If we don't answer, it's okay to leave them on our secure voicemail — please speak slowly and include your full name.</p>
-          <p class="text-slate-700 dark:text-slate-300 text-sm mt-3">For your security, please do not enter them online.</p>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Identification</h2>
+        <div class="rounded-lg border-l-4 border-sky-400 bg-sky-50 p-4">
+          <p class="text-slate-700 text-sm">📞 Please call <span class="font-semibold">(213) 302-6757</span> to provide the following two numbers: <span class="font-semibold">Driver's License number</span> and <span class="font-semibold">Social Security number</span>.</p>
+          <p class="text-slate-700 text-sm mt-3">If we don't answer, it's okay to leave them on our secure voicemail — please speak slowly and include your full name.</p>
+          <p class="text-slate-700 text-sm mt-3">For your security, please do not enter them online.</p>
         </div>
       </div>
 
       <!-- SECTION 3: EMPLOYMENT & INCOME -->
       <div class="section-card">
         <div class="section-label">Section 3</div>
-        <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-5" style="font-family:'Space Grotesk',sans-serif;">Employment &amp; Income</h2>
+        <h2 class="text-xl font-bold text-slate-900 mb-5">Employment &amp; Income</h2>
         <input type="hidden" name="■■■ SECTION 3 — EMPLOYMENT AND INCOME ■■■" value="―――――――――――">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
@@ -210,7 +147,7 @@
       <!-- SECTION 4: HOUSEHOLD -->
       <div class="section-card">
         <div class="section-label">Section 4</div>
-        <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-5" style="font-family:'Space Grotesk',sans-serif;">Household</h2>
+        <h2 class="text-xl font-bold text-slate-900 mb-5">Household</h2>
         <input type="hidden" name="■■■ SECTION 4 — HOUSEHOLD ■■■" value="―――――――――――">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
@@ -227,7 +164,7 @@
       <!-- SECTION 5: PET INFORMATION -->
       <div class="section-card">
         <div class="section-label">Section 5</div>
-        <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-5" style="font-family:'Space Grotesk',sans-serif;">Pet Information</h2>
+        <h2 class="text-xl font-bold text-slate-900 mb-5">Pet Information</h2>
         <input type="hidden" name="■■■ SECTION 5 — PET INFORMATION ■■■" value="―――――――――――">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
@@ -269,10 +206,10 @@
       <!-- SECTION 6: REFERENCES -->
       <div class="section-card">
         <div class="section-label">Section 6</div>
-        <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-5" style="font-family:'Space Grotesk',sans-serif;">References</h2>
+        <h2 class="text-xl font-bold text-slate-900 mb-5">References</h2>
         <input type="hidden" name="■■■ SECTION 6 — REFERENCES ■■■" value="―――――――――――">
 
-        <p class="text-slate-600 dark:text-slate-400 text-sm font-medium mb-3">Reference 1 — Prior Landlord (if applicable)</p>
+        <p class="text-slate-600 text-sm font-medium mb-3">Reference 1 — Prior Landlord (if applicable)</p>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
           <div>
             <label class="field-label" for="ref1_name">Name</label>
@@ -288,7 +225,7 @@
           </div>
         </div>
 
-        <p class="text-slate-600 dark:text-slate-400 text-sm font-medium mb-3">Reference 2 — Personal or Professional</p>
+        <p class="text-slate-600 text-sm font-medium mb-3">Reference 2 — Personal or Professional</p>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
             <label class="field-label" for="ref2_name">Name</label>
@@ -309,78 +246,25 @@
       <div class="section-card">
         <label class="flex items-start gap-3 cursor-pointer mb-5">
           <input type="checkbox" name="Verification Consent" value="Yes" required aria-label="Verification Consent" class="mt-1 h-4 w-4">
-          <span class="text-slate-700 dark:text-slate-300 text-sm">I authorize verification of the information provided in this application, including contacting employers, landlords, and references. <span class="req">*</span></span>
+          <span class="text-slate-700 text-sm">I authorize verification of the information provided in this application, including contacting employers, landlords, and references. <span class="req">*</span></span>
         </label>
-        <p class="text-slate-500 dark:text-slate-400 text-xs mb-5"><span class="req">*</span> Required fields</p>
+        <p class="text-slate-500 text-xs mb-5"><span class="req">*</span> Required fields</p>
         <button type="submit" class="btn" aria-label="Submit Application">Submit Application</button>
       </div>
     </form>
+
+    <!-- FOOTER -->
   </div>
 
-  <!-- Footer -->
-  <footer class="bg-slate-50 border-t border-slate-200 dark:bg-slate-900 dark:border-slate-700 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <p class="text-sm text-slate-500 dark:text-slate-400">
-          &copy; <span id="footer-year">2026</span> EastWest Help. All rights reserved.
-        </p>
-        <p class="text-xs text-slate-400 dark:text-slate-500" data-last-updated>
-          Last updated: <span id="last-updated-date">--</span>
-        </p>
-      </div>
-    </div>
+  <footer class="border-t border-slate-200 mt-10 py-6 px-6 text-center text-slate-500 text-sm">
+    <span class="brand text-slate-900 font-bold">EastWest<span class="accent">Help</span></span>
+    <span class="mx-3 text-slate-700">·</span>
+    <a href="/" class="hover:text-slate-700">← Home</a>
+    <span class="mx-3 text-slate-700">·</span>
+    © 2026 EastWest Help
   </footer>
 
   <script>
-    // Mobile menu toggle
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenuBtn && mobileMenu) {
-      mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-    }
-
-    // Dark Mode Toggle
-    (function() {
-      const html = document.documentElement;
-      const toggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
-      function updateIcons(isDark) {
-        ['theme-icon-sun', 'theme-icon-sun-mobile'].forEach(id => {
-          const el = document.getElementById(id);
-          if (el) el.classList.toggle('hidden', !isDark);
-        });
-        ['theme-icon-moon', 'theme-icon-moon-mobile'].forEach(id => {
-          const el = document.getElementById(id);
-          if (el) el.classList.toggle('hidden', isDark);
-        });
-      }
-      function setTheme(dark) {
-        if (dark) html.classList.add('dark');
-        else html.classList.remove('dark');
-        localStorage.setItem('theme', dark ? 'dark' : 'light');
-        updateIcons(dark);
-      }
-      const saved = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const isDark = saved === 'dark' || (!saved && prefersDark);
-      setTheme(isDark);
-      toggleBtns.forEach(btn => {
-        if (btn) btn.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
-      });
-    })();
-
-    // Dynamic Last Updated
-    (function() {
-      const dateEl = document.getElementById('last-updated-date');
-      const yearEl = document.getElementById('footer-year');
-      if (dateEl) {
-        const now = new Date();
-        dateEl.textContent = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-      }
-      if (yearEl) yearEl.textContent = new Date().getFullYear();
-    })();
-
     // Success banner on ?submitted=1, auto-dismiss after 6s
     (function () {
       var params = new URLSearchParams(window.location.search);
@@ -393,6 +277,5 @@
     })();
   </script>
 
-  <script src="/chat.js" defer></script>
 </body>
 </html>
