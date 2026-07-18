@@ -1,54 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thank You | EastWest Help</title>
+  <meta name="description" content="Thank you for submitting your intake form. The EastWest Help team will contact you within 24 hours.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
-  <style>
-    body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1e293b; }
-    .brand { font-family: 'Space Grotesk', sans-serif; }
-    .accent { color: #38bdf8; }
-  </style>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "EastWest Help",
-      "description": "AI Automation, IT Consulting, and Property Management Services",
-      "url": "https://eastwesthelp.com",
-      "telephone": "+1-213-302-6757",
-      "email": "info@eastwesthelp.com",
-      "areaServed": ["California", "Tennessee"],
-      "serviceType": ["Property Management", "AI Consulting", "IT Services"]
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          }
+        }
+      }
     }
-    </script>
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased transition-colors duration-300">
 
-  <nav class="border-b border-slate-200 bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-2xl mx-auto px-6 py-4">
-      <a href="/" class="brand text-slate-900 font-bold text-lg">EastWest<span class="accent">Help</span></a>
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 dark:bg-slate-900/90 dark:border-slate-700 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-sky-400 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <span class="text-xl font-bold text-slate-800 dark:text-white" style="font-family:'Space Grotesk',sans-serif;">EastWest Help</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="index.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Home</a>
+          <a href="property.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Property</a>
+          <a href="tenant.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Tenant</a>
+          <a href="intake.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Intake</a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle dark mode">
+            <svg id="theme-icon-sun" class="w-5 h-5 text-amber-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg id="theme-icon-moon" class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+        </nav>
+        <div class="flex md:hidden items-center gap-2">
+          <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle dark mode">
+            <svg id="theme-icon-sun-mobile" class="w-5 h-5 text-amber-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg id="theme-icon-moon-mobile" class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+          <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
     </div>
-  </nav>
-
-  <div class="flex-1 flex items-center justify-center px-6 py-20">
-    <div class="text-center max-w-md">
-      <div class="text-6xl mb-6">✅</div>
-      <h1 class="brand text-3xl font-bold text-slate-900 mb-3">We got your message!</h1>
-      <p class="text-slate-600 mb-8 leading-relaxed">Thanks for reaching out. We'll follow up within one business day.</p>
-      <a href="/" class="bg-blue-600 hover:bg-blue-500 text-slate-900 text-sm font-semibold px-6 py-3 rounded-lg transition">← Back to Home</a>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+      <div class="px-4 py-3 space-y-2">
+        <a href="index.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Home</a>
+        <a href="property.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Property</a>
+        <a href="tenant.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Tenant</a>
+        <a href="intake.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Intake</a>
+      </div>
     </div>
-  </div>
+  </header>
 
-  <footer class="border-t border-slate-200 py-6 px-6 text-center text-slate-500 text-sm">
-    © 2026 EastWest Help
+  <section class="min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-sky-50 to-white dark:from-slate-900 dark:to-slate-950 py-20">
+    <div class="max-w-lg mx-auto px-4 text-center">
+      <div class="w-20 h-20 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
+        <svg class="w-10 h-10 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Thank You!</h1>
+      <p class="text-slate-600 dark:text-slate-300 mb-8 text-lg">Your submission has been received. Our team will review your information and contact you within 24 hours.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="index.html" class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-blue-700 hover:bg-blue-800 rounded-xl transition-all shadow-lg">
+          Back to Home
+        </a>
+        <a href="intake.html" class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-sky-400 rounded-xl transition-all">
+          Submit Another
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-50 border-t border-slate-200 dark:bg-slate-900 dark:border-slate-700 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-slate-500 dark:text-slate-400">
+          &copy; <span id="footer-year">2026</span> EastWest Help. All rights reserved.
+        </p>
+        <p class="text-xs text-slate-400 dark:text-slate-500" data-last-updated>
+          Last updated: <span id="last-updated-date">--</span>
+        </p>
+      </div>
+    </div>
   </footer>
+  <!-- Shared Scripts -->
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
 
-    <script src="/chat.js" defer></script>
+    // Dark Mode Toggle
+    (function() {
+      const html = document.documentElement;
+      const toggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+      function updateIcons(isDark) {
+        ['theme-icon-sun', 'theme-icon-sun-mobile'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.toggle('hidden', !isDark);
+        });
+        ['theme-icon-moon', 'theme-icon-moon-mobile'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.toggle('hidden', isDark);
+        });
+      }
+      function setTheme(dark) {
+        if (dark) html.classList.add('dark');
+        else html.classList.remove('dark');
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+        updateIcons(dark);
+      }
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = saved === 'dark' || (!saved && prefersDark);
+      setTheme(isDark);
+      toggleBtns.forEach(btn => {
+        if (btn) btn.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
+      });
+    })();
+
+    // Dynamic Last Updated
+    (function() {
+      const dateEl = document.getElementById('last-updated-date');
+      const yearEl = document.getElementById('footer-year');
+      if (dateEl) {
+        const now = new Date();
+        dateEl.textContent = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      }
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>
-
