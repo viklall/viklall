@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <title>Intake Form | EastWest Help</title>
-  <meta name="description" content="Submit your property management or tenant application intake form with EastWest Help. Quick, secure, and easy.">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Tenant Intake | EastWest Help</title>
+  <meta name="description" content="Submit your tenant intake application with EastWest Help. Quick, secure, and easy.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -25,16 +25,46 @@
   <style>
     body { font-family: 'Inter', sans-serif; }
     h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
+    .form-input {
+      background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px;
+      color: #1e293b; padding: 10px 14px; width: 100%; font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus { outline: none; border-color: #38bdf8; }
+    .form-input::placeholder { color: #94a3b8; }
+    .dark .form-input { background: #1e293b; border-color: #475569; color: #f1f5f9; }
+    .dark .form-input::placeholder { color: #64748b; }
+    .btn { background: #1d4ed8; color: #ffffff;
+      font-weight: 700; padding: 12px 28px; border-radius: 8px; border: none;
+      cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem;
+      transition: opacity 0.2s; width: 100%; }
+    .btn:hover { background: #1e40af; }
+    .section-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #38bdf8; margin-bottom: 4px; }
+    .req { color: #dc2626; }
+    .field-label { display: block; color: #334155; font-size: 0.875rem; font-weight: 500; margin-bottom: 6px; }
+    .dark .field-label { color: #cbd5e1; }
+    .section-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+    .dark .section-card { background: #1e293b; border-color: #334155; }
   </style>
-  <style>
-    .form-section { transition: all 0.3s ease; }
-    .form-section.hidden { display: none; opacity: 0; }
-    .form-section.visible { display: block; opacity: 1; animation: fadeIn 0.3s ease; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
-  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "EastWest Help",
+    "description": "AI Automation, IT Consulting, and Property Management Services",
+    "url": "https://eastwesthelp.com",
+    "telephone": "+1-213-302-6757",
+    "email": "info@eastwesthelp.com",
+    "areaServed": ["California", "Tennessee"],
+    "serviceType": ["Property Management", "AI Consulting", "IT Services"]
+  }
+  </script>
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 </head>
 <body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased transition-colors duration-300">
 
+  <!-- Header / Nav -->
   <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 dark:bg-slate-900/90 dark:border-slate-700 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
@@ -75,250 +105,219 @@
     </div>
   </header>
 
-  <section class="bg-gradient-to-br from-sky-50 to-white dark:from-slate-900 dark:to-slate-950 py-12 lg:py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Intake Form</h1>
-      <p class="text-slate-600 dark:text-slate-300 max-w-xl mx-auto">Tell us about your needs and we'll get back to you within 24 hours.</p>
+  <div class="max-w-2xl mx-auto px-6 py-12">
+
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-2" style="font-family:'Space Grotesk',sans-serif;">New Tenant <span class="text-sky-400">Intake Application</span></h1>
+      <p class="text-slate-600 dark:text-slate-400 text-base">Please complete all sections below. Fields marked with a <span class="req">*</span> are required.</p>
     </div>
-  </section>
 
-  <section class="py-12 bg-white dark:bg-slate-950 transition-colors duration-300">
-    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-      <form class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 shadow-sm" action="thankyou.html" method="GET">
+    <!-- SUCCESS BANNER -->
+    <div id="success-banner" class="hidden mb-8 rounded-xl border border-emerald-300 bg-emerald-50 dark:bg-emerald-900/20 dark:border-emerald-700 p-4">
+      <p class="text-emerald-800 dark:text-emerald-300 font-medium text-sm">✅ Your application has been submitted. We will contact you shortly.</p>
+    </div>
 
-        <div class="mb-8">
-          <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">I am a...</label>
-          <div class="grid grid-cols-2 gap-4">
-            <label class="cursor-pointer">
-              <input type="radio" name="type" value="owner" id="type-owner" class="peer sr-only" checked>
-              <div class="text-center py-4 rounded-xl border-2 border-slate-200 dark:border-slate-600 peer-checked:border-sky-500 peer-checked:bg-sky-50 dark:peer-checked:bg-sky-900/20 transition-all">
-                <svg class="w-6 h-6 mx-auto mb-2 text-slate-400 peer-checked:text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                <span class="text-sm font-medium text-slate-700 dark:text-slate-300 peer-checked:text-sky-600 dark:peer-checked:text-sky-400">Property Owner</span>
-              </div>
-            </label>
-            <label class="cursor-pointer">
-              <input type="radio" name="type" value="tenant" id="type-tenant" class="peer sr-only">
-              <div class="text-center py-4 rounded-xl border-2 border-slate-200 dark:border-slate-600 peer-checked:border-sky-500 peer-checked:bg-sky-50 dark:peer-checked:bg-sky-900/20 transition-all">
-                <svg class="w-6 h-6 mx-auto mb-2 text-slate-400 peer-checked:text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-                <span class="text-sm font-medium text-slate-700 dark:text-slate-300 peer-checked:text-sky-600 dark:peer-checked:text-sky-400">Prospective Tenant</span>
-              </div>
-            </label>
-          </div>
-        </div>
+    <form action="https://formsubmit.co/info@eastwesthelp.com" method="POST">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <input type="hidden" name="_blacklist" value="viagra, casino, crypto pump, loan offer">
+      <input type="hidden" name="_autoresponse" value="Thank you for submitting your tenant intake application to EastWest Help. We have received it and will contact you shortly.">
+      <input type="hidden" name="_next" value="https://eastwesthelp.com/intake?submitted=1">
+      <input type="hidden" name="_subject" value="New Tenant Intake Application">
 
-        <div class="grid md:grid-cols-2 gap-6 mb-6">
-          <div>
-            <label for="firstName" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">First Name *</label>
-            <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all" placeholder="John">
+      <!-- SECTION 1: APPLICANT INFO -->
+      <div class="section-card">
+        <div class="section-label">Section 1</div>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-5" style="font-family:'Space Grotesk',sans-serif;">Applicant Information</h2>
+        <input type="hidden" name="■■■ SECTION 1 — APPLICANT INFORMATION ■■■" value="―――――――――――">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="sm:col-span-2">
+            <label class="field-label" for="full_name">Full Name <span class="req">*</span></label>
+            <input class="form-input" type="text" id="full_name" name="Full Name" required aria-label="Full Name" placeholder="First Middle Last">
           </div>
           <div>
-            <label for="lastName" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Last Name *</label>
-            <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all" placeholder="Doe">
+            <label class="field-label" for="email">Email <span class="req">*</span></label>
+            <input class="form-input" type="email" id="email" name="Email" required aria-label="Email" placeholder="you@example.com">
+          </div>
+          <div>
+            <label class="field-label" for="phone">Phone <span class="req">*</span></label>
+            <input class="form-input" type="tel" id="phone" name="Phone" required aria-label="Phone" placeholder="(555) 555-5555">
+          </div>
+          <div class="sm:col-span-2">
+            <label class="field-label" for="current_address">Current Address <span class="req">*</span></label>
+            <input class="form-input" type="text" id="current_address" name="Current Address" required aria-label="Current Address" placeholder="Street, City, State, ZIP">
+          </div>
+          <div>
+            <label class="field-label" for="time_at_address">Time at Current Address</label>
+            <input class="form-input" type="text" id="time_at_address" name="Time at Current Address" aria-label="Time at Current Address" placeholder="e.g. 2 years">
+          </div>
+          <div>
+            <label class="field-label" for="move_in_date">Desired Move-In Date</label>
+            <input class="form-input" type="date" id="move_in_date" name="Desired Move-In Date" aria-label="Desired Move-In Date">
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: IDENTIFICATION -->
+      <div class="section-card">
+        <div class="section-label">Section 2</div>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-3" style="font-family:'Space Grotesk',sans-serif;">Identification</h2>
+        <div class="rounded-lg border-l-4 border-sky-400 bg-sky-50 dark:bg-sky-900/20 p-4">
+          <p class="text-slate-700 dark:text-slate-300 text-sm">📞 Please call <span class="font-semibold">(213) 302-6757</span> to provide the following two numbers: <span class="font-semibold">Driver's License number</span> and <span class="font-semibold">Social Security number</span>.</p>
+          <p class="text-slate-700 dark:text-slate-300 text-sm mt-3">If we don't answer, it's okay to leave them on our secure voicemail — please speak slowly and include your full name.</p>
+          <p class="text-slate-700 dark:text-slate-300 text-sm mt-3">For your security, please do not enter them online.</p>
+        </div>
+      </div>
+
+      <!-- SECTION 3: EMPLOYMENT & INCOME -->
+      <div class="section-card">
+        <div class="section-label">Section 3</div>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-5" style="font-family:'Space Grotesk',sans-serif;">Employment &amp; Income</h2>
+        <input type="hidden" name="■■■ SECTION 3 — EMPLOYMENT AND INCOME ■■■" value="―――――――――――">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="field-label" for="employer_name">Employer / Company Name</label>
+            <input class="form-input" type="text" id="employer_name" name="Employer Name" aria-label="Employer Name" placeholder="Company name">
+          </div>
+          <div>
+            <label class="field-label" for="employer_contact">Supervisor / Contact Person</label>
+            <input class="form-input" type="text" id="employer_contact" name="Employer Contact Person" aria-label="Employer Contact Person" placeholder="Name">
+          </div>
+          <div class="sm:col-span-2">
+            <label class="field-label" for="employer_address">Employer Address</label>
+            <input class="form-input" type="text" id="employer_address" name="Employer Address" aria-label="Employer Address" placeholder="Street, City, State, ZIP">
+          </div>
+          <div>
+            <label class="field-label" for="employer_phone">Employer Phone</label>
+            <input class="form-input" type="tel" id="employer_phone" name="Employer Phone" aria-label="Employer Phone" placeholder="(555) 555-5555">
+          </div>
+          <div>
+            <label class="field-label" for="position">Position / Title</label>
+            <input class="form-input" type="text" id="position" name="Position" aria-label="Position" placeholder="Job title">
+          </div>
+          <div>
+            <label class="field-label" for="employment_length">Length of Employment</label>
+            <input class="form-input" type="text" id="employment_length" name="Length of Employment" aria-label="Length of Employment" placeholder="e.g. 3 years">
+          </div>
+          <div>
+            <label class="field-label" for="monthly_income">Monthly Gross Income</label>
+            <input class="form-input" type="text" id="monthly_income" name="Monthly Gross Income" aria-label="Monthly Gross Income" placeholder="$">
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 4: HOUSEHOLD -->
+      <div class="section-card">
+        <div class="section-label">Section 4</div>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-5" style="font-family:'Space Grotesk',sans-serif;">Household</h2>
+        <input type="hidden" name="■■■ SECTION 4 — HOUSEHOLD ■■■" value="―――――――――――">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="field-label" for="occupants">Number of Occupants</label>
+            <input class="form-input" type="number" id="occupants" name="Number of Occupants" aria-label="Number of Occupants" min="1" placeholder="e.g. 3">
+          </div>
+          <div class="sm:col-span-2">
+            <label class="field-label" for="vehicles">Vehicle(s) — Make / Model / Plate</label>
+            <input class="form-input" type="text" id="vehicles" name="Vehicles" aria-label="Vehicles" placeholder="e.g. Toyota Camry, 7ABC123">
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 5: PET INFORMATION -->
+      <div class="section-card">
+        <div class="section-label">Section 5</div>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-5" style="font-family:'Space Grotesk',sans-serif;">Pet Information</h2>
+        <input type="hidden" name="■■■ SECTION 5 — PET INFORMATION ■■■" value="―――――――――――">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="field-label" for="has_pets">Do you have pets? <span class="req">*</span></label>
+            <select class="form-input" id="has_pets" name="Has Pets" required aria-label="Do you have pets">
+              <option value="" disabled selected>Select one</option>
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+          <div>
+            <label class="field-label" for="pet_type">Pet Type</label>
+            <input class="form-input" type="text" id="pet_type" name="Pet Type" aria-label="Pet Type" placeholder="e.g. Dog, Cat">
+          </div>
+          <div>
+            <label class="field-label" for="pet_breed">Breed</label>
+            <input class="form-input" type="text" id="pet_breed" name="Pet Breed" aria-label="Pet Breed" placeholder="e.g. Labrador">
+          </div>
+          <div>
+            <label class="field-label" for="pet_count">Number of Pets</label>
+            <input class="form-input" type="number" id="pet_count" name="Number of Pets" aria-label="Number of Pets" min="0" placeholder="e.g. 1">
+          </div>
+          <div>
+            <label class="field-label" for="pet_weight">Weight (approx.)</label>
+            <input class="form-input" type="text" id="pet_weight" name="Pet Weight" aria-label="Pet Weight" placeholder="e.g. 40 lbs">
+          </div>
+          <div>
+            <label class="field-label" for="pet_fixed">Spayed / Neutered?</label>
+            <select class="form-input" id="pet_fixed" name="Spayed or Neutered" aria-label="Spayed or Neutered">
+              <option value="" disabled selected>Select one</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="N/A">N/A</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 6: REFERENCES -->
+      <div class="section-card">
+        <div class="section-label">Section 6</div>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-5" style="font-family:'Space Grotesk',sans-serif;">References</h2>
+        <input type="hidden" name="■■■ SECTION 6 — REFERENCES ■■■" value="―――――――――――">
+
+        <p class="text-slate-600 dark:text-slate-400 text-sm font-medium mb-3">Reference 1 — Prior Landlord (if applicable)</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          <div>
+            <label class="field-label" for="ref1_name">Name</label>
+            <input class="form-input" type="text" id="ref1_name" name="Reference 1 Name" aria-label="Reference 1 Name">
+          </div>
+          <div>
+            <label class="field-label" for="ref1_rel">Relationship</label>
+            <input class="form-input" type="text" id="ref1_rel" name="Reference 1 Relationship" aria-label="Reference 1 Relationship" placeholder="e.g. Prior landlord">
+          </div>
+          <div>
+            <label class="field-label" for="ref1_phone">Phone</label>
+            <input class="form-input" type="tel" id="ref1_phone" name="Reference 1 Phone" aria-label="Reference 1 Phone">
           </div>
         </div>
 
-        <div class="mb-6">
-          <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Email Address *</label>
-          <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all" placeholder="john@example.com">
-        </div>
-
-        <div class="mb-6">
-          <label for="phone" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Phone Number</label>
-          <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all" placeholder="(555) 123-4567">
-        </div>
-
-        <div id="owner-fields" class="form-section visible">
-          <div class="border-t border-slate-200 dark:border-slate-700 pt-6 mb-6">
-            <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">Property Details</h3>
-            <div class="mb-6">
-              <label for="propertyAddress" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Property Address</label>
-              <input type="text" id="propertyAddress" name="propertyAddress" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all" placeholder="123 Main St, City, State ZIP">
-            </div>
-            <div class="grid md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label for="propertyType" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Property Type</label>
-                <select id="propertyType" name="propertyType" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all">
-                  <option value="">Select type...</option>
-                  <option value="single-family">Single Family Home</option>
-                  <option value="multi-family">Multi-Family</option>
-                  <option value="condo">Condo / Townhome</option>
-                  <option value="commercial">Commercial</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div>
-                <label for="unitCount" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Number of Units</label>
-                <input type="number" id="unitCount" name="unitCount" min="1" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all" placeholder="1">
-              </div>
-            </div>
-            <div class="mb-6">
-              <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Services Needed</label>
-              <div class="grid grid-cols-2 gap-3">
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" name="services" value="full-management" class="w-4 h-4 rounded border-slate-300 text-sky-500 focus:ring-sky-500">
-                  <span class="text-sm text-slate-600 dark:text-slate-400">Full Management</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" name="services" value="tenant-placement" class="w-4 h-4 rounded border-slate-300 text-sky-500 focus:ring-sky-500">
-                  <span class="text-sm text-slate-600 dark:text-slate-400">Tenant Placement</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" name="services" value="maintenance" class="w-4 h-4 rounded border-slate-300 text-sky-500 focus:ring-sky-500">
-                  <span class="text-sm text-slate-600 dark:text-slate-400">Maintenance Only</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" name="services" value="financial" class="w-4 h-4 rounded border-slate-300 text-sky-500 focus:ring-sky-500">
-                  <span class="text-sm text-slate-600 dark:text-slate-400">Financial Reporting</span>
-                </label>
-              </div>
-            </div>
+        <p class="text-slate-600 dark:text-slate-400 text-sm font-medium mb-3">Reference 2 — Personal or Professional</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label class="field-label" for="ref2_name">Name</label>
+            <input class="form-input" type="text" id="ref2_name" name="Reference 2 Name" aria-label="Reference 2 Name">
+          </div>
+          <div>
+            <label class="field-label" for="ref2_rel">Relationship</label>
+            <input class="form-input" type="text" id="ref2_rel" name="Reference 2 Relationship" aria-label="Reference 2 Relationship" placeholder="e.g. Colleague">
+          </div>
+          <div>
+            <label class="field-label" for="ref2_phone">Phone</label>
+            <input class="form-input" type="tel" id="ref2_phone" name="Reference 2 Phone" aria-label="Reference 2 Phone">
           </div>
         </div>
+      </div>
 
-        <div id="tenant-fields" class="form-section hidden">
-          <div class="border-t border-slate-200 dark:border-slate-700 pt-6 mb-6">
-            <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">Rental Preferences</h3>
-            <div class="grid md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label for="budgetMin" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Min Monthly Budget</label>
-                <div class="relative">
-                  <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">$</span>
-                  <input type="number" id="budgetMin" name="budgetMin" class="w-full pl-8 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all" placeholder="1500">
-                </div>
-              </div>
-              <div>
-                <label for="budgetMax" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Max Monthly Budget</label>
-                <div class="relative">
-                  <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">$</span>
-                  <input type="number" id="budgetMax" name="budgetMax" class="w-full pl-8 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all" placeholder="3000">
-                </div>
-              </div>
-            </div>
-            <div class="grid md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label for="bedrooms" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Bedrooms</label>
-                <select id="bedrooms" name="bedrooms" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all">
-                  <option value="">Any</option>
-                  <option value="studio">Studio</option>
-                  <option value="1">1 Bedroom</option>
-                  <option value="2">2 Bedrooms</option>
-                  <option value="3">3 Bedrooms</option>
-                  <option value="4+">4+ Bedrooms</option>
-                </select>
-              </div>
-              <div>
-                <label for="bathrooms" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Bathrooms</label>
-                <select id="bathrooms" name="bathrooms" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all">
-                  <option value="">Any</option>
-                  <option value="1">1</option>
-                  <option value="1.5">1.5</option>
-                  <option value="2">2</option>
-                  <option value="2.5">2.5</option>
-                  <option value="3+">3+</option>
-                </select>
-              </div>
-            </div>
-            <div class="grid md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label for="moveInDate" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Desired Move-In Date</label>
-                <input type="date" id="moveInDate" name="moveInDate" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all">
-              </div>
-              <div>
-                <label for="preferredArea" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Preferred Area</label>
-                <input type="text" id="preferredArea" name="preferredArea" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all" placeholder="Downtown, Westside, etc.">
-              </div>
-            </div>
-            <div class="mb-6">
-              <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Amenities Needed</label>
-              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" name="amenities" value="parking" class="w-4 h-4 rounded border-slate-300 text-sky-500 focus:ring-sky-500">
-                  <span class="text-sm text-slate-600 dark:text-slate-400">Parking</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" name="amenities" value="laundry" class="w-4 h-4 rounded border-slate-300 text-sky-500 focus:ring-sky-500">
-                  <span class="text-sm text-slate-600 dark:text-slate-400">In-Unit Laundry</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" name="amenities" value="pets" class="w-4 h-4 rounded border-slate-300 text-sky-500 focus:ring-sky-500">
-                  <span class="text-sm text-slate-600 dark:text-slate-400">Pet Friendly</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" name="amenities" value="gym" class="w-4 h-4 rounded border-slate-300 text-sky-500 focus:ring-sky-500">
-                  <span class="text-sm text-slate-600 dark:text-slate-400">Gym Access</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" name="amenities" value="pool" class="w-4 h-4 rounded border-slate-300 text-sky-500 focus:ring-sky-500">
-                  <span class="text-sm text-slate-600 dark:text-slate-400">Pool</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" name="amenities" value="furnished" class="w-4 h-4 rounded border-slate-300 text-sky-500 focus:ring-sky-500">
-                  <span class="text-sm text-slate-600 dark:text-slate-400">Furnished</span>
-                </label>
-              </div>
-            </div>
-            <div class="mb-6">
-              <label for="occupants" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Number of Occupants</label>
-              <input type="number" id="occupants" name="occupants" min="1" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all" placeholder="1">
-            </div>
-            <div class="mb-6">
-              <label for="petsInfo" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Pets (type, breed, weight)</label>
-              <input type="text" id="petsInfo" name="petsInfo" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all" placeholder="Golden Retriever, 65 lbs">
-            </div>
-            <div class="mb-6">
-              <label for="employmentStatus" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Employment Status</label>
-              <select id="employmentStatus" name="employmentStatus" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all">
-                <option value="">Select...</option>
-                <option value="employed-full">Employed Full-Time</option>
-                <option value="employed-part">Employed Part-Time</option>
-                <option value="self-employed">Self-Employed</option>
-                <option value="student">Student</option>
-                <option value="retired">Retired</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="mb-6">
-              <label for="monthlyIncome" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Monthly Gross Income</label>
-              <div class="relative">
-                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">$</span>
-                <input type="number" id="monthlyIncome" name="monthlyIncome" class="w-full pl-8 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all" placeholder="5000">
-              </div>
-            </div>
-            <div class="mb-6">
-              <label for="creditScore" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Credit Score Range</label>
-              <select id="creditScore" name="creditScore" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all">
-                <option value="">Prefer not to say</option>
-                <option value="excellent">Excellent (750+)</option>
-                <option value="good">Good (700-749)</option>
-                <option value="fair">Fair (650-699)</option>
-                <option value="poor">Below 650</option>
-              </select>
-            </div>
-            <div class="mb-6">
-              <label for="evictionHistory" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Any prior evictions or broken leases?</label>
-              <select id="evictionHistory" name="evictionHistory" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all">
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
-              </select>
-            </div>
-          </div>
-        </div>
+      <!-- CONSENT + SUBMIT -->
+      <div class="section-card">
+        <label class="flex items-start gap-3 cursor-pointer mb-5">
+          <input type="checkbox" name="Verification Consent" value="Yes" required aria-label="Verification Consent" class="mt-1 h-4 w-4">
+          <span class="text-slate-700 dark:text-slate-300 text-sm">I authorize verification of the information provided in this application, including contacting employers, landlords, and references. <span class="req">*</span></span>
+        </label>
+        <p class="text-slate-500 dark:text-slate-400 text-xs mb-5"><span class="req">*</span> Required fields</p>
+        <button type="submit" class="btn" aria-label="Submit Application">Submit Application</button>
+      </div>
+    </form>
+  </div>
 
-        <div class="mb-6">
-          <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Additional Details</label>
-          <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all resize-none" placeholder="Tell us anything else we should know..."></textarea>
-        </div>
-
-        <button type="submit" class="w-full py-4 px-6 text-base font-semibold text-white bg-blue-700 hover:bg-blue-800 rounded-xl transition-all shadow-lg shadow-blue-700/25 hover:shadow-xl">
-          Submit Intake
-          <svg class="inline ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-        </button>
-
-        <p class="text-xs text-slate-400 dark:text-slate-500 text-center mt-4">Your information is secure and will never be shared with third parties.</p>
-      </form>
-    </div>
-  </section>
-
+  <!-- Footer -->
   <footer class="bg-slate-50 border-t border-slate-200 dark:bg-slate-900 dark:border-slate-700 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -331,7 +330,9 @@
       </div>
     </div>
   </footer>
+
   <script>
+    // Mobile menu toggle
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     if (mobileMenuBtn && mobileMenu) {
@@ -339,6 +340,8 @@
         mobileMenu.classList.toggle('hidden');
       });
     }
+
+    // Dark Mode Toggle
     (function() {
       const html = document.documentElement;
       const toggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
@@ -366,6 +369,8 @@
         if (btn) btn.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
       });
     })();
+
+    // Dynamic Last Updated
     (function() {
       const dateEl = document.getElementById('last-updated-date');
       const yearEl = document.getElementById('footer-year');
@@ -375,27 +380,19 @@
       }
       if (yearEl) yearEl.textContent = new Date().getFullYear();
     })();
-  </script>
 
-  <script>
-    (function() {
-      const ownerRadio = document.getElementById('type-owner');
-      const tenantRadio = document.getElementById('type-tenant');
-      const ownerFields = document.getElementById('owner-fields');
-      const tenantFields = document.getElementById('tenant-fields');
-      function updateFields() {
-        if (tenantRadio.checked) {
-          ownerFields.classList.remove('visible'); ownerFields.classList.add('hidden');
-          tenantFields.classList.remove('hidden'); tenantFields.classList.add('visible');
-        } else {
-          tenantFields.classList.remove('visible'); tenantFields.classList.add('hidden');
-          ownerFields.classList.remove('hidden'); ownerFields.classList.add('visible');
-        }
+    // Success banner on ?submitted=1, auto-dismiss after 6s
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('submitted') === '1') {
+        var b = document.getElementById('success-banner');
+        b.classList.remove('hidden');
+        window.scrollTo({ top: 0 });
+        setTimeout(function () { b.classList.add('hidden'); }, 6000);
       }
-      ownerRadio.addEventListener('change', updateFields);
-      tenantRadio.addEventListener('change', updateFields);
-      updateFields();
     })();
   </script>
+
+  <script src="/chat.js" defer></script>
 </body>
 </html>
