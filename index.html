@@ -306,7 +306,7 @@ fetchCrypto();
 // Dynamic Last Updated
 (function() {
   const el = document.getElementById('last-updated-date');
-  if (el) el.textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  if (el) el.textContent = new Date().toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
 })();</script>
     <script>
     // Dark Mode Toggle
