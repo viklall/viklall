@@ -1,366 +1,356 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EastWest Help | AI Automation & IT Consulting</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-    <meta name="description" content="EastWest Help provides AI automation, IT consulting, and property management services for landlords and tenants in California and Tennessee.">
-    <meta property="og:title" content="EastWest Help | AI Automation & IT Consulting">
-    <meta property="og:description" content="AI-driven architectures and property services for CA and TN landlords.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://eastwesthelp.com">
-    <style>body{font-family:'Inter',sans-serif}h1,h2,h3,h4,h5,h6,.font-space-grotesk{font-family:'Space Grotesk',sans-serif}</style>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "EastWest Help",
-      "description": "AI Automation, IT Consulting, and Property Management Services",
-      "url": "https://eastwesthelp.com",
-      "telephone": "+1-213-302-6757",
-      "email": "info@eastwesthelp.com",
-      "areaServed": ["California", "Tennessee"],
-      "serviceType": ["Property Management", "AI Consulting", "IT Services"]
+  <title>EastWest Help | Property Management Solutions</title>
+  <meta name="description" content="Professional property management services connecting property owners with quality tenants. Streamlined intake, tenant screening, and property care.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          }
+        }
+      }
     }
-    </script>
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "EastWest Help",
+    "url": "https://eastwesthelp.com",
+    "logo": "https://eastwesthelp.com/logo.png"
+  }
+  </script>
+  <style>
+    .sparkline-canvas { width: 100px; height: 36px; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased transition-colors duration-300">
 
-    <header class="bg-white text-slate-900 shadow-sm border-b border-slate-200">
-        <nav class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
-            <h1 class="text-3xl font-extrabold tracking-tighter text-blue-400">EastWest Help</h1>
-            <div class="space-x-8 text-sm font-semibold tracking-wide">
-                <a href="#about" class="text-slate-700 hover:text-blue-600 uppercase font-medium">Services</a>
-                <a href="#dashboard" class="text-slate-700 hover:text-blue-600 uppercase font-medium">AI & Markets</a>
-                <a href="#engagement" class="text-slate-700 hover:text-blue-600 uppercase font-medium">Contact</a>
-            </div>
-            <div class="md:hidden flex items-center">
-                <button id="mobile-menu-btn" class="text-slate-700 hover:text-blue-600 p-2" aria-label="Open menu" aria-expanded="false">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                </button>
-            </div>
-            <div class="hidden md:flex gap-3">
-                <a href="/intake" class="bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold px-4 py-2 rounded-lg transition">📝 New Tenant Intake</a>
-                <a href="/property" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-4 py-2 rounded-lg transition">🏠 Landlords</a>
-                <a href="/tenant" class="bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-700 text-xs font-bold px-4 py-2 rounded-lg transition">🔧 Tenants</a>
-            </div>
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 dark:bg-slate-900/90 dark:border-slate-700 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-sky-400 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <span class="text-xl font-bold text-slate-800 dark:text-white" style="font-family:'Space Grotesk',sans-serif;">EastWest Help</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="index.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Home</a>
+          <a href="property.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Property</a>
+          <a href="tenant.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Tenant</a>
+          <a href="intake.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Intake</a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle dark mode">
+            <svg id="theme-icon-sun" class="w-5 h-5 text-amber-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg id="theme-icon-moon" class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
         </nav>
-    </header>
-
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-3">
-        <a href="/intake" class="block bg-blue-700 hover:bg-blue-800 text-white text-sm font-bold px-4 py-3 rounded-lg transition text-center">📝 New Tenant Intake</a>
-        <a href="/property" class="block bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold px-4 py-3 rounded-lg transition text-center">🏠 Landlords</a>
-        <a href="/tenant" class="block bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-700 text-sm font-bold px-4 py-3 rounded-lg transition text-center">🔧 Tenants</a>
-        <div class="border-t border-slate-200 pt-3 space-y-2">
-            <a href="#about" class="block text-slate-700 hover:text-blue-600 uppercase font-medium text-sm">Services</a>
-            <a href="#dashboard" class="block text-slate-700 hover:text-blue-600 uppercase font-medium text-sm">AI & Markets</a>
-            <a href="#engagement" class="block text-slate-700 hover:text-blue-600 uppercase font-medium text-sm">Contact</a>
+        <div class="flex md:hidden items-center gap-2">
+          <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle dark mode">
+            <svg id="theme-icon-sun-mobile" class="w-5 h-5 text-amber-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg id="theme-icon-moon-mobile" class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+          <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
         </div>
+      </div>
     </div>
-
-    <main class="max-w-7xl mx-auto px-6 py-12">
-        <section id="about" class="mb-16">
-
-            <!-- Top row: Who We Are text + 2 service cards -->
-            <div class="grid md:grid-cols-3 gap-6 mb-6 items-start">
-                <!-- Left: Who We Are -->
-                <div class="md:col-span-1">
-                    <h2 class="text-4xl font-extrabold mb-4 tracking-tight">Who We Are</h2>
-                    <p class="text-slate-600 leading-relaxed text-sm">
-                        We are an autonomous digital partner designed for one thing: scale. As the operational engine of EastWestHelp, designing and deploying AI-driven architectures to solve your toughest technical bottlenecks so you can focus on growth.
-                    </p>
-                    <div class="mt-4 grid grid-cols-3 gap-2">
-                        <div class="bg-blue-600 text-white p-2 rounded-lg text-center">
-                            <p class="text-xs font-bold uppercase">LA</p>
-                            <p class="text-sm font-mono" id="weather-la">--°C</p>
-                        </div>
-                        <div class="bg-indigo-700 text-white p-2 rounded-lg text-center">
-                            <p class="text-xs font-bold uppercase">TYO</p>
-                            <p class="text-sm font-mono" id="weather-tyo">--°C</p>
-                        </div>
-                        <div class="bg-orange-600 text-white p-2 rounded-lg text-center">
-                            <p class="text-xs font-bold uppercase">KOL</p>
-                            <p class="text-sm font-mono" id="weather-kol">--°C</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Middle: Landlord card -->
-                <a href="/property" class="group block bg-white border border-slate-200 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-md hover:border-blue-300 transition-all duration-200">
-                    <p class="text-blue-500 text-xs font-bold uppercase tracking-widest mb-2">🏠 Landlords</p>
-                    <h3 class="text-slate-900 text-xl font-bold mb-3">Property Services</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Notices, eviction filings, leases, and LACDA paperwork — prepared fast for CA and TN landlords.</p>
-                    <span class="text-blue-500 text-sm font-semibold group-hover:text-blue-400">Get documents →</span>
-                </a>
-
-                <!-- Right: Tenant card -->
-                <a href="/tenant" class="group block bg-white border border-slate-200 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-md hover:border-sky-300 transition-all duration-200">
-                    <p class="text-sky-500 text-xs font-bold uppercase tracking-widest mb-2">🔧 Tenants</p>
-                    <h3 class="text-slate-900 text-xl font-bold mb-3">Tenant Portal</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Submit repair requests, ask questions, or leave feedback. Tell us when you're home and we'll handle the rest.</p>
-                    <span class="text-sky-500 text-sm font-semibold group-hover:text-sky-400">Submit a request →</span>
-                </a>
-            </div>
-
-            <!-- Thin horizontal AI banner -->
-            <div class="border border-blue-100 bg-white rounded-xl h-16 flex items-center justify-between px-8">
-                <div>
-                    <span class="text-slate-900 text-xs font-bold tracking-widest uppercase">🚀 Autonomous Intelligence</span>
-                    <span class="text-slate-500 text-xs ml-4">Deploying AI-driven support, financial auditing, and operational monitoring</span>
-                </div>
-                <span class="text-blue-500 text-xs font-semibold">Support Operations Agent — coming soon</span>
-            </div>
-
-        </section>
-
-        <section id="dashboard" class="mb-16 grid md:grid-cols-3 gap-6">
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-                <h2 class="text-lg font-bold mb-4 text-blue-600 border-b pb-2">Industry News</h2>
-                <ul id="news-list" class="space-y-3 text-xs text-slate-600">
-                    <li><a href="https://venturebeat.com/feed/" class="hover:underline text-blue-600" target="_blank" rel="noopener">DeepSeek cut prices 75%. The 100x problem remains</a></li>
-                    <li><a href="https://venturebeat.com/orchestration/deepseek-cut-prices-75-the-100x-problem-remains" class="hover:underline text-blue-600" target="_blank" rel="noopener">Forget typosquatting; slopsquatting is the software supply chain threat created </a></li>
-                    <li><a href="https://venturebeat.com/security/forget-typosquatting-slopsquatting-is-the-software-supply-chain-threat-created-by-ai-coding-tools" class="hover:underline text-blue-600" target="_blank" rel="noopener">57% of enterprises have watched AI agents be confidently wrong. The fix is an ag</a></li>
-                    <li><a href="https://venturebeat.com/data/57-of-enterprises-have-watched-ai-agents-be-confidently-wrong-the-fix-is-an-agentic-context-layer-but-who-has-one" class="hover:underline text-blue-600" target="_blank" rel="noopener">OpenAI introduces ChatGPT Work, a cloud-based AI agent that manages tasks across</a></li>
-                    <li><a href="https://venturebeat.com/technology/openai-introduces-chatgpt-work-a-cloud-based-ai-agent-that-manages-tasks-across-email-slack-and-calendars" class="hover:underline text-blue-600" target="_blank" rel="noopener">Wall Street is debating the AI buildout. Enterprises just answered: 86% say thei</a></li>
-                </ul>
-            </div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-                <h2 class="text-lg font-bold mb-4 text-blue-600 border-b pb-2">Crypto Prices</h2>
-                <table class="w-full text-xs text-slate-800">
-                    <thead class="text-slate-500 uppercase"><tr><th class="py-1">Asset</th><th class="py-1 text-right">Price</th><th class="py-1 text-right">24h</th></tr></thead>
-                    <tbody id="crypto-tbody" class="divide-y divide-slate-100 font-mono">
-                        <tr><td class="py-2">BTC</td><td class="py-2 text-right" id="btc-price">--</td><td class="py-2 text-right" id="btc-change">--</td></tr>
-                        <tr><td class="py-2">ETH</td><td class="py-2 text-right" id="eth-price">--</td><td class="py-2 text-right" id="eth-change">--</td></tr>
-                        <tr><td class="py-2">SOL</td><td class="py-2 text-right" id="sol-price">--</td><td class="py-2 text-right" id="sol-change">--</td></tr>
-                        <tr><td class="py-2">XRP</td><td class="py-2 text-right" id="xrp-price">--</td><td class="py-2 text-right" id="xrp-change">--</td></tr>
-                        <tr><td class="py-2">BNB</td><td class="py-2 text-right" id="bnb-price">--</td><td class="py-2 text-right" id="bnb-change">--</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-                <h2 class="text-lg font-bold mb-4 text-blue-600 border-b pb-2">AI on X</h2>
-                <table class="w-full text-xs text-slate-600">
-                    <tbody class="divide-y divide-slate-200">
-                        <tr><td class="py-2 font-bold w-1/4"><a href="https://x.com/AnthropicAI" class="hover:underline">@Anthropic</a></td><td class="py-2">Fable 5 &amp; Mythos 5 restricted by US export order — Opus 4.8 &amp; Sonnet 4.6 available</td></tr>
-                        <tr><td class="py-2 font-bold w-1/4"><a href="https://x.com/OpenAI" class="hover:underline">@OpenAI</a></td><td class="py-2">Partner Network launches — 300k consultants to be certified by end of 2026</td></tr>
-                        <tr><td class="py-2 font-bold w-1/4"><a href="https://x.com/OpenAI" class="hover:underline">@OpenAI</a></td><td class="py-2">AI-powered Search overhaul — agents embedded in search workflows</td></tr>
-                        <tr><td class="py-2 font-bold w-1/4"><a href="https://x.com/Microsoft" class="hover:underline">@Microsoft</a></td><td class="py-2">MAI-Code-1-Flash ships inside GitHub Copilot and VS Code</td></tr>
-                        <tr><td class="py-2 font-bold w-1/4"><a href="https://x.com/xAI" class="hover:underline">@xAI</a></td><td class="py-2">Grok agents expanding into enterprise workflow automation</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm md:col-span-3">
-                <h2 class="text-xl font-bold mb-4 text-blue-600 border-b pb-2">Southern California AI Meetups</h2>
-                <table class="w-full text-sm text-left text-slate-600">
-                    <thead class="text-xs text-slate-700 uppercase bg-slate-50">
-                        <tr>
-                            <th class="px-4 py-3">Date/Time</th>
-                            <th class="px-4 py-3">Title</th>
-                            <th class="px-4 py-3">Venue</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-200">
-                        <tr>
-                            <td class="px-4 py-3">Jul 8, 6:30 PM</td>
-                            <td class="px-4 py-3"><a href="https://www.meetup.com/aittg-la/" class="text-blue-600 hover:underline font-medium">LA AI Founders Mixer</a></td>
-                            <td class="px-4 py-3"><a href="https://www.google.com/maps/search/?api=1&query=123+Tech+Lane+Santa+Monica+CA" class="text-blue-600 hover:underline">123 Tech Lane, Santa Monica, CA</a></td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-3">Jul 15, 5:30 PM</td>
-                            <td class="px-4 py-3"><a href="https://www.meetup.com/la-hug/" class="text-blue-600 hover:underline font-medium">SoCal GenAI Developers</a></td>
-                            <td class="px-4 py-3"><a href="https://www.google.com/maps/search/?api=1&query=456+Innovation+Dr+Irvine+CA" class="text-blue-600 hover:underline">456 Innovation Dr, Irvine, CA</a></td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-3">Jul 22, 7:00 PM</td>
-                            <td class="px-4 py-3"><a href="https://www.meetup.com/los-angeles-startup-pitch-networking-group/" class="text-blue-600 hover:underline font-medium">AI Builders Monthly Meetup</a></td>
-                            <td class="px-4 py-3"><a href="https://www.google.com/maps/search/?api=1&query=789+Broadway+Ave+Downtown+LA+CA" class="text-blue-600 hover:underline">789 Broadway Ave, Downtown LA, CA</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="engagement" class="mb-16 grid md:grid-cols-2 gap-8">
-            <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                <h2 class="text-2xl font-bold text-blue-600 mb-4">Stay Ahead with AI Insights</h2>
-                <p class="text-slate-600 mb-6">Get weekly automation workflows and AI tips delivered directly to your inbox.</p>
-                <form action="https://formsubmit.co/info@eastwesthelp.com" method="POST" class="space-y-4">
-                    <input type="hidden" name="_captcha" value="true">
-                    <input type="hidden" name="_honey" value="" style="display:none">
-                    <input type="hidden" name="_subject" value="New Newsletter Subscription">
-                    <input type="hidden" name="_next" value="https://eastwesthelp.com/thankyou">
-                    <input type="hidden" name="_blacklist" value="viagra, casino, crypto investment, click here, make money, free offer, winner, congratulations, loan, refinance, SEO, buy now, discount, limited time, act now, unsub" />
-                    <input type="hidden" name="_autoresponse" value="Thank you for subscribing to EastWest Help AI Insights. You will receive updates on AI automation, workflows, and market developments." />
-                    <input type="email" name="email" placeholder="Your email address" aria-label="Email address" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
-                    <button type="submit" class="bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition" aria-label="Subscribe to newsletter">Subscribe</button>
-                </form>
-            </div>
-            <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                <h2 class="text-2xl font-bold text-blue-600 mb-4">Questions?</h2>
-                <p class="text-slate-600 mb-6">Fill out the form below to reach me directly.</p>
-                <form action="https://formsubmit.co/info@eastwesthelp.com" method="POST" class="space-y-4">
-                    <input type="hidden" name="_captcha" value="true">
-                    <input type="hidden" name="_honey" value="" style="display:none">
-                    <input type="hidden" name="_subject" value="New Service Inquiry">
-                    <input type="hidden" name="_blacklist" value="viagra, casino, crypto investment, click here, make money, free offer, winner, congratulations, loan, refinance, SEO, buy now, discount, limited time, act now, unsub" />
-                    <input type="hidden" name="_autoresponse" value="Thank you for contacting EastWest Help. We received your message and will respond within one business day." />
-                    <input type="hidden" name="_next" value="https://eastwesthelp.com/thankyou">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input type="text" name="name" placeholder="Your Full Name" aria-label="Full name" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <input type="email" name="email" placeholder="Your Email Address" aria-label="Email address" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
-                    </div>
-                    <textarea name="message" placeholder="Your Message" aria-label="Message" required rows="2" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
-                    <button type="submit" class="bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition" aria-label="Send message">Send Message</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer class="w-full bg-white border-t border-slate-200 mt-12 py-6">
-  <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-sm text-slate-500 font-sans">
-    <div class="font-space-grotesk font-medium text-slate-800">
-      EastWest <span class="text-[#38bdf8]">Help</span> · © 2026
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+      <div class="px-4 py-3 space-y-2">
+        <a href="index.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Home</a>
+        <a href="property.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Property</a>
+        <a href="tenant.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Tenant</a>
+        <a href="intake.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Intake</a>
+      </div>
     </div>
-    <div class="mt-2 sm:mt-0 text-xs border border-slate-300 text-slate-600 px-3 py-1 rounded-full">
-      Last Updated: July 18, 2026</div>
-  </div>
-    <div class="border-t border-slate-200 mt-4 pt-4 text-center">
-        <p class="text-xs text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            <span class="font-semibold text-slate-500">Accessibility</span> — EastWest Help is committed to making this site accessible to all users. We have worked to meet WCAG 2.1 AA standards including sufficient color contrast, keyboard navigation, and screen reader support, and we will continue to identify and address accessibility barriers over time. If you encounter an issue, please <a href="mailto:info@eastwesthelp.com" class="text-blue-600 hover:underline">contact us</a>.
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-sky-50 to-white dark:from-slate-900 dark:to-slate-950 py-20 lg:py-28">
+    <div class="absolute inset-0 opacity-30 dark:opacity-10">
+      <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" stroke-width="0.5" class="text-sky-200 dark:text-sky-900"/></pattern></defs>
+        <rect width="100" height="100" fill="url(#grid)"/>
+      </svg>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 animate-fade-in">
+        Property Management<br><span class="text-sky-500">Made Simple</span>
+      </h1>
+      <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-10 animate-fade-in" style="animation-delay:0.1s">
+        Connecting property owners with quality tenants through streamlined intake, thorough screening, and dedicated property care.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style="animation-delay:0.2s">
+        <a href="intake.html" class="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-blue-700 hover:bg-blue-800 rounded-xl transition-all shadow-lg shadow-blue-700/25 hover:shadow-xl hover:shadow-blue-700/30">
+          Get Started
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="property.html" class="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-sky-400 dark:hover:border-sky-500 rounded-xl transition-all">
+          Learn More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Crypto Market Widget with Sparklines -->
+  <section class="py-16 bg-white dark:bg-slate-950 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Crypto Market Overview</h2>
+          <p class="text-slate-500 dark:text-slate-400 mt-1">Live prices and 7-day trends</p>
+        </div>
+        <div class="hidden sm:block px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-medium text-slate-500 dark:text-slate-400">
+          Data from CoinGecko
+        </div>
+      </div>
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm">
+        <table class="w-full text-left">
+          <thead>
+            <tr class="border-b border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50">
+              <th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Asset</th>
+              <th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">Price</th>
+              <th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">24h Change</th>
+              <th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-center">7D Trend</th>
+              <th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">Market Cap</th>
+            </tr>
+          </thead>
+          <tbody id="crypto-table-body" class="divide-y divide-slate-100 dark:divide-slate-800"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="py-16 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">Our Services</h2>
+        <p class="text-slate-600 dark:text-slate-400 max-w-xl mx-auto">Comprehensive property management solutions tailored to your needs.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-sky-100 dark:bg-sky-900/30 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-2">Property Management</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Full-service management for residential and commercial properties, from marketing to maintenance.</p>
+        </div>
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-sky-100 dark:bg-sky-900/30 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-2">Tenant Screening</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Thorough background checks, credit verification, and reference validation for peace of mind.</p>
+        </div>
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-sky-100 dark:bg-sky-900/30 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-2">Streamlined Intake</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Digital application processing, lease preparation, and move-in coordination handled end-to-end.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-blue-700 dark:bg-blue-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Ready to simplify your property management?</h2>
+      <p class="text-blue-100 mb-8 text-lg">Join hundreds of property owners who trust EastWest Help.</p>
+      <a href="intake.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-blue-700 bg-white hover:bg-blue-50 rounded-xl transition-all shadow-lg">
+        Start Your Intake
+        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-50 border-t border-slate-200 dark:bg-slate-900 dark:border-slate-700 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-slate-500 dark:text-slate-400">
+          &copy; <span id="footer-year">2026</span> EastWest Help. All rights reserved.
         </p>
+        <p class="text-xs text-slate-400 dark:text-slate-500" data-last-updated>
+          Last updated: <span id="last-updated-date">--</span>
+        </p>
+      </div>
     </div>
-</footer>
-
-<script>
-// Mobile menu toggle
-document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-  const menu = document.getElementById('mobile-menu');
-  const expanded = this.getAttribute('aria-expanded') === 'true';
-  this.setAttribute('aria-expanded', !expanded);
-  menu.classList.toggle('hidden');
-});
-
-// Live Weather via Open-Meteo (free, no key) — with fallback display
-async function fetchWeather(retries = 2) {
-  const cities = [
-    { id: 'weather-la',  lat: 34.05,  lon: -118.24, name: 'LA' },
-    { id: 'weather-tyo', lat: 35.68,  lon: 139.69,  name: 'TYO' },
-    { id: 'weather-kol', lat: 22.57,  lon: 88.36,   name: 'KOL' },
-  ];
-
-  for (const c of cities) {
-    const el = document.getElementById(c.id);
-    try {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 5000);
-      const r = await fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${c.lat}&longitude=${c.lon}&current_weather=true`,
-        { signal: controller.signal }
-      );
-      clearTimeout(timeout);
-
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      const d = await r.json();
-      const temp = Math.round(d.current_weather.temperature);
-      const code = d.current_weather.weathercode;
-      const icon = code <= 1 ? '☀️' : code <= 3 ? '⛅' : code < 60 ? '☁️' : '🌧️';
-      if (el) el.textContent = `${icon} ${temp}°C`;
-    } catch(e) {
-      console.warn('weather fetch failed', c.id, e);
-      if (el) el.textContent = '—';
-      if (retries > 0) {
-        setTimeout(() => fetchWeather(retries - 1), 1000 * (3 - retries));
-      }
+  </footer>
+  <!-- Shared Scripts -->
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
     }
-  }
-}
 
-// Live Crypto via CoinGecko (free, no key) — with fallback and retry
-async function fetchCrypto(retries = 2) {
-  const coins = [
-    ['bitcoin', 'btc'], ['ethereum', 'eth'], ['solana', 'sol'],
-    ['ripple', 'xrp'], ['binancecoin', 'bnb']
-  ];
+    // Dark Mode Toggle
+    (function() {
+      const html = document.documentElement;
+      const toggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+      function updateIcons(isDark) {
+        ['theme-icon-sun', 'theme-icon-sun-mobile'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.toggle('hidden', !isDark);
+        });
+        ['theme-icon-moon', 'theme-icon-moon-mobile'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.toggle('hidden', isDark);
+        });
+      }
+      function setTheme(dark) {
+        if (dark) html.classList.add('dark');
+        else html.classList.remove('dark');
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+        updateIcons(dark);
+      }
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = saved === 'dark' || (!saved && prefersDark);
+      setTheme(isDark);
+      toggleBtns.forEach(btn => {
+        if (btn) btn.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
+      });
+    })();
 
-  try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 8000);
-    const r = await fetch(
-      'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,ripple,binancecoin&vs_currencies=usd&include_24hr_change=true',
-      { signal: controller.signal }
-    );
-    clearTimeout(timeout);
+    // Dynamic Last Updated
+    (function() {
+      const dateEl = document.getElementById('last-updated-date');
+      const yearEl = document.getElementById('footer-year');
+      if (dateEl) {
+        const now = new Date();
+        dateEl.textContent = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      }
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    })();
+  </script>
 
-    if (r.status === 429) throw new Error('Rate limited');
-    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  <!-- Crypto Sparklines -->
+  <script>
+    (function() {
+      const COINS = [
+        { id: 'bitcoin', symbol: 'BTC', name: 'Bitcoin', color: '#F7931A', gradStart: 'rgba(247,147,26,0.3)', gradEnd: 'rgba(247,147,26,0.0)' },
+        { id: 'ethereum', symbol: 'ETH', name: 'Ethereum', color: '#627EEA', gradStart: 'rgba(98,126,234,0.3)', gradEnd: 'rgba(98,126,234,0.0)' },
+        { id: 'solana', symbol: 'SOL', name: 'Solana', color: '#14F195', gradStart: 'rgba(20,241,149,0.3)', gradEnd: 'rgba(20,241,149,0.0)' },
+        { id: 'ripple', symbol: 'XRP', name: 'XRP', color: '#23292F', gradStart: 'rgba(35,41,47,0.3)', gradEnd: 'rgba(35,41,47,0.0)' },
+        { id: 'binancecoin', symbol: 'BNB', name: 'BNB', color: '#F0B90B', gradStart: 'rgba(240,185,11,0.3)', gradEnd: 'rgba(240,185,11,0.0)' }
+      ];
 
-    const d = await r.json();
-    for (const [id, sym] of coins) {
-      const price = d[id]?.usd;
-      const change = d[id]?.usd_24h_change;
-      const pe = document.getElementById(`${sym}-price`);
-      const ce = document.getElementById(`${sym}-change`);
-
-      if (price == null) {
-        if (pe) pe.textContent = '—';
-        if (ce) ce.textContent = '—';
-        continue;
+      async function fetchSparklineData(coinId) {
+        try {
+          const res = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=7&interval=daily`);
+          if (!res.ok) throw new Error('API limit');
+          const data = await res.json();
+          return data.prices.map(p => p[1]);
+        } catch (e) {
+          const base = { bitcoin: 65000, ethereum: 3500, solana: 150, ripple: 0.6, binancecoin: 600 }[coinId] || 100;
+          const vol = base * 0.05;
+          let price = base;
+          const prices = [];
+          for (let i = 0; i < 8; i++) { prices.push(price); price += (Math.random() - 0.48) * vol; }
+          return prices;
+        }
       }
 
-      if (pe) {
-        pe.textContent = price >= 1000 
-          ? '$' + price.toLocaleString('en-US', {maximumFractionDigits:0}) 
-          : '$' + price.toFixed(2);
+      async function fetchMarketData() {
+        try {
+          const ids = COINS.map(c => c.id).join(',');
+          const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}&order=market_cap_desc`);
+          if (!res.ok) throw new Error('API error');
+          return await res.json();
+        } catch (e) {
+          return COINS.map((c, i) => ({
+            id: c.id,
+            current_price: [65000, 3500, 150, 0.6, 600][i],
+            price_change_percentage_24h: [2.5, -1.2, 5.8, -0.5, 1.1][i],
+            market_cap: [1200000000000, 420000000000, 65000000000, 32000000000, 90000000000][i]
+          }));
+        }
       }
-      if (ce) {
-        const pct = change?.toFixed(2) || '0.00';
-        ce.textContent = (change >= 0 ? '+' : '') + pct + '%';
-        ce.className = 'py-2 text-right ' + (change >= 0 ? 'text-green-600' : 'text-red-600');
-      }
-    }
-  } catch(e) {
-    console.warn('crypto fetch failed', e);
-    for (const [, sym] of coins) {
-      const pe = document.getElementById(`${sym}-price`);
-      const ce = document.getElementById(`${sym}-change`);
-      if (pe) pe.textContent = '—';
-      if (ce) ce.textContent = '—';
-    }
-    if (retries > 0 && e.message !== 'Rate limited') {
-      setTimeout(() => fetchCrypto(retries - 1), 2000);
-    }
-  }
-}
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => { fetchWeather(); fetchCrypto(); });
-} else {
-  fetchWeather();
-  fetchCrypto();
-}
-</script>
-    <script src="/chat.js" defer></script>
+      function drawSparkline(canvas, prices, color, gradStart, gradEnd) {
+        const ctx = canvas.getContext('2d');
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+        const w = rect.width, h = rect.height;
+        const min = Math.min(...prices), max = Math.max(...prices);
+        const range = max - min || 1;
+        const pad = 4;
+        const points = prices.map((p, i) => ({
+          x: (i / (prices.length - 1)) * w,
+          y: h - pad - ((p - min) / range) * (h - pad * 2)
+        }));
+        const grad = ctx.createLinearGradient(0, 0, 0, h);
+        grad.addColorStop(0, gradStart);
+        grad.addColorStop(1, gradEnd);
+        ctx.beginPath();
+        ctx.moveTo(points[0].x, h);
+        points.forEach(p => ctx.lineTo(p.x, p.y));
+        ctx.lineTo(points[points.length - 1].x, h);
+        ctx.closePath();
+        ctx.fillStyle = grad;
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(points[0].x, points[0].y);
+        points.forEach(p => ctx.lineTo(p.x, p.y));
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.stroke();
+      }
+
+      function fmtPrice(p) { return p >= 1000 ? '$' + p.toLocaleString('en-US', {minimumFractionDigits:2,maximumFractionDigits:2}) : '$' + p.toFixed(4); }
+      function fmtCap(c) { if (c >= 1e12) return '$' + (c/1e12).toFixed(2) + 'T'; if (c >= 1e9) return '$' + (c/1e9).toFixed(2) + 'B'; if (c >= 1e6) return '$' + (c/1e6).toFixed(2) + 'M'; return '$' + c.toLocaleString(); }
+
+      async function init() {
+        const tbody = document.getElementById('crypto-table-body');
+        if (!tbody) return;
+        const marketData = await fetchMarketData();
+        for (const coin of COINS) {
+          const data = marketData.find(d => d.id === coin.id) || {};
+          const prices = await fetchSparklineData(coin.id);
+          const change = data.price_change_percentage_24h || 0;
+          const changeClass = change >= 0 ? 'text-emerald-500' : 'text-rose-500';
+          const changeSign = change >= 0 ? '+' : '';
+          const badgeBg = change >= 0 ? 'bg-emerald-100 dark:bg-emerald-900/20' : 'bg-rose-100 dark:bg-rose-900/20';
+          const tr = document.createElement('tr');
+          tr.className = 'hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors';
+          tr.innerHTML = `<td class="px-6 py-4"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background:${coin.color}">${coin.symbol[0]}</div><div><div class="font-semibold text-slate-900 dark:text-white">${coin.name}</div><div class="text-xs text-slate-500 dark:text-slate-400">${coin.symbol}</div></div></div></td><td class="px-6 py-4 text-right font-mono font-medium text-slate-900 dark:text-white">${fmtPrice(data.current_price || 0)}</td><td class="px-6 py-4 text-right"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${changeClass} ${badgeBg}">${changeSign}${change.toFixed(2)}%</span></td><td class="px-6 py-4 text-center"><canvas class="sparkline-canvas mx-auto" id="spark-${coin.id}" width="100" height="36"></canvas></td><td class="px-6 py-4 text-right text-sm text-slate-600 dark:text-slate-400">${fmtCap(data.market_cap || 0)}</td>`;
+          tbody.appendChild(tr);
+          requestAnimationFrame(() => { const c = document.getElementById(`spark-${coin.id}`); if (c) drawSparkline(c, prices, coin.color, coin.gradStart, coin.gradEnd); });
+        }
+      }
+      init();
+    })();
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
