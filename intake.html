@@ -112,7 +112,7 @@
 
     <div class="mb-8">
       <h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-2" style="font-family:'Space Grotesk',sans-serif;">New Tenant <span class="text-sky-400">Intake Application</span></h1>
-      <p class="text-slate-600 dark:text-slate-400 text-base">Please complete all sections below. Fields marked with a <span class="req">*</span> are required.</p>
+      <p class="text-slate-600 dark:text-slate-400 text-base">Please complete as much of the application as you can. All fields are optional.</p>
     </div>
 
     <!-- SUCCESS BANNER -->
@@ -136,20 +136,20 @@
         <input type="hidden" name="■■■ SECTION 1 — APPLICANT INFORMATION ■■■" value="―――――――――――">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="sm:col-span-2">
-            <label class="field-label" for="full_name">Full Name <span class="req">*</span></label>
-            <input class="form-input" type="text" id="full_name" name="Full Name" required aria-label="Full Name" placeholder="First Middle Last">
+            <label class="field-label" for="full_name">Full Name</label>
+            <input class="form-input" type="text" id="full_name" name="Full Name" aria-label="Full Name" placeholder="First Middle Last">
           </div>
           <div>
-            <label class="field-label" for="email">Email <span class="req">*</span></label>
-            <input class="form-input" type="email" id="email" name="Email" required aria-label="Email" placeholder="you@example.com">
+            <label class="field-label" for="email">Email</label>
+            <input class="form-input" type="email" id="email" name="Email" aria-label="Email" placeholder="you@example.com">
           </div>
           <div>
-            <label class="field-label" for="phone">Phone <span class="req">*</span></label>
-            <input class="form-input" type="tel" id="phone" name="Phone" required aria-label="Phone" placeholder="(555) 555-5555">
+            <label class="field-label" for="phone">Phone</label>
+            <input class="form-input" type="tel" id="phone" name="Phone" aria-label="Phone" placeholder="(555) 555-5555">
           </div>
           <div class="sm:col-span-2">
-            <label class="field-label" for="current_address">Current Address <span class="req">*</span></label>
-            <input class="form-input" type="text" id="current_address" name="Current Address" required aria-label="Current Address" placeholder="Street, City, State, ZIP">
+            <label class="field-label" for="current_address">Current Address</label>
+            <input class="form-input" type="text" id="current_address" name="Current Address" aria-label="Current Address" placeholder="Street, City, State, ZIP">
           </div>
           <div>
             <label class="field-label" for="time_at_address">Time at Current Address</label>
@@ -234,8 +234,8 @@
         <input type="hidden" name="■■■ SECTION 5 — PET INFORMATION ■■■" value="―――――――――――">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="field-label" for="has_pets">Do you have pets? <span class="req">*</span></label>
-            <select class="form-input" id="has_pets" name="Has Pets" required aria-label="Do you have pets">
+            <label class="field-label" for="has_pets">Do you have pets?</label>
+            <select class="form-input" id="has_pets" name="Has Pets" aria-label="Do you have pets">
               <option value="" disabled selected>Select one</option>
               <option value="No">No</option>
               <option value="Yes">Yes</option>
@@ -311,10 +311,9 @@
       <!-- CONSENT + SUBMIT -->
       <div class="section-card">
         <label class="flex items-start gap-3 cursor-pointer mb-5">
-          <input type="checkbox" name="Verification Consent" value="Yes" required aria-label="Verification Consent" class="mt-1 h-4 w-4">
-          <span class="text-slate-700 dark:text-slate-300 text-sm">I authorize verification of the information provided in this application, including contacting employers, landlords, and references. <span class="req">*</span></span>
+          <input type="checkbox" name="Verification Consent" value="Yes" aria-label="Verification Consent" class="mt-1 h-4 w-4">
+          <span class="text-slate-700 dark:text-slate-300 text-sm">I authorize verification of the information provided in this application, including contacting employers, landlords, and references.</span>
         </label>
-        <p class="text-slate-500 dark:text-slate-400 text-xs mb-5"><span class="req">*</span> Required fields</p>
         <button type="submit" class="btn" aria-label="Submit Application">Submit Application</button>
       </div>
     </form>
