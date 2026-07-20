@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan Tax Calculator | EastWest Help</title>
+    <meta name="description" content="Calculate your real take-home pay in Japan after income tax, social insurance, resident tax, and pension deductions.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-space { font-family: 'Space Grotesk', sans-serif; }
+        .font-jp { font-family: 'Noto Sans JP', sans-serif; }
+
+        /* Custom range slider */
+        input[type=range] {
+            -webkit-appearance: none; appearance: none;
+            width: 100%; height: 8px; border-radius: 4px;
+            background: #e2e8f0; outline: none;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; appearance: none;
+            width: 24px; height: 24px; border-radius: 50%;
+            background: #38bdf8; cursor: pointer;
+            border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: transform 0.15s;
+        }
+        input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+        input[type=range]::-moz-range-thumb {
+            width: 24px; height: 24px; border-radius: 50%;
+            background: #38bdf8; cursor: pointer;
+            border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        /* Flow chart bars */
+        .flow-bar { transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .count-up { transition: all 0.3s ease; }
+
+        /* Card hover */
+        .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+
+        /* Tooltip */
+        .tooltip-trigger { position: relative; }
+        .tooltip-trigger:hover .tooltip { opacity: 1; visibility: visible; transform: translateY(0); }
+        .tooltip {
+            position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%) translateY(4px);
+            background: #1e293b; color: white; padding: 8px 12px; border-radius: 8px;
+            font-size: 12px; white-space: nowrap; opacity: 0; visibility: hidden;
+            transition: all 0.2s; z-index: 50; pointer-events: none;
+        }
+        .tooltip::after {
+            content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+            border: 6px solid transparent; border-top-color: #1e293b;
+        }
+
+        /* Deduction item colors */
+        .deduction-pension { background: #f59e0b; }
+        .deduction-resident { background: #8b5cf6; }
+        .deduction-health { background: #10b981; }
+        .deduction-income { background: #ef4444; }
+        .deduction-unemployment { background: #f97316; }
+        .deduction-childcare { background: #ec4899; }
+        .deduction-reconstruction { background: #64748b; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-in { animation: fadeInUp 0.5s ease forwards; }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="font-space font-bold text-2xl tracking-tight text-blue-400">EastWest <span class="text-slate-800">Help</span></a>
+            <div class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="/" class="text-slate-600 hover:text-blue-600 transition">Home</a>
+                <a href="/property" class="text-slate-600 hover:text-blue-600 transition">Landlords</a>
+                <a href="/tenant" class="text-slate-600 hover:text-blue-600 transition">Tenants</a>
+                <a href="/intake" class="text-slate-600 hover:text-blue-600 transition">Intake</a>
+            </div>
+            <a href="/" class="bg-blue-700 hover:bg-blue-800 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition">← Back to Home</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="bg-white border-b border-slate-200">
+        <div class="max-w-4xl mx-auto px-6 py-12 text-center">
+            <div class="inline-flex items-center gap-2 bg-sky-50 text-sky-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
+                <span>🇯🇵</span> Japan Income Visualizer 2026
+            </div>
+            <h1 class="font-space text-4xl md:text-5xl font-bold text-slate-900 mb-4">Break down your Japanese payslip</h1>
+            <p class="text-lg text-slate-500 max-w-2xl mx-auto">Calculate your real take-home pay in Japan after income tax, social insurance, resident tax, and pension deductions. Supports employees, part-time workers, and freelancers.</p>
+
+            <div class="mt-6 flex items-center justify-center gap-3 text-sm text-slate-400">
+                <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> 2026 rates</span>
+                <span>•</span>
+                <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg> No data stored</span>
+                <span>•</span>
+                <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg> Client-side only</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Calculator -->
+    <main class="max-w-6xl mx-auto px-6 py-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+            <!-- Left: Inputs -->
+            <div class="lg:col-span-5 space-y-6">
+
+                <!-- Employment Type -->
+                <div class="bg-white rounded-xl border border-slate-200 p-6 card-hover">
+                    <h3 class="font-space font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        Employment Type
+                    </h3>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button id="btn-employee" class="type-btn active px-4 py-3 rounded-lg border-2 border-blue-500 bg-blue-50 text-blue-700 font-semibold text-sm transition" onclick="setEmploymentType('employee')">Employee</button>
+                        <button id="btn-parttime" class="type-btn px-4 py-3 rounded-lg border-2 border-slate-200 text-slate-600 font-medium text-sm transition hover:border-slate-300" onclick="setEmploymentType('part-time')">Part-time</button>
+                        <button id="btn-freelancer" class="type-btn px-4 py-3 rounded-lg border-2 border-slate-200 text-slate-600 font-medium text-sm transition hover:border-slate-300" onclick="setEmploymentType('freelancer')">Freelancer</button>
+                    </div>
+
+                    <!-- Part-time insurance options -->
+                    <div id="parttime-options" class="hidden mt-4 p-4 bg-slate-50 rounded-lg">
+                        <p class="text-sm text-slate-600 mb-2 font-medium">Insurance enrollment:</p>
+                        <div class="flex gap-3">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="insurance" value="company" checked class="w-4 h-4 text-blue-600" onchange="setInsuranceType('company')">
+                                <span class="text-sm text-slate-700">Company (Shakai Hoken)</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="insurance" value="national" class="w-4 h-4 text-blue-600" onchange="setInsuranceType('national')">
+                                <span class="text-sm text-slate-700">National (Kokumin)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Freelancer options -->
+                    <div id="freelancer-options" class="hidden mt-4 space-y-3">
+                        <label class="flex items-center gap-3 cursor-pointer p-3 bg-slate-50 rounded-lg">
+                            <input type="checkbox" id="blue-return" class="w-5 h-5 text-blue-600 rounded" onchange="toggleBlueReturn()">
+                            <div>
+                                <p class="text-sm font-medium text-slate-800">Blue Return (青色申告)</p>
+                                <p class="text-xs text-slate-500">¥650,000 special deduction for freelancers</p>
+                            </div>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer p-3 bg-slate-50 rounded-lg">
+                            <input type="checkbox" id="spouse-deduction" class="w-5 h-5 text-blue-600 rounded" onchange="toggleSpouse()">
+                            <div>
+                                <p class="text-sm font-medium text-slate-800">Spouse Deduction</p>
+                                <p class="text-xs text-slate-500">Claim dependent spouse deduction</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Income Slider -->
+                <div class="bg-white rounded-xl border border-slate-200 p-6 card-hover">
+                    <div class="flex justify-between items-end mb-4">
+                        <h3 class="font-space font-semibold text-slate-800 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            Annual Gross Income
+                        </h3>
+                        <div class="text-right">
+                            <span id="income-display" class="font-space text-2xl font-bold text-slate-900">¥6,200,000</span>
+                            <span class="text-sm text-slate-400 ml-1">/ year</span>
+                        </div>
+                    </div>
+
+                    <input type="range" id="income-slider" min="100000" max="25000000" step="100000" value="6200000" oninput="updateIncome(this.value)">
+
+                    <div class="flex justify-between text-xs text-slate-400 mt-2 font-medium">
+                        <span>¥0.1M</span>
+                        <span>¥5M</span>
+                        <span>¥10M</span>
+                        <span>¥15M</span>
+                        <span>¥20M</span>
+                        <span>¥25M</span>
+                    </div>
+
+                    <div class="mt-4 flex gap-2">
+                        <button onclick="setIncome(3000000)" class="px-3 py-1.5 text-xs font-medium bg-slate-100 hover:bg-slate-200 rounded-md text-slate-600 transition">¥3M</button>
+                        <button onclick="setIncome(5000000)" class="px-3 py-1.5 text-xs font-medium bg-slate-100 hover:bg-slate-200 rounded-md text-slate-600 transition">¥5M</button>
+                        <button onclick="setIncome(6200000)" class="px-3 py-1.5 text-xs font-medium bg-blue-100 text-blue-700 rounded-md font-semibold transition">¥6.2M</button>
+                        <button onclick="setIncome(8000000)" class="px-3 py-1.5 text-xs font-medium bg-slate-100 hover:bg-slate-200 rounded-md text-slate-600 transition">¥8M</button>
+                        <button onclick="setIncome(10000000)" class="px-3 py-1.5 text-xs font-medium bg-slate-100 hover:bg-slate-200 rounded-md text-slate-600 transition">¥10M</button>
+                        <button onclick="setIncome(15000000)" class="px-3 py-1.5 text-xs font-medium bg-slate-100 hover:bg-slate-200 rounded-md text-slate-600 transition">¥15M</button>
+                    </div>
+                </div>
+
+                <!-- Advanced Options -->
+                <div class="bg-white rounded-xl border border-slate-200 p-6 card-hover">
+                    <h3 class="font-space font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        Additional Details
+                    </h3>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Monthly Transport Allowance</label>
+                            <div class="flex items-center gap-3">
+                                <span class="text-slate-400 font-medium">¥</span>
+                                <input type="number" id="transport" value="0" min="0" max="150000" step="1000" class="flex-1 px-3 py-2 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" oninput="calculate()">
+                                <span class="text-xs text-slate-400">/ month (max ¥150k)</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">Monthly Overtime</label>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-slate-400 font-medium">¥</span>
+                                    <input type="number" id="overtime" value="0" min="0" class="flex-1 px-3 py-2 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none" oninput="calculate()">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">Monthly Family Allowance</label>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-slate-400 font-medium">¥</span>
+                                    <input type="number" id="family" value="0" min="0" class="flex-1 px-3 py-2 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none" oninput="calculate()">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" id="include-overtime" checked class="w-4 h-4 text-blue-600 rounded" onchange="calculate()">
+                                <span class="text-sm text-slate-600">Include overtime in gross total</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" id="include-family" checked class="w-4 h-4 text-blue-600 rounded" onchange="calculate()">
+                                <span class="text-sm text-slate-600">Include family allowance in gross total</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assumptions -->
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <div>
+                            <p class="text-sm font-semibold text-amber-800">Calculation Assumptions</p>
+                            <p class="text-xs text-amber-700 mt-1 leading-relaxed">We assume your employer enrolls you in Shakai Hoken (employee health insurance + pension) and deducts these from your income. Rates are based on 2026 projections. Results are estimates — consult a tax professional for exact figures.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Results -->
+            <div class="lg:col-span-7 space-y-6">
+
+                <!-- Main Result Card -->
+                <div class="bg-white rounded-xl border border-slate-200 p-8 card-hover">
+                    <div class="text-center mb-6">
+                        <p class="text-sm font-medium text-slate-400 uppercase tracking-wider mb-2">Annual Take-Home Pay</p>
+                        <div class="flex items-baseline justify-center gap-2">
+                            <span id="net-income" class="font-space text-5xl md:text-6xl font-bold text-emerald-600">¥4,737,695</span>
+                        </div>
+                        <div class="mt-3 flex items-center justify-center gap-4 text-sm">
+                            <span class="text-slate-500">Total Deductions: <span id="total-deductions" class="font-semibold text-slate-700">¥1,462,305</span></span>
+                            <span class="text-slate-300">|</span>
+                            <span class="text-emerald-600 font-semibold" id="takehome-rate">~76.4%</span>
+                            <span class="text-slate-400">take-home rate</span>
+                        </div>
+                    </div>
+
+                    <!-- Percentile Badge -->
+                    <div class="flex justify-center">
+                        <span id="percentile-badge" class="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-100 rounded-full text-sm font-medium text-slate-600">
+                            <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            Top 24% of earners in Japan
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Flow Visualization -->
+                <div class="bg-white rounded-xl border border-slate-200 p-6 card-hover">
+                    <h3 class="font-space font-semibold text-slate-800 mb-6">Where your money goes</h3>
+
+                    <div class="space-y-4">
+                        <!-- Gross Income Bar -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-medium text-slate-700">Gross Income</span>
+                                <span id="flow-gross" class="font-semibold text-slate-900">¥6,200,000</span>
+                            </div>
+                            <div class="h-8 bg-slate-100 rounded-lg overflow-hidden relative">
+                                <div class="flow-bar h-full bg-slate-800 rounded-lg" style="width: 100%"></div>
+                                <span class="absolute inset-0 flex items-center justify-end pr-3 text-xs font-bold text-white">100%</span>
+                            </div>
+                        </div>
+
+                        <!-- Arrow -->
+                        <div class="flex justify-center"><svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg></div>
+
+                        <!-- Deductions Stack -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-medium text-slate-700">Deductions</span>
+                                <span id="flow-deductions" class="font-semibold text-red-500">-¥1,462,305</span>
+                            </div>
+                            <div class="h-10 rounded-lg overflow-hidden flex" id="deduction-stack">
+                                <!-- Filled by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Arrow -->
+                        <div class="flex justify-center"><svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg></div>
+
+                        <!-- Net Income Bar -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-medium text-emerald-700">Take-Home Pay</span>
+                                <span id="flow-net" class="font-semibold text-emerald-600">¥4,737,695</span>
+                            </div>
+                            <div class="h-10 bg-emerald-50 rounded-lg overflow-hidden relative border border-emerald-200">
+                                <div id="net-bar" class="flow-bar h-full bg-emerald-500 rounded-lg" style="width: 76.4%"></div>
+                                <span id="net-percent" class="absolute inset-0 flex items-center justify-end pr-3 text-sm font-bold text-emerald-800">76.4%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Breakdown Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="bg-white rounded-xl border border-slate-200 p-4 card-hover">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-3 h-3 rounded-full deduction-pension"></div>
+                            <span class="text-xs font-medium text-slate-500">Pension</span>
+                        </div>
+                        <p id="val-pension" class="font-space text-lg font-bold text-slate-800">¥569,300</p>
+                        <p id="pct-pension" class="text-xs text-slate-400">9.2%</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 p-4 card-hover">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-3 h-3 rounded-full deduction-resident"></div>
+                            <span class="text-xs font-medium text-slate-500">Resident Tax</span>
+                        </div>
+                        <p id="val-resident" class="font-space text-lg font-bold text-slate-800">¥320,000</p>
+                        <p id="pct-resident" class="text-xs text-slate-400">5.2%</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 p-4 card-hover">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-3 h-3 rounded-full deduction-health"></div>
+                            <span class="text-xs font-medium text-slate-500">Health Insurance</span>
+                        </div>
+                        <p id="val-health" class="font-space text-lg font-bold text-slate-800">¥310,000</p>
+                        <p id="pct-health" class="text-xs text-slate-400">5.0%</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 p-4 card-hover">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-3 h-3 rounded-full deduction-income"></div>
+                            <span class="text-xs font-medium text-slate-500">Income Tax</span>
+                        </div>
+                        <p id="val-income" class="font-space text-lg font-bold text-slate-800">¥217,000</p>
+                        <p id="pct-income" class="text-xs text-slate-400">3.5%</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 p-4 card-hover">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-3 h-3 rounded-full deduction-unemployment"></div>
+                            <span class="text-xs font-medium text-slate-500">Unemployment Ins.</span>
+                        </div>
+                        <p id="val-unemployment" class="font-space text-lg font-bold text-slate-800">¥37,200</p>
+                        <p id="pct-unemployment" class="text-xs text-slate-400">0.6%</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 p-4 card-hover">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-3 h-3 rounded-full deduction-childcare"></div>
+                            <span class="text-xs font-medium text-slate-500">Childcare Support</span>
+                        </div>
+                        <p id="val-childcare" class="font-space text-lg font-bold text-slate-800">¥6,200</p>
+                        <p id="pct-childcare" class="text-xs text-slate-400">0.1%</p>
+                    </div>
+                </div>
+
+                <!-- Monthly Breakdown -->
+                <div class="bg-white rounded-xl border border-slate-200 p-6 card-hover">
+                    <h3 class="font-space font-semibold text-slate-800 mb-4">Monthly Breakdown</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="text-center p-4 bg-slate-50 rounded-lg">
+                            <p class="text-xs text-slate-500 mb-1">Monthly Gross</p>
+                            <p id="monthly-gross" class="font-space font-bold text-slate-800">¥516,667</p>
+                        </div>
+                        <div class="text-center p-4 bg-red-50 rounded-lg">
+                            <p class="text-xs text-slate-500 mb-1">Monthly Deductions</p>
+                            <p id="monthly-deductions" class="font-space font-bold text-red-600">¥121,859</p>
+                        </div>
+                        <div class="text-center p-4 bg-emerald-50 rounded-lg">
+                            <p class="text-xs text-slate-500 mb-1">Monthly Net</p>
+                            <p id="monthly-net" class="font-space font-bold text-emerald-600">¥394,808</p>
+                        </div>
+                        <div class="text-center p-4 bg-blue-50 rounded-lg">
+                            <p class="text-xs text-slate-500 mb-1">Net (excl. bonus)</p>
+                            <p id="monthly-net-excl" class="font-space font-bold text-blue-600">¥394,808</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tax Bracket Visualization -->
+                <div class="bg-white rounded-xl border border-slate-200 p-6 card-hover">
+                    <h3 class="font-space font-semibold text-slate-800 mb-4">Income Tax Brackets (2026)</h3>
+                    <div class="space-y-3" id="bracket-viz">
+                        <!-- Filled by JS -->
+                    </div>
+                    <p class="text-xs text-slate-400 mt-4">* Brackets apply to taxable income after employment income deduction and social insurance deductions.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full bg-slate-900 border-t border-slate-800 mt-12">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div>
+                    <p class="font-space font-bold text-xl text-white tracking-tight">EastWest <span class="text-[#38bdf8]">Help</span></p>
+                    <p class="mt-3 text-sm text-slate-400 leading-relaxed">Property management services for landlords and tenants across California and Tennessee.</p>
+                </div>
+                <nav aria-label="Footer">
+                    <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Navigate</p>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="/" class="hover:text-[#38bdf8] transition-colors">Home</a></li>
+                        <li><a href="/property" class="hover:text-[#38bdf8] transition-colors">Property Services</a></li>
+                        <li><a href="/tenant" class="hover:text-[#38bdf8] transition-colors">Tenant Requests</a></li>
+                        <li><a href="/intake" class="hover:text-[#38bdf8] transition-colors">Tenant Intake</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Disclaimer</p>
+                    <p class="text-sm text-slate-400 leading-relaxed">This calculator provides estimates based on 2026 Japanese tax rates. Actual deductions may vary based on your municipality, employer policies, and individual circumstances. Consult a licensed tax accountant (税理士) for precise figures.</p>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-10 pt-6 text-center text-xs text-slate-500">
+                <p>EastWest Help Inc. Japan Tax Calculator — Built for informational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // ============================================
+    // JAPAN TAX CALCULATOR ENGINE (2026)
+    // Reverse-engineered from japanincome.xyz
+    // ============================================
+
+    const CHILDCARE_RATES = {
+        2024: 0.0036, 2025: 0.0036, 2026: 0.0036
+    };
+
+    const TAX_BRACKETS = [
+        { limit: 1950000, rate: 0.05, deduction: 0 },
+        { limit: 3300000, rate: 0.10, deduction: 97500 },
+        { limit: 6950000, rate: 0.20, deduction: 427500 },
+        { limit: 9000000, rate: 0.23, deduction: 636000 },
+        { limit: 18000000, rate: 0.33, deduction: 1536000 },
+        { limit: 40000000, rate: 0.40, deduction: 2796000 },
+        { limit: Infinity, rate: 0.45, deduction: 4796000 }
+    ];
+
+    // Income percentile estimate (very rough)
+    function getPercentile(income) {
+        if (income < 3000000) return "Bottom 30%";
+        if (income < 4000000) return "Top 50%";
+        if (income < 5500000) return "Top 35%";
+        if (income < 7000000) return "Top 24%";
+        if (income < 10000000) return "Top 15%";
+        if (income < 15000000) return "Top 8%";
+        if (income < 20000000) return "Top 4%";
+        return "Top 2%";
+    }
+
+    // Main calculation
+    function calculateTaxes(grossAnnual, employmentType, hasSpouse, blueReturn, insuranceType, year = 2026, monthlyTransport = 0, options = {}) {
+        const {
+            monthlyOvertime = 0,
+            monthlyFamily = 0,
+            overtimeIncluded = true,
+            familyIncluded = true,
+            bonus = null
+        } = options;
+
+        const isEmployee = employmentType === 'employee' || employmentType === 'part-time';
+        const isPartTime = employmentType === 'part-time';
+        const isFreelancer = employmentType === 'freelancer';
+
+        const annualOvertime = 12 * monthlyOvertime;
+        const annualFamily = 12 * monthlyFamily;
+
+        let annualBonus = 0;
+        const bonusCount = bonus && bonus.count > 0 ? bonus.count : 0;
+        if (bonus && bonusCount > 0) {
+            if (bonus.mode === 'amount') {
+                annualBonus = bonus.amountPerBonus * bonusCount;
+            } else {
+                const months = Math.max(0, bonus.monthsOfSalary);
+                annualBonus = (bonus.included ? grossAnnual / (12 + months) : grossAnnual / 12) * months;
+            }
+        }
+
+        const totalGross = grossAnnual 
+            + (overtimeIncluded ? 0 : annualOvertime)
+            + (familyIncluded ? 0 : annualFamily)
+            + (bonus && bonus.included ? 0 : annualBonus);
+
+        const transportExemption = 12 * Math.min(monthlyTransport, 150000);
+        const adjustedGross = Math.max(0, totalGross - transportExemption);
+
+        const baseSalary = totalGross - annualBonus;
+        const bonusPerPayment = bonusCount > 0 ? Math.min(annualBonus / bonusCount, 1500000) : 0;
+        const bonusTotalForPension = bonusPerPayment * bonusCount;
+        const healthBase = baseSalary + Math.min(annualBonus, 5730000);
+        const pensionBase = baseSalary + bonusTotalForPension;
+
+        // Employment income deduction
+        let employmentDeduction = 0;
+        if (isEmployee) {
+            employmentDeduction =
+                adjustedGross <= 1625000 ? 550000 :
+                adjustedGross <= 1800000 ? 0.4 * adjustedGross - 100000 :
+                adjustedGross <= 3600000 ? 0.3 * adjustedGross + 80000 :
+                adjustedGross <= 6600000 ? 0.2 * adjustedGross + 440000 :
+                adjustedGross <= 8500000 ? 0.1 * adjustedGross + 1100000 :
+                1950000;
+        }
+
+        // Social insurance
+        let healthInsurance = 0, pensionInsurance = 0, unemploymentInsurance = 0;
+
+        if (employmentType === 'employee') {
+            healthInsurance = 0.05 * healthBase;
+            pensionInsurance = 0.0915 * pensionBase;
+            unemploymentInsurance = 0.006 * totalGross;
+        } else if (isPartTime) {
+            if (insuranceType === 'company') {
+                healthInsurance = 0.05 * healthBase;
+                pensionInsurance = 0.0915 * pensionBase;
+                unemploymentInsurance = 0.006 * totalGross;
+            } else if (insuranceType === 'national') {
+                healthInsurance = 0.1 * Math.max(0, adjustedGross - employmentDeduction - 430000) + 50000;
+                pensionInsurance = 203760;
+                unemploymentInsurance = 0.006 * totalGross;
+            }
+        } else { // freelancer
+            const nationalHealthBase = Math.max(0, grossAnnual - 430000);
+            healthInsurance = hasSpouse ? 50000 : 0.1 * nationalHealthBase + 50000;
+            pensionInsurance = 203760;
+            unemploymentInsurance = 0;
+        }
+
+        // Childcare support
+        const childcareRate = CHILDCARE_RATES[year] || CHILDCARE_RATES[2026];
+        let childcareSupport = 0;
+        if (employmentType === 'employee') {
+            childcareSupport = healthBase * childcareRate;
+        } else if (isPartTime) {
+            if (insuranceType === 'company') {
+                childcareSupport = healthBase * childcareRate;
+            } else if (insuranceType === 'national') {
+                childcareSupport = Math.max(0, adjustedGross - employmentDeduction - 430000) * childcareRate * 2;
+            }
+        } else {
+            childcareSupport = Math.max(0, grossAnnual - 430000) * childcareRate * 2;
+        }
+
+        const socialInsuranceTotal = healthInsurance + pensionInsurance + unemploymentInsurance + childcareSupport;
+        const blueReturnDeduction = (isFreelancer && blueReturn) ? 650000 : 0;
+
+        const taxableIncome = Math.max(0, adjustedGross - employmentDeduction - socialInsuranceTotal - 480000 - blueReturnDeduction);
+
+        // Income tax
+        let baseIncomeTax = 0;
+        for (const bracket of TAX_BRACKETS) {
+            if (taxableIncome <= bracket.limit) {
+                baseIncomeTax = bracket.rate * taxableIncome - bracket.deduction;
+                break;
+            }
+        }
+
+        const reconstructionTax = 0.021 * baseIncomeTax;
+        const totalIncomeTax = baseIncomeTax + reconstructionTax;
+
+        // Resident tax
+        let residentTax = 0;
+        if (!hasSpouse) {
+            residentTax = 0.1 * Math.max(0, adjustedGross - employmentDeduction - socialInsuranceTotal - 430000 - blueReturnDeduction) + 5000;
+        }
+
+        const totalDeductions = socialInsuranceTotal + totalIncomeTax + residentTax;
+        const netIncome = Math.max(0, totalGross - totalDeductions);
+
+        return {
+            grossAnnual, totalGross, annualOvertime, annualFamily, annualBonus,
+            employmentDeduction, healthInsurance, pensionInsurance, unemploymentInsurance,
+            childcareSupport, socialInsuranceTotal, transportExemption, taxableIncome,
+            baseIncomeTax, reconstructionTax, totalIncomeTax, residentTax,
+            totalDeductions, netIncome, blueReturnDeduction,
+            netMonthly: netIncome / 12,
+            netMonthlyExclBonus: annualBonus > 0 ? (netIncome - annualBonus) / 12 : netIncome / 12
+        };
+    }
+
+    // ============================================
+    // UI STATE & CONTROLLERS
+    // ============================================
+
+    let state = {
+        income: 6200000,
+        employmentType: 'employee',
+        insuranceType: 'company',
+        hasSpouse: false,
+        blueReturn: false,
+        monthlyTransport: 0,
+        monthlyOvertime: 0,
+        monthlyFamily: 0,
+        overtimeIncluded: true,
+        familyIncluded: true
+    };
+
+    function formatYen(n) {
+        return '¥' + Math.round(n).toLocaleString('en-US');
+    }
+
+    function setEmploymentType(type) {
+        state.employmentType = type;
+        document.querySelectorAll('.type-btn').forEach(btn => {
+            btn.classList.remove('active', 'border-blue-500', 'bg-blue-50', 'text-blue-700');
+            btn.classList.add('border-slate-200', 'text-slate-600');
+        });
+        const activeBtn = document.getElementById('btn-' + type.replace('-', ''));
+        activeBtn.classList.remove('border-slate-200', 'text-slate-600');
+        activeBtn.classList.add('active', 'border-blue-500', 'bg-blue-50', 'text-blue-700');
+
+        document.getElementById('parttime-options').classList.toggle('hidden', type !== 'part-time');
+        document.getElementById('freelancer-options').classList.toggle('hidden', type !== 'freelancer');
+        calculate();
+    }
+
+    function setInsuranceType(type) {
+        state.insuranceType = type;
+        calculate();
+    }
+
+    function toggleBlueReturn() {
+        state.blueReturn = document.getElementById('blue-return').checked;
+        calculate();
+    }
+
+    function toggleSpouse() {
+        state.hasSpouse = document.getElementById('spouse-deduction').checked;
+        calculate();
+    }
+
+    function updateIncome(val) {
+        state.income = parseInt(val);
+        document.getElementById('income-display').textContent = formatYen(state.income);
+        calculate();
+    }
+
+    function setIncome(val) {
+        state.income = val;
+        document.getElementById('income-slider').value = val;
+        document.getElementById('income-display').textContent = formatYen(val);
+        calculate();
+    }
+
+    function calculate() {
+        state.monthlyTransport = parseInt(document.getElementById('transport').value) || 0;
+        state.monthlyOvertime = parseInt(document.getElementById('overtime').value) || 0;
+        state.monthlyFamily = parseInt(document.getElementById('family').value) || 0;
+        state.overtimeIncluded = document.getElementById('include-overtime').checked;
+        state.familyIncluded = document.getElementById('include-family').checked;
+
+        const result = calculateTaxes(
+            state.income,
+            state.employmentType,
+            state.hasSpouse,
+            state.blueReturn,
+            state.insuranceType,
+            2026,
+            state.monthlyTransport,
+            {
+                monthlyOvertime: state.monthlyOvertime,
+                monthlyFamily: state.monthlyFamily,
+                overtimeIncluded: state.overtimeIncluded,
+                familyIncluded: state.familyIncluded
+            }
+        );
+
+        // Update main results
+        document.getElementById('net-income').textContent = formatYen(result.netIncome);
+        document.getElementById('total-deductions').textContent = formatYen(result.totalDeductions);
+        const rate = ((result.netIncome / result.totalGross) * 100).toFixed(1);
+        document.getElementById('takehome-rate').textContent = '~' + rate + '%';
+
+        // Percentile
+        document.getElementById('percentile-badge').innerHTML = `
+            <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            ${getPercentile(result.totalGross)} of earners in Japan
+        `;
+
+        // Flow visualization
+        document.getElementById('flow-gross').textContent = formatYen(result.totalGross);
+        document.getElementById('flow-deductions').textContent = '-' + formatYen(result.totalDeductions);
+        document.getElementById('flow-net').textContent = formatYen(result.netIncome);
+        document.getElementById('net-bar').style.width = rate + '%';
+        document.getElementById('net-percent').textContent = rate + '%';
+
+        // Deduction stack
+        const deductions = [
+            { name: 'Pension', value: result.pensionInsurance, color: 'bg-amber-400', class: 'deduction-pension' },
+            { name: 'Resident Tax', value: result.residentTax, color: 'bg-violet-400', class: 'deduction-resident' },
+            { name: 'Health Insurance', value: result.healthInsurance, color: 'bg-emerald-400', class: 'deduction-health' },
+            { name: 'Income Tax', value: result.totalIncomeTax, color: 'bg-red-400', class: 'deduction-income' },
+            { name: 'Unemployment', value: result.unemploymentInsurance, color: 'bg-orange-400', class: 'deduction-unemployment' },
+            { name: 'Childcare', value: result.childcareSupport, color: 'bg-pink-400', class: 'deduction-childcare' },
+        ].filter(d => d.value > 0);
+
+        const totalDed = result.totalDeductions;
+        const stackHtml = deductions.map(d => {
+            const pct = (d.value / totalDed * 100).toFixed(1);
+            return `<div class="${d.color} h-full flow-bar tooltip-trigger" style="width: ${pct}%" title="${d.name}: ${formatYen(d.value)}">
+                <div class="tooltip">${d.name}: ${formatYen(d.value)} (${pct}%)</div>
+            </div>`;
+        }).join('');
+        document.getElementById('deduction-stack').innerHTML = stackHtml;
+
+        // Breakdown cards
+        const items = [
+            { id: 'pension', val: result.pensionInsurance },
+            { id: 'resident', val: result.residentTax },
+            { id: 'health', val: result.healthInsurance },
+            { id: 'income', val: result.totalIncomeTax },
+            { id: 'unemployment', val: result.unemploymentInsurance },
+            { id: 'childcare', val: result.childcareSupport },
+        ];
+        items.forEach(item => {
+            document.getElementById('val-' + item.id).textContent = formatYen(item.val);
+            const pct = result.totalGross > 0 ? (item.val / result.totalGross * 100).toFixed(1) : 0;
+            document.getElementById('pct-' + item.id).textContent = pct + '%';
+        });
+
+        // Monthly breakdown
+        document.getElementById('monthly-gross').textContent = formatYen(result.totalGross / 12);
+        document.getElementById('monthly-deductions').textContent = formatYen(result.totalDeductions / 12);
+        document.getElementById('monthly-net').textContent = formatYen(result.netMonthly);
+        document.getElementById('monthly-net-excl').textContent = formatYen(result.netMonthlyExclBonus);
+
+        // Bracket visualization
+        renderBrackets(result.taxableIncome);
+    }
+
+    function renderBrackets(taxableIncome) {
+        const brackets = [
+            { label: '¥0 – ¥1,950,000', rate: '5%', limit: 1950000 },
+            { label: '¥1,950,001 – ¥3,300,000', rate: '10%', limit: 3300000 },
+            { label: '¥3,300,001 – ¥6,950,000', rate: '20%', limit: 6950000 },
+            { label: '¥6,950,001 – ¥9,000,000', rate: '23%', limit: 9000000 },
+            { label: '¥9,000,001 – ¥18,000,000', rate: '33%', limit: 18000000 },
+            { label: '¥18,000,001 – ¥40,000,000', rate: '40%', limit: 40000000 },
+            { label: 'Over ¥40,000,000', rate: '45%', limit: Infinity },
+        ];
+
+        let html = '';
+        for (const b of brackets) {
+            const isActive = taxableIncome > 0 && (b.limit === Infinity || taxableIncome <= b.limit);
+            const prevLimit = brackets[brackets.indexOf(b) - 1]?.limit || 0;
+            const inBracket = Math.max(0, Math.min(taxableIncome, b.limit) - prevLimit);
+            const pct = taxableIncome > 0 ? Math.min(100, (inBracket / taxableIncome * 100)) : 0;
+
+            html += `
+            <div class="flex items-center gap-3">
+                <div class="w-24 text-xs text-slate-500 font-mono">${b.label}</div>
+                <div class="flex-1 h-6 bg-slate-100 rounded-md overflow-hidden relative">
+                    <div class="h-full ${isActive ? 'bg-blue-500' : 'bg-slate-300'} rounded-md flow-bar" style="width: ${Math.max(pct, isActive ? 3 : 0)}%"></div>
+                    ${isActive ? `<span class="absolute inset-0 flex items-center pl-2 text-xs font-bold text-white">${b.rate}</span>` : ''}
+                </div>
+                <div class="w-16 text-right text-xs font-mono text-slate-600">${b.rate}</div>
+            </div>`;
+        }
+        document.getElementById('bracket-viz').innerHTML = html;
+    }
+
+    // Initialize
+    calculate();
+    </script>
+</body>
+</html>
