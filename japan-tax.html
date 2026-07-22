@@ -337,7 +337,7 @@
                             <div class="w-3 h-3 rounded-full deduction-pension"></div>
                             <span class="text-xs font-medium text-slate-500">Pension</span>
                         </div>
-                        <p id="val-pension" class="font-space text-lg font-bold text-slate-800">¥569,300</p>
+                        <p id="val-pension" class="font-space text-lg font-bold text-slate-800">¥567,300</p>
                         <p id="pct-pension" class="text-xs text-slate-400">9.2%</p>
                     </div>
                     <div class="bg-white rounded-xl border border-slate-200 p-4 card-hover">
@@ -345,7 +345,7 @@
                             <div class="w-3 h-3 rounded-full deduction-resident"></div>
                             <span class="text-xs font-medium text-slate-500">Resident Tax</span>
                         </div>
-                        <p id="val-resident" class="font-space text-lg font-bold text-slate-800">¥320,000</p>
+                        <p id="val-resident" class="font-space text-lg font-bold text-slate-800">¥321,837</p>
                         <p id="pct-resident" class="text-xs text-slate-400">5.2%</p>
                     </div>
                     <div class="bg-white rounded-xl border border-slate-200 p-4 card-hover">
@@ -361,7 +361,7 @@
                             <div class="w-3 h-3 rounded-full deduction-income"></div>
                             <span class="text-xs font-medium text-slate-500">Income Tax</span>
                         </div>
-                        <p id="val-income" class="font-space text-lg font-bold text-slate-800">¥217,000</p>
+                        <p id="val-income" class="font-space text-lg font-bold text-slate-800">¥218,838</p>
                         <p id="pct-income" class="text-xs text-slate-400">3.5%</p>
                     </div>
                     <div class="bg-white rounded-xl border border-slate-200 p-4 card-hover">
@@ -377,7 +377,7 @@
                             <div class="w-3 h-3 rounded-full deduction-childcare"></div>
                             <span class="text-xs font-medium text-slate-500">Childcare Support</span>
                         </div>
-                        <p id="val-childcare" class="font-space text-lg font-bold text-slate-800">¥6,200</p>
+                        <p id="val-childcare" class="font-space text-lg font-bold text-slate-800">¥7,130</p>
                         <p id="pct-childcare" class="text-xs text-slate-400">0.1%</p>
                     </div>
                 </div>
@@ -452,7 +452,7 @@
     // ============================================
 
     const CHILDCARE_RATES = {
-        2024: 0.0036, 2025: 0.0036, 2026: 0.0036
+        2024: 0, 2025: 0, 2026: 0.00115
     };
 
     const TAX_BRACKETS = [
@@ -550,7 +550,7 @@
             }
         } else { // freelancer
             const nationalHealthBase = Math.max(0, grossAnnual - 430000);
-            healthInsurance = hasSpouse ? 50000 : 0.1 * nationalHealthBase + 50000;
+            healthInsurance = 0.1 * nationalHealthBase + 50000;
             pensionInsurance = 203760;
             unemploymentInsurance = 0;
         }
@@ -573,7 +573,9 @@
         const socialInsuranceTotal = healthInsurance + pensionInsurance + unemploymentInsurance + childcareSupport;
         const blueReturnDeduction = (isFreelancer && blueReturn) ? 650000 : 0;
 
-        const taxableIncome = Math.max(0, adjustedGross - employmentDeduction - socialInsuranceTotal - 480000 - blueReturnDeduction);
+        const spouseDeductionIncomeTax = hasSpouse ? 380000 : 0;
+        const spouseDeductionResidentTax = hasSpouse ? 330000 : 0;
+        const taxableIncome = Math.max(0, adjustedGross - employmentDeduction - socialInsuranceTotal - 480000 - blueReturnDeduction - spouseDeductionIncomeTax);
 
         // Income tax
         let baseIncomeTax = 0;
@@ -588,10 +590,8 @@
         const totalIncomeTax = baseIncomeTax + reconstructionTax;
 
         // Resident tax
-        let residentTax = 0;
-        if (!hasSpouse) {
-            residentTax = 0.1 * Math.max(0, adjustedGross - employmentDeduction - socialInsuranceTotal - 430000 - blueReturnDeduction) + 5000;
-        }
+        const residentTaxBase = Math.max(0, adjustedGross - employmentDeduction - socialInsuranceTotal - 430000 - blueReturnDeduction - spouseDeductionResidentTax);
+        const residentTax = 0.1 * residentTaxBase + 5000;
 
         const totalDeductions = socialInsuranceTotal + totalIncomeTax + residentTax;
         const netIncome = Math.max(0, totalGross - totalDeductions);
