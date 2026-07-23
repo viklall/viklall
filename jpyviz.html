@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JPY Salary Visualizer | EastWest Help</title>
+<style>
+:root{--navy:#0E2E4E;--blue:#14588C;--blue-bright:#1E88C7;--body:#5A6B7C;--bg:#f8fafc;--card:#fff;--line:#e2e8f0;--green:#22c55e;--red:#ef4444;--amber:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--body);line-height:1.6;padding:24px}
+.wrap{max-width:900px;margin:0 auto}
+
+header{text-align:center;margin-bottom:32px}
+header h1{font-size:1.8rem;color:var(--navy);margin-bottom:6px}
+header p{color:var(--body);font-size:.95rem}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.card h2{font-size:1.1rem;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+
+/* Slider */
+.slider-wrap{margin-bottom:24px}
+.slider-wrap label{display:block;font-size:.9rem;font-weight:600;color:var(--navy);margin-bottom:8px}
+.slider-wrap .slider-val{display:inline-block;background:var(--blue);color:#fff;padding:4px 12px;border-radius:6px;font-size:.9rem;font-weight:600;margin-left:8px}
+input[type=range]{width:100%;height:8px;border-radius:4px;background:var(--line);outline:none;-webkit-appearance:none;margin:12px 0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--blue);cursor:pointer;box-shadow:0 2px 6px rgba(20,88,140,.3)}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--blue);cursor:pointer;border:none;box-shadow:0 2px 6px rgba(20,88,140,.3)}
+
+/* Toggle */
+.toggle-wrap{display:flex;gap:8px;margin-bottom:20px;justify-content:center}
+.toggle-btn{padding:8px 20px;border-radius:8px;border:1.5px solid var(--line);background:#fff;color:var(--body);font-size:.9rem;font-weight:600;cursor:pointer;transition:.2s;font-family:inherit}
+.toggle-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+/* Inputs grid */
+.inputs-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+@media(max-width:600px){.inputs-grid{grid-template-columns:1fr}}
+.input-group{display:flex;flex-direction:column;gap:4px}
+.input-group label{font-size:.8rem;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:.3px}
+.input-group input{padding:10px 12px;border:1.5px solid var(--line);border-radius:8px;font-size:.95rem;color:var(--navy);outline:none;font-family:inherit}
+.input-group input:focus{border-color:var(--blue)}
+.input-group .hint{font-size:.75rem;color:var(--body);opacity:.7}
+
+/* Results */
+.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+@media(max-width:600px){.result-grid{grid-template-columns:1fr}}
+.result-box{text-align:center;padding:18px 14px;border-radius:12px;background:var(--bg-soft)}
+.result-box.negative{background:#fef2f2}
+.result-box.positive{background:#f0fdf4}
+.result-box .label{font-size:.75rem;font-weight:600;color:var(--body);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.result-box .value{font-size:1.4rem;font-weight:700;color:var(--navy)}
+.result-box.negative .value{color:var(--red)}
+.result-box.positive .value{color:var(--green)}
+.result-box .sub{font-size:.8rem;color:var(--body);margin-top:4px;opacity:.8}
+
+/* Chart bar */
+.chart-wrap{margin-top:24px}
+.chart-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.chart-label{width:140px;font-size:.85rem;font-weight:600;color:var(--navy);text-align:right;flex-shrink:0}
+@media(max-width:600px){.chart-label{width:100px;font-size:.8rem}}
+.chart-bar-wrap{flex:1;background:var(--line);border-radius:6px;height:28px;overflow:hidden;position:relative}
+.chart-bar{height:100%;border-radius:6px;transition:width .3s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:#fff;font-size:.75rem;font-weight:600}
+.chart-bar.income{background:var(--green)}
+.chart-bar.expense{background:var(--red)}
+.chart-bar.net{background:var(--blue)}
+
+footer{text-align:center;margin-top:40px;padding:20px;color:var(--body);font-size:.85rem;opacity:.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>💴 JPY Salary Visualizer</h1>
+  <p>Slide to see how your JPY salary band affects your budget</p>
+</header>
+
+<div class="card">
+  <h2>🎚️ Salary Band</h2>
+  <div class="toggle-wrap">
+    <button class="toggle-btn active" onclick="setMode('jpy')" id="btn-jpy">JPY Salary (Millions ¥)</button>
+    <button class="toggle-btn" onclick="setMode('usd')" id="btn-usd">USD Salary</button>
+  </div>
+  <div class="slider-wrap">
+    <label>Salary <span class="slider-val" id="salary-display">¥8,000,000</span></label>
+    <input type="range" id="salary-slider" min="5" max="25" step="0.5" value="8" oninput="update()">
+    <div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--body);opacity:.6;margin-top:4px">
+      <span>¥5M / $31K</span><span>¥25M / $156K</span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>⚙️ Fixed Expenses & Income</h2>
+  <div class="inputs-grid">
+    <div class="input-group">
+      <label>International School (JPY/year)</label>
+      <input type="number" id="school" value="650000" oninput="update()">
+      <span class="hint">Annual tuition in yen</span>
+    </div>
+    <div class="input-group">
+      <label>Living Budget (JPY/month)</label>
+      <input type="number" id="living" value="300000" oninput="update()">
+      <span class="hint">Monthly living expenses</span>
+    </div>
+    <div class="input-group">
+      <label>Skating Budget (JPY/month)</label>
+      <input type="number" id="skating" value="400000" oninput="update()">
+      <span class="hint">Monthly skating costs</span>
+    </div>
+    <div class="input-group">
+      <label>Chuocho Income (JPY/month)</label>
+      <input type="number" id="chuochoincome" value="150000" oninput="update()">
+      <span class="hint">Monthly side income</span>
+    </div>
+    <div class="input-group">
+      <label>Lancaster Income (JPY/month)</label>
+      <input type="number" id="lancasterincome" value="384000" oninput="update()">
+      <span class="hint">Monthly property income</span>
+    </div>
+    <div class="input-group">
+      <label>Crockett Income (JPY/month)</label>
+      <input type="number" id="crocketincome" value="0" oninput="update()">
+      <span class="hint">Monthly other income</span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>📊 Results</h2>
+  <div class="result-grid">
+    <div class="result-box" id="box-total-income">
+      <div class="label">Total Annual Income</div>
+      <div class="value" id="total-income">¥0</div>
+      <div class="sub" id="total-income-usd">$0</div>
+    </div>
+    <div class="result-box" id="box-total-expenses">
+      <div class="label">Total Annual Expenses</div>
+      <div class="value" id="total-expenses">¥0</div>
+      <div class="sub" id="total-expenses-usd">$0</div>
+    </div>
+    <div class="result-box" id="box-deficit">
+      <div class="label">Annual Surplus / Deficit</div>
+      <div class="value" id="deficit">¥0</div>
+      <div class="sub" id="deficit-usd">$0</div>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-row">
+      <div class="chart-label">Salary</div>
+      <div class="chart-bar-wrap"><div class="chart-bar income" id="bar-salary" style="width:0%">¥0</div></div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">Side Income</div>
+      <div class="chart-bar-wrap"><div class="chart-bar income" id="bar-side" style="width:0%">¥0</div></div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">Expenses</div>
+      <div class="chart-bar-wrap"><div class="chart-bar expense" id="bar-expense" style="width:0%">¥0</div></div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">Net</div>
+      <div class="chart-bar-wrap"><div class="chart-bar net" id="bar-net" style="width:0%">¥0</div></div>
+    </div>
+  </div>
+</div>
+
+<footer>Built by EastWest Help | Rates approximate at ¥160/$1</footer>
+
+</div>
+
+<script>
+let mode = 'jpy';
+const FX = 160; // JPY per USD
+
+function setMode(m) {
+  mode = m;
+  document.getElementById('btn-jpy').classList.toggle('active', m === 'jpy');
+  document.getElementById('btn-usd').classList.toggle('active', m === 'usd');
+  const slider = document.getElementById('salary-slider');
+  if (m === 'jpy') {
+    slider.min = 5; slider.max = 25; slider.step = 0.5; slider.value = 8;
+  } else {
+    slider.min = 30000; slider.max = 160000; slider.step = 1000; slider.value = 50000;
+  }
+  update();
+}
+
+function fmtJPY(n) {
+  if (Math.abs(n) >= 1000000) return '¥' + (n/1000000).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1000) return '¥' + (n/1000).toFixed(0) + 'K';
+  return '¥' + n.toFixed(0);
+}
+function fmtUSD(n) {
+  return '$' + n.toLocaleString('en-US',{maximumFractionDigits:0});
+}
+
+function update() {
+  const sliderVal = parseFloat(document.getElementById('salary-slider').value);
+  const school = parseFloat(document.getElementById('school').value) || 0;
+  const living = parseFloat(document.getElementById('living').value) || 0;
+  const skating = parseFloat(document.getElementById('skating').value) || 0;
+  const chuocho = parseFloat(document.getElementById('chuochoincome').value) || 0;
+  const lancaster = parseFloat(document.getElementById('lancasterincome').value) || 0;
+  const crockett = parseFloat(document.getElementById('crocketincome').value) || 0;
+
+  let salaryJPY;
+  if (mode === 'jpy') {
+    salaryJPY = sliderVal * 1000000;
+    document.getElementById('salary-display').textContent = fmtJPY(salaryJPY);
+  } else {
+    salaryJPY = sliderVal * FX;
+    document.getElementById('salary-display').textContent = fmtUSD(sliderVal) + ' → ' + fmtJPY(salaryJPY);
+  }
+
+  const annualExpenses = school + (living + skating) * 12;
+  const annualSideIncome = (chuocho + lancaster + crockett) * 12;
+  const totalIncome = salaryJPY + annualSideIncome;
+  const deficit = totalIncome - annualExpenses;
+
+  // Update display
+  document.getElementById('total-income').textContent = fmtJPY(totalIncome);
+  document.getElementById('total-income-usd').textContent = fmtUSD(totalIncome / FX);
+  document.getElementById('total-expenses').textContent = fmtJPY(annualExpenses);
+  document.getElementById('total-expenses-usd').textContent = fmtUSD(annualExpenses / FX);
+  document.getElementById('deficit').textContent = fmtJPY(deficit);
+  document.getElementById('deficit-usd').textContent = fmtUSD(deficit / FX);
+
+  // Color code deficit box
+  const defBox = document.getElementById('box-deficit');
+  defBox.classList.remove('positive','negative');
+  defBox.classList.add(deficit >= 0 ? 'positive' : 'negative');
+
+  // Update bars (scale to max of income or expenses)
+  const maxBar = Math.max(totalIncome, annualExpenses, Math.abs(deficit));
+  const pct = v => Math.min(100, Math.max(0, Math.abs(v) / maxBar * 100));
+
+  document.getElementById('bar-salary').style.width = pct(salaryJPY) + '%';
+  document.getElementById('bar-salary').textContent = fmtJPY(salaryJPY);
+  document.getElementById('bar-side').style.width = pct(annualSideIncome) + '%';
+  document.getElementById('bar-side').textContent = fmtJPY(annualSideIncome);
+  document.getElementById('bar-expense').style.width = pct(annualExpenses) + '%';
+  document.getElementById('bar-expense').textContent = fmtJPY(annualExpenses);
+  document.getElementById('bar-net').style.width = pct(deficit) + '%';
+  document.getElementById('bar-net').textContent = fmtJPY(deficit);
+  document.getElementById('bar-net').className = 'chart-bar net ' + (deficit >= 0 ? 'income' : 'expense');
+}
+
+update();
+</script>
+</body>
+</html>
