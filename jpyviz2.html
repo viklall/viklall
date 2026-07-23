@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Savings & Expenses Visualizer | EastWest Help</title>
-    <meta name="description" content="Move the slider to see how your JPY or USD salary splits into savings and everyday expenses.">
+    <meta name="description" content="Move the slider to see how your JPY or USD salary, plus other income, stacks up against your real monthly costs.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,8 +31,6 @@
             background: #38bdf8; cursor: pointer;
             border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
-        input[type=range].thumb-amber::-webkit-slider-thumb { background: #f59e0b; }
-        input[type=range].thumb-amber::-moz-range-thumb { background: #f59e0b; }
 
         .flow-bar { transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
         .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
@@ -51,18 +49,13 @@
             border: 6px solid transparent; border-top-color: #1e293b;
         }
 
-        .cat-housing { background: #38bdf8; }
-        .cat-food { background: #f59e0b; }
-        .cat-transport { background: #f97316; }
-        .cat-utilities { background: #8b5cf6; }
-        .cat-discretionary { background: #ec4899; }
-        .cat-savings { background: #10b981; }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-in { animation: fadeInUp 0.5s ease forwards; }
+        .inc-salary { background: #10b981; }
+        .inc-chuocho { background: #38bdf8; }
+        .inc-lancaster { background: #f59e0b; }
+        .inc-crockett { background: #8b5cf6; }
+        .exp-school { background: #ef4444; }
+        .exp-living { background: #f97316; }
+        .exp-skating { background: #ec4899; }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen">
@@ -88,7 +81,7 @@
                 <span>🇯🇵🇺🇸</span> Savings & Expenses Visualizer
             </div>
             <h1 class="font-space text-4xl md:text-5xl font-bold text-slate-900 mb-4">See where your salary goes</h1>
-            <p class="text-lg text-slate-500 max-w-2xl mx-auto">Pick JPY or USD, move the salary slider, and adjust the spending categories to see your estimated savings vs. expenses split.</p>
+            <p class="text-lg text-slate-500 max-w-2xl mx-auto">Pick JPY or USD, move the salary slider, and edit your real income streams and fixed costs to see your monthly surplus or deficit.</p>
 
             <div class="mt-6 flex items-center justify-center gap-3 text-sm text-slate-400">
                 <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg> No data stored</span>
@@ -113,9 +106,13 @@
                         <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                         Currency
                     </h3>
-                    <div class="grid grid-cols-2 gap-2">
+                    <div class="grid grid-cols-2 gap-2 mb-4">
                         <button id="btn-jpy" class="cur-btn active px-4 py-3 rounded-lg border-2 border-blue-500 bg-blue-50 text-blue-700 font-semibold text-sm transition" onclick="setCurrency('JPY')">🇯🇵 JPY (¥)</button>
                         <button id="btn-usd" class="cur-btn px-4 py-3 rounded-lg border-2 border-slate-200 text-slate-600 font-medium text-sm transition hover:border-slate-300" onclick="setCurrency('USD')">🇺🇸 USD ($)</button>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <label for="fx-rate" class="text-slate-600">Exchange rate (¥ per $1)</label>
+                        <input type="number" id="fx-rate" value="160" min="50" max="300" step="1" class="w-20 px-2 py-1 border border-slate-200 rounded-lg text-right text-sm focus:ring-2 focus:ring-blue-500 outline-none" oninput="updateFxRate(this.value)">
                     </div>
                 </div>
 
@@ -127,52 +124,40 @@
                             Annual Salary
                         </h3>
                         <div class="text-right">
-                            <span id="income-display" class="font-space text-2xl font-bold text-slate-900">¥6,200,000</span>
+                            <span id="income-display" class="font-space text-2xl font-bold text-slate-900">¥8,000,000</span>
                             <span class="text-sm text-slate-400 ml-1">/ year</span>
                         </div>
                     </div>
 
-                    <input type="range" id="income-slider" min="2000000" max="30000000" step="100000" value="6200000" oninput="updateIncome(this.value)">
+                    <input type="range" id="income-slider" min="2000000" max="30000000" step="100000" value="8000000" oninput="updateIncome(this.value)">
 
                     <div class="flex justify-between text-xs text-slate-400 mt-2 font-medium" id="income-scale">
                         <span>¥2M</span><span>¥8M</span><span>¥14M</span><span>¥20M</span><span>¥26M</span><span>¥30M</span>
                     </div>
 
                     <div class="mt-4 flex flex-wrap gap-2" id="income-presets"></div>
+
+                    <p class="text-xs text-slate-500 mt-3 leading-relaxed">Take-home is always calculated on Japan's 2026 tax tables. A USD salary is first converted to JPY at the exchange rate above, then taxed — matching how this is modeled for a Japan tax resident. Assumes a standard company employee on Shakai Hoken, no dependents. For bonuses, freelance income, or dependents, use the <a href="/japan-tax" class="text-blue-600 font-medium hover:underline">full Japan Tax Calculator</a>.</p>
                 </div>
 
-                <!-- Take-home assumptions -->
-                <div class="bg-white rounded-xl border border-slate-200 p-6 card-hover">
-                    <h3 class="font-space font-semibold text-slate-800 mb-3 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-                        Take-Home Estimate
-                    </h3>
-
-                    <div id="jpy-tax-note" class="text-sm text-slate-500 leading-relaxed">
-                        Assumes a standard company employee enrolled in Shakai Hoken, no dependents, 2026 rates. For bonuses, freelance income, or dependents, use the <a href="/japan-tax" class="text-blue-600 font-medium hover:underline">full Japan Tax Calculator</a>.
-                    </div>
-
-                    <div id="usd-tax-slider" class="hidden">
-                        <div class="flex justify-between text-sm mb-1">
-                            <span class="font-medium text-slate-700">Estimated effective tax rate</span>
-                            <span id="tax-rate-display" class="font-semibold text-slate-900">25%</span>
-                        </div>
-                        <input type="range" class="thumb-amber" id="tax-rate-slider" min="10" max="40" step="1" value="25" oninput="updateTaxRate(this.value)">
-                        <p class="text-xs text-slate-400 mt-2">Rough combined federal + state + payroll estimate — edit to match your state and bracket.</p>
-                    </div>
-                </div>
-
-                <!-- Budget Allocation -->
+                <!-- Additional Income -->
                 <div class="bg-white rounded-xl border border-slate-200 p-6 card-hover">
                     <h3 class="font-space font-semibold text-slate-800 mb-1 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
-                        Monthly Budget Split
+                        <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        Additional Monthly Income
                     </h3>
-                    <p class="text-xs text-slate-400 mb-4">% of take-home pay. Whatever's left over becomes savings.</p>
+                    <p class="text-xs text-slate-400 mb-4">Rental and other income on top of salary, in JPY.</p>
+                    <div class="space-y-4" id="income-stream-inputs"></div>
+                </div>
 
-                    <div class="space-y-4" id="category-sliders"></div>
-
-                    <p id="overflow-warning" class="hidden text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mt-2">Categories add up to more than 100% of take-home pay — scaled down proportionally below, and savings shows ¥0 / $0.</p>
+                <!-- Expenses -->
+                <div class="bg-white rounded-xl border border-slate-200 p-6 card-hover">
+                    <h3 class="font-space font-semibold text-slate-800 mb-1 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg>
+                        Monthly Expenses
+                    </h3>
+                    <p class="text-xs text-slate-400 mb-4">Fixed monthly costs, in JPY.</p>
+                    <div class="space-y-4" id="expense-inputs"></div>
                 </div>
 
                 <!-- Assumptions -->
@@ -181,7 +166,7 @@
                         <svg class="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                         <div>
                             <p class="text-sm font-semibold text-amber-800">Calculation Assumptions</p>
-                            <p class="text-xs text-amber-700 mt-1 leading-relaxed">Category defaults are common budgeting starting points, not a personal or regional survey — edit every slider to match your real spending. Results are estimates for planning purposes only.</p>
+                            <p class="text-xs text-amber-700 mt-1 leading-relaxed">Every income, expense, and the exchange rate is editable — the numbers shown are just starting defaults. Results are estimates for planning purposes only, not financial or tax advice.</p>
                         </div>
                     </div>
                 </div>
@@ -192,46 +177,46 @@
 
                 <!-- Main Result Card -->
                 <div class="bg-white rounded-xl border border-slate-200 p-8 card-hover">
-                    <div class="grid grid-cols-2 gap-6 text-center">
+                    <div class="grid grid-cols-3 gap-4 text-center">
                         <div>
-                            <p class="text-sm font-medium text-slate-400 uppercase tracking-wider mb-2">Annual Savings</p>
-                            <span id="annual-savings" class="font-space text-4xl md:text-5xl font-bold text-emerald-600">¥1,240,000</span>
+                            <p class="text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Monthly Income</p>
+                            <span id="monthly-income" class="font-space text-2xl md:text-3xl font-bold text-slate-800">¥1,027,853</span>
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-slate-400 uppercase tracking-wider mb-2">Annual Expenses</p>
-                            <span id="annual-expenses" class="font-space text-4xl md:text-5xl font-bold text-slate-700">¥3,497,695</span>
+                            <p class="text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Monthly Expenses</p>
+                            <span id="monthly-expenses" class="font-space text-2xl md:text-3xl font-bold text-slate-700">¥1,350,000</span>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-slate-400 uppercase tracking-wider mb-2" id="monthly-net-label">Monthly Deficit</p>
+                            <span id="monthly-net" class="font-space text-2xl md:text-3xl font-bold text-red-600">¥322,147</span>
                         </div>
                     </div>
-                    <div class="mt-6 flex items-center justify-center gap-4 text-sm">
-                        <span class="text-slate-500">Take-Home: <span id="net-income-label" class="font-semibold text-slate-700">¥4,737,695</span></span>
-                        <span class="text-slate-300">|</span>
-                        <span class="text-emerald-600 font-semibold" id="savings-rate">~26.2%</span>
-                        <span class="text-slate-400">savings rate</span>
+                    <div class="mt-6 pt-6 border-t border-slate-100 flex items-center justify-center gap-2 text-sm">
+                        <span class="text-slate-500" id="annual-net-label">Annual Deficit:</span>
+                        <span id="annual-net" class="font-semibold text-red-600">¥3,865,764</span>
+                        <span class="text-slate-400" id="annual-net-usd">(~$24,161)</span>
                     </div>
                 </div>
 
                 <!-- Flow Visualization -->
                 <div class="bg-white rounded-xl border border-slate-200 p-6 card-hover">
-                    <h3 class="font-space font-semibold text-slate-800 mb-6">Where your take-home pay goes</h3>
+                    <h3 class="font-space font-semibold text-slate-800 mb-6">Income vs. expenses</h3>
 
                     <div class="space-y-4">
                         <div>
                             <div class="flex justify-between text-sm mb-1">
-                                <span class="font-medium text-slate-700">Take-Home Pay</span>
-                                <span id="flow-net" class="font-semibold text-slate-900">¥4,737,695</span>
+                                <span class="font-medium text-slate-700">Total Income</span>
+                                <span id="flow-income" class="font-semibold text-slate-900">¥1,027,853</span>
                             </div>
-                            <div class="h-8 bg-slate-100 rounded-lg overflow-hidden relative">
-                                <div class="flow-bar h-full bg-slate-800 rounded-lg" style="width: 100%"></div>
-                                <span class="absolute inset-0 flex items-center justify-end pr-3 text-xs font-bold text-white">100%</span>
-                            </div>
+                            <div class="h-10 rounded-lg overflow-hidden flex" id="income-stack"></div>
                         </div>
 
                         <div class="flex justify-center"><svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg></div>
 
-                        <div class="space-y-2">
+                        <div>
                             <div class="flex justify-between text-sm mb-1">
-                                <span class="font-medium text-slate-700">Expenses</span>
-                                <span id="flow-expenses" class="font-semibold text-slate-600">¥3,497,695</span>
+                                <span class="font-medium text-slate-700">Total Expenses</span>
+                                <span id="flow-expenses" class="font-semibold text-slate-600">¥1,350,000</span>
                             </div>
                             <div class="h-10 rounded-lg overflow-hidden flex" id="expense-stack"></div>
                         </div>
@@ -240,38 +225,19 @@
 
                         <div>
                             <div class="flex justify-between text-sm mb-1">
-                                <span class="font-medium text-emerald-700">Savings</span>
-                                <span id="flow-savings" class="font-semibold text-emerald-600">¥1,240,000</span>
+                                <span class="font-medium text-slate-700" id="flow-net-label">Deficit</span>
+                                <span id="flow-net" class="font-semibold text-red-600">¥322,147</span>
                             </div>
-                            <div class="h-10 bg-emerald-50 rounded-lg overflow-hidden relative border border-emerald-200">
-                                <div id="savings-bar" class="flow-bar h-full bg-emerald-500 rounded-lg" style="width: 26.2%"></div>
-                                <span id="savings-percent" class="absolute inset-0 flex items-center justify-end pr-3 text-sm font-bold text-emerald-800">26.2%</span>
+                            <div class="h-10 rounded-lg overflow-hidden relative border" id="net-bar-wrap">
+                                <div id="net-bar" class="flow-bar h-full rounded-lg" style="width: 100%"></div>
+                                <span id="net-percent" class="absolute inset-0 flex items-center justify-end pr-3 text-sm font-bold"></span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Breakdown Grid -->
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4" id="breakdown-grid"></div>
-
-                <!-- Monthly Breakdown -->
-                <div class="bg-white rounded-xl border border-slate-200 p-6 card-hover">
-                    <h3 class="font-space font-semibold text-slate-800 mb-4">Monthly Breakdown</h3>
-                    <div class="grid grid-cols-3 gap-4">
-                        <div class="text-center p-4 bg-slate-50 rounded-lg">
-                            <p class="text-xs text-slate-500 mb-1">Monthly Take-Home</p>
-                            <p id="monthly-net" class="font-space font-bold text-slate-800">¥394,808</p>
-                        </div>
-                        <div class="text-center p-4 bg-red-50 rounded-lg">
-                            <p class="text-xs text-slate-500 mb-1">Monthly Expenses</p>
-                            <p id="monthly-expenses" class="font-space font-bold text-red-600">¥291,475</p>
-                        </div>
-                        <div class="text-center p-4 bg-emerald-50 rounded-lg">
-                            <p class="text-xs text-slate-500 mb-1">Monthly Savings</p>
-                            <p id="monthly-savings" class="font-space font-bold text-emerald-600">¥103,333</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="breakdown-grid"></div>
             </div>
         </div>
     </main>
@@ -295,7 +261,7 @@
                 </nav>
                 <div>
                     <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Disclaimer</p>
-                    <p class="text-sm text-slate-400 leading-relaxed">This tool provides illustrative estimates only, based on editable assumptions and 2026 Japanese tax rates for the JPY leg. It is not financial or tax advice — consult a licensed professional for your situation.</p>
+                    <p class="text-sm text-slate-400 leading-relaxed">This tool provides illustrative estimates only, based on editable assumptions and 2026 Japanese tax rates. It is not financial or tax advice — consult a licensed professional for your situation.</p>
                 </div>
             </div>
             <div class="border-t border-slate-800 mt-10 pt-6 text-center text-xs text-slate-500">
@@ -353,50 +319,66 @@
     }
 
     // ============================================
-    // STATE
+    // STATE — categories match the owner's own budget sheet
     // ============================================
-    const CATEGORIES = [
-        { id: 'housing',       label: 'Housing (rent/mortgage)', color: 'cat-housing',       jpyDefault: 28, usdDefault: 30 },
-        { id: 'food',          label: 'Food & Groceries',        color: 'cat-food',          jpyDefault: 15, usdDefault: 12 },
-        { id: 'transport',     label: 'Transportation',          color: 'cat-transport',     jpyDefault: 6,  usdDefault: 15 },
-        { id: 'utilities',     label: 'Utilities & Insurance',   color: 'cat-utilities',     jpyDefault: 10, usdDefault: 8  },
-        { id: 'discretionary', label: 'Discretionary / Lifestyle', color: 'cat-discretionary', jpyDefault: 21, usdDefault: 15 },
+    const INCOME_STREAMS = [
+        { id: 'chuocho',   label: 'Chuocho Income',   color: 'inc-chuocho',   default: 150000 },
+        { id: 'lancaster', label: 'Lancaster Income', color: 'inc-lancaster', default: 384000 },
+        { id: 'crockett',  label: 'Crockett Income',  color: 'inc-crockett',  default: 0 },
     ];
+    const EXPENSE_ITEMS = [
+        { id: 'school',  label: 'International School', color: 'exp-school',  default: 650000 },
+        { id: 'living',  label: 'Living Budget',         color: 'exp-living',  default: 300000 },
+        { id: 'skating', label: 'Skating Budget',        color: 'exp-skating', default: 400000 },
+    ];
+    const JPY_PRESETS = [8000000, 10000000, 12000000, 15000000, 18000000, 25600000];
+    const USD_PRESETS = [50000, 62500, 75000, 93750, 112500, 160000];
 
     let state = {
         currency: 'JPY',
-        income: 6200000,
-        usdTaxRate: 25,
-        categoryPct: {}
+        income: 8000000,
+        fxRate: 160,
+        incomeStreams: {},
+        expenses: {}
     };
-    CATEGORIES.forEach(c => state.categoryPct[c.id] = c.jpyDefault);
+    INCOME_STREAMS.forEach(i => state.incomeStreams[i.id] = i.default);
+    EXPENSE_ITEMS.forEach(e => state.expenses[e.id] = e.default);
 
-    const JPY_PRESETS = [3000000, 5000000, 6200000, 8000000, 10000000, 15000000];
-    const USD_PRESETS = [40000, 60000, 80000, 120000, 180000, 250000];
+    function fmtJPY(n) { return '¥' + Math.round(n).toLocaleString('en-US'); }
+    function fmtUSD(n) { return '$' + Math.round(n / state.fxRate).toLocaleString('en-US'); }
+    function fmtDisplay(n) { return state.currency === 'JPY' ? fmtJPY(n) : fmtUSD(n * 1); }
 
-    function fmt(n) {
-        const symbol = state.currency === 'JPY' ? '¥' : '$';
-        return symbol + Math.round(n).toLocaleString('en-US');
-    }
-
-    function buildCategorySliders() {
-        const container = document.getElementById('category-sliders');
-        container.innerHTML = CATEGORIES.map(c => `
+    function buildAmountInputs(containerId, items, stateKey) {
+        const el = document.getElementById(containerId);
+        el.innerHTML = items.map(it => `
             <div>
                 <div class="flex justify-between text-sm mb-1">
-                    <span class="font-medium text-slate-700 flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full ${c.color}"></span>${c.label}</span>
-                    <span id="pct-label-${c.id}" class="font-semibold text-slate-900">${state.categoryPct[c.id]}%</span>
+                    <span class="font-medium text-slate-700 flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full ${it.color}"></span>${it.label}</span>
                 </div>
-                <input type="range" min="0" max="70" step="1" value="${state.categoryPct[c.id]}" id="slider-${c.id}" oninput="updateCategory('${c.id}', this.value)">
+                <div class="flex items-center gap-2">
+                    <span class="text-slate-400 font-medium">¥</span>
+                    <input type="number" min="0" step="1000" value="${state[stateKey][it.id]}" id="input-${stateKey}-${it.id}" class="flex-1 px-3 py-2 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" oninput="updateAmount('${stateKey}', '${it.id}', this.value)">
+                    <span class="text-xs text-slate-400">/ month</span>
+                </div>
             </div>
         `).join('');
+    }
+
+    function updateAmount(stateKey, id, val) {
+        state[stateKey][id] = parseFloat(val) || 0;
+        calculate();
+    }
+
+    function updateFxRate(val) {
+        state.fxRate = parseFloat(val) || 1;
+        calculate();
     }
 
     function buildPresets() {
         const presets = state.currency === 'JPY' ? JPY_PRESETS : USD_PRESETS;
         document.getElementById('income-presets').innerHTML = presets.map(v => {
             const active = v === state.income;
-            const label = state.currency === 'JPY' ? '¥' + (v/1000000) + 'M' : '$' + (v/1000) + 'k';
+            const label = state.currency === 'JPY' ? '¥' + (v / 1000000) + 'M' : '$' + (v / 1000) + 'k';
             return `<button onclick="setIncome(${v})" class="px-3 py-1.5 text-xs font-medium ${active ? 'bg-blue-100 text-blue-700 font-semibold' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'} rounded-md transition">${label}</button>`;
         }).join('');
     }
@@ -411,31 +393,25 @@
         activeBtn.classList.remove('border-slate-200', 'text-slate-600');
         activeBtn.classList.add('active', 'border-blue-500', 'bg-blue-50', 'text-blue-700');
 
-        document.getElementById('jpy-tax-note').classList.toggle('hidden', cur !== 'JPY');
-        document.getElementById('usd-tax-slider').classList.toggle('hidden', cur !== 'USD');
-
         const slider = document.getElementById('income-slider');
         if (cur === 'JPY') {
             slider.min = 2000000; slider.max = 30000000; slider.step = 100000;
-            state.income = 6200000;
+            state.income = 8000000;
             document.getElementById('income-scale').innerHTML = '<span>¥2M</span><span>¥8M</span><span>¥14M</span><span>¥20M</span><span>¥26M</span><span>¥30M</span>';
-            CATEGORIES.forEach(c => state.categoryPct[c.id] = c.jpyDefault);
         } else {
             slider.min = 20000; slider.max = 300000; slider.step = 1000;
-            state.income = 80000;
+            state.income = 50000;
             document.getElementById('income-scale').innerHTML = '<span>$20k</span><span>$76k</span><span>$132k</span><span>$188k</span><span>$244k</span><span>$300k</span>';
-            CATEGORIES.forEach(c => state.categoryPct[c.id] = c.usdDefault);
         }
         slider.value = state.income;
-        document.getElementById('income-display').textContent = fmt(state.income);
+        document.getElementById('income-display').textContent = state.currency === 'JPY' ? fmtJPY(state.income) : '$' + state.income.toLocaleString('en-US');
         buildPresets();
-        buildCategorySliders();
         calculate();
     }
 
     function updateIncome(val) {
         state.income = parseInt(val);
-        document.getElementById('income-display').textContent = fmt(state.income);
+        document.getElementById('income-display').textContent = state.currency === 'JPY' ? fmtJPY(state.income) : '$' + state.income.toLocaleString('en-US');
         buildPresets();
         calculate();
     }
@@ -443,97 +419,119 @@
     function setIncome(val) {
         state.income = val;
         document.getElementById('income-slider').value = val;
-        document.getElementById('income-display').textContent = fmt(val);
+        document.getElementById('income-display').textContent = state.currency === 'JPY' ? fmtJPY(val) : '$' + val.toLocaleString('en-US');
         buildPresets();
         calculate();
     }
 
-    function updateTaxRate(val) {
-        state.usdTaxRate = parseInt(val);
-        document.getElementById('tax-rate-display').textContent = val + '%';
-        calculate();
-    }
-
-    function updateCategory(id, val) {
-        state.categoryPct[id] = parseInt(val);
-        document.getElementById('pct-label-' + id).textContent = val + '%';
-        calculate();
-    }
-
     function calculate() {
-        const netIncome = state.currency === 'JPY'
-            ? calculateJpyNet(state.income)
-            : state.income * (1 - state.usdTaxRate / 100);
+        const grossJPY = state.currency === 'JPY' ? state.income : state.income * state.fxRate;
+        const netSalaryAnnualJPY = calculateJpyNet(grossJPY);
+        const netSalaryMonthlyJPY = netSalaryAnnualJPY / 12;
 
-        const rawSum = CATEGORIES.reduce((s, c) => s + state.categoryPct[c.id], 0);
-        const overflow = rawSum > 100;
-        const scale = overflow ? 100 / rawSum : 1;
+        const incomeItems = [
+            { id: 'salary', label: 'Net Salary', color: 'inc-salary', value: netSalaryMonthlyJPY },
+            ...INCOME_STREAMS.map(i => ({ ...i, value: state.incomeStreams[i.id] }))
+        ];
+        const expenseItemsCalc = EXPENSE_ITEMS.map(e => ({ ...e, value: state.expenses[e.id] }));
 
-        const catValues = CATEGORIES.map(c => ({
-            ...c,
-            pct: state.categoryPct[c.id] * scale,
-            value: netIncome * (state.categoryPct[c.id] * scale / 100)
-        }));
+        const totalIncomeJPY = incomeItems.reduce((s, i) => s + i.value, 0);
+        const totalExpensesJPY = expenseItemsCalc.reduce((s, e) => s + e.value, 0);
+        const netMonthlyJPY = totalIncomeJPY - totalExpensesJPY;
+        const netAnnualJPY = netMonthlyJPY * 12;
+        const isSurplus = netMonthlyJPY >= 0;
 
-        const totalExpenses = catValues.reduce((s, c) => s + c.value, 0);
-        const savings = Math.max(0, netIncome - totalExpenses);
-        const savingsRate = netIncome > 0 ? (savings / netIncome * 100) : 0;
+        // Main result card
+        document.getElementById('monthly-income').textContent = fmtJPY(totalIncomeJPY);
+        document.getElementById('monthly-expenses').textContent = fmtJPY(totalExpensesJPY);
+        document.getElementById('monthly-net').textContent = fmtJPY(Math.abs(netMonthlyJPY));
+        document.getElementById('monthly-net').className = 'font-space text-2xl md:text-3xl font-bold ' + (isSurplus ? 'text-emerald-600' : 'text-red-600');
+        document.getElementById('monthly-net-label').textContent = isSurplus ? 'Monthly Surplus' : 'Monthly Deficit';
 
-        document.getElementById('overflow-warning').classList.toggle('hidden', !overflow);
+        document.getElementById('annual-net-label').textContent = (isSurplus ? 'Annual Surplus:' : 'Annual Deficit:');
+        document.getElementById('annual-net').textContent = fmtJPY(Math.abs(netAnnualJPY));
+        document.getElementById('annual-net').className = 'font-semibold ' + (isSurplus ? 'text-emerald-600' : 'text-red-600');
+        document.getElementById('annual-net-usd').textContent = '(~' + fmtUSD(Math.abs(netAnnualJPY)) + ')';
 
-        // Main cards
-        document.getElementById('annual-savings').textContent = fmt(savings);
-        document.getElementById('annual-expenses').textContent = fmt(totalExpenses);
-        document.getElementById('net-income-label').textContent = fmt(netIncome);
-        document.getElementById('savings-rate').textContent = '~' + savingsRate.toFixed(1) + '%';
-
-        // Flow
-        document.getElementById('flow-net').textContent = fmt(netIncome);
-        document.getElementById('flow-expenses').textContent = fmt(totalExpenses);
-        document.getElementById('flow-savings').textContent = fmt(savings);
-        document.getElementById('savings-bar').style.width = savingsRate.toFixed(1) + '%';
-        document.getElementById('savings-percent').textContent = savingsRate.toFixed(1) + '%';
-
-        // Expense stack
-        document.getElementById('expense-stack').innerHTML = catValues.map(c => {
-            const pctOfExpenses = totalExpenses > 0 ? (c.value / totalExpenses * 100) : 0;
-            return `<div class="${c.color} h-full flow-bar tooltip-trigger" style="width: ${pctOfExpenses.toFixed(1)}%">
-                <div class="tooltip">${c.label}: ${fmt(c.value)}</div>
+        // Flow: income stack
+        document.getElementById('flow-income').textContent = fmtJPY(totalIncomeJPY);
+        document.getElementById('income-stack').innerHTML = incomeItems.filter(i => i.value > 0).map(i => {
+            const pct = totalIncomeJPY > 0 ? (i.value / totalIncomeJPY * 100) : 0;
+            return `<div class="${i.color} h-full flow-bar tooltip-trigger" style="width: ${pct.toFixed(1)}%">
+                <div class="tooltip">${i.label}: ${fmtJPY(i.value)}</div>
             </div>`;
         }).join('');
 
+        // Flow: expense stack
+        document.getElementById('flow-expenses').textContent = fmtJPY(totalExpensesJPY);
+        document.getElementById('expense-stack').innerHTML = expenseItemsCalc.filter(e => e.value > 0).map(e => {
+            const pct = totalExpensesJPY > 0 ? (e.value / totalExpensesJPY * 100) : 0;
+            return `<div class="${e.color} h-full flow-bar tooltip-trigger" style="width: ${pct.toFixed(1)}%">
+                <div class="tooltip">${e.label}: ${fmtJPY(e.value)}</div>
+            </div>`;
+        }).join('');
+
+        // Flow: net bar
+        document.getElementById('flow-net-label').textContent = isSurplus ? 'Surplus' : 'Deficit';
+        document.getElementById('flow-net-label').className = 'font-medium ' + (isSurplus ? 'text-emerald-700' : 'text-red-700');
+        document.getElementById('flow-net').textContent = fmtJPY(Math.abs(netMonthlyJPY));
+        document.getElementById('flow-net').className = 'font-semibold ' + (isSurplus ? 'text-emerald-600' : 'text-red-600');
+        const netBarWrap = document.getElementById('net-bar-wrap');
+        const netBar = document.getElementById('net-bar');
+        const netPercentLabel = document.getElementById('net-percent');
+        if (isSurplus) {
+            const pct = totalIncomeJPY > 0 ? Math.min(100, netMonthlyJPY / totalIncomeJPY * 100) : 0;
+            netBarWrap.className = 'h-10 rounded-lg overflow-hidden relative border bg-emerald-50 border-emerald-200';
+            netBar.className = 'flow-bar h-full rounded-lg bg-emerald-500';
+            netBar.style.width = pct.toFixed(1) + '%';
+            netPercentLabel.className = 'absolute inset-0 flex items-center justify-end pr-3 text-sm font-bold text-emerald-800';
+            netPercentLabel.textContent = pct.toFixed(1) + '% of income';
+        } else {
+            netBarWrap.className = 'h-10 rounded-lg overflow-hidden relative border bg-red-50 border-red-200';
+            netBar.className = 'flow-bar h-full rounded-lg bg-red-500';
+            netBar.style.width = '100%';
+            netPercentLabel.className = 'absolute inset-0 flex items-center justify-end pr-3 text-sm font-bold text-white';
+            netPercentLabel.textContent = 'Short by ' + fmtJPY(Math.abs(netMonthlyJPY));
+        }
+
         // Breakdown grid
-        const gridItems = catValues.map(c => `
+        const incomeCards = incomeItems.map(i => `
             <div class="bg-white rounded-xl border border-slate-200 p-4 card-hover">
                 <div class="flex items-center gap-2 mb-2">
-                    <div class="w-3 h-3 rounded-full ${c.color}"></div>
-                    <span class="text-xs font-medium text-slate-500">${c.label}</span>
+                    <div class="w-3 h-3 rounded-full ${i.color}"></div>
+                    <span class="text-xs font-medium text-slate-500">${i.label}</span>
                 </div>
-                <p class="font-space text-lg font-bold text-slate-800">${fmt(c.value)}</p>
-                <p class="text-xs text-slate-400">${c.pct.toFixed(1)}% of take-home</p>
+                <p class="font-space text-lg font-bold text-slate-800">${fmtJPY(i.value)}</p>
+                <p class="text-xs text-slate-400">${fmtUSD(i.value)} / mo</p>
             </div>
         `).join('');
-        const savingsCard = `
-            <div class="bg-emerald-50 rounded-xl border border-emerald-200 p-4 card-hover">
+        const expenseCards = expenseItemsCalc.map(e => `
+            <div class="bg-white rounded-xl border border-slate-200 p-4 card-hover">
                 <div class="flex items-center gap-2 mb-2">
-                    <div class="w-3 h-3 rounded-full cat-savings"></div>
-                    <span class="text-xs font-medium text-emerald-700">Savings</span>
+                    <div class="w-3 h-3 rounded-full ${e.color}"></div>
+                    <span class="text-xs font-medium text-slate-500">${e.label}</span>
                 </div>
-                <p class="font-space text-lg font-bold text-emerald-800">${fmt(savings)}</p>
-                <p class="text-xs text-emerald-600">${savingsRate.toFixed(1)}% of take-home</p>
+                <p class="font-space text-lg font-bold text-slate-800">${fmtJPY(e.value)}</p>
+                <p class="text-xs text-slate-400">${fmtUSD(e.value)} / mo</p>
+            </div>
+        `).join('');
+        const netCard = `
+            <div class="${isSurplus ? 'bg-emerald-50 border-emerald-200' : 'bg-red-50 border-red-200'} rounded-xl border p-4 card-hover">
+                <div class="flex items-center gap-2 mb-2">
+                    <div class="w-3 h-3 rounded-full ${isSurplus ? 'bg-emerald-500' : 'bg-red-500'}"></div>
+                    <span class="text-xs font-medium ${isSurplus ? 'text-emerald-700' : 'text-red-700'}">${isSurplus ? 'Surplus' : 'Deficit'}</span>
+                </div>
+                <p class="font-space text-lg font-bold ${isSurplus ? 'text-emerald-800' : 'text-red-800'}">${fmtJPY(Math.abs(netMonthlyJPY))}</p>
+                <p class="text-xs ${isSurplus ? 'text-emerald-600' : 'text-red-600'}">${fmtUSD(Math.abs(netMonthlyJPY))} / mo</p>
             </div>
         `;
-        document.getElementById('breakdown-grid').innerHTML = gridItems + savingsCard;
-
-        // Monthly
-        document.getElementById('monthly-net').textContent = fmt(netIncome / 12);
-        document.getElementById('monthly-expenses').textContent = fmt(totalExpenses / 12);
-        document.getElementById('monthly-savings').textContent = fmt(savings / 12);
+        document.getElementById('breakdown-grid').innerHTML = incomeCards + expenseCards + netCard;
     }
 
     // Initialize
+    buildAmountInputs('income-stream-inputs', INCOME_STREAMS, 'incomeStreams');
+    buildAmountInputs('expense-inputs', EXPENSE_ITEMS, 'expenses');
     buildPresets();
-    buildCategorySliders();
     calculate();
     </script>
 </body>
