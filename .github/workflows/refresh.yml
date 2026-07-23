@@ -43,8 +43,8 @@ jobs:
                       if not title or len(title) < 10:
                           continue
                       link = ''
-                      if i < len(links):
-                          link = (links[i][0] or links[i][1]).strip()
+                      if i + 1 < len(links):
+                          link = (links[i + 1][0] or links[i + 1][1]).strip()
                       if title and link:
                           articles.append((title[:80], link, source))
                       if len(articles) >= 5:
