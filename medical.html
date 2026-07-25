@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medical | EastWest Help</title>
-    <meta name="description" content="Medical tools and resources.">
+    <meta name="description" content="Medical documentation tools and resources from EastWest Help.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' };</script>
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
@@ -17,6 +17,8 @@
       .dark .text-slate-700, .dark .text-slate-600 { color: #cbd5e1 !important; }
       .dark .border-slate-200, .dark .border-slate-300 { border-color: #334155 !important; }
       .dark .shadow-sm, .dark .shadow { box-shadow: 0 1px 3px rgba(0,0,0,0.5) !important; }
+      .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
+      .card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -34,27 +36,90 @@
         </nav>
     </header>
 
-    <main class="max-w-3xl mx-auto px-6 py-16">
-        <h2 class="text-3xl font-extrabold tracking-tight mb-3">Medical</h2>
-        <p class="text-slate-600 mb-8">Tools and resources for medical documentation.</p>
+    <main class="max-w-4xl mx-auto px-6 py-16">
 
+        <!-- Hero -->
+        <div class="mb-12">
+            <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-3 py-1 rounded-full mb-4">Medical Tools</span>
+            <h2 class="text-4xl font-extrabold tracking-tight mb-3">Medical</h2>
+            <p class="text-slate-600 text-lg leading-relaxed max-w-2xl">A growing set of tools for clinical documentation and workflow support. Start with the SOAP note scribe below — more will land here over time.</p>
+        </div>
+
+        <!-- Tool card -->
         <a href="https://cerner-soap-scribe.onrender.com/" target="_blank" rel="noopener noreferrer"
-           class="block bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-blue-300 transition group">
-            <div class="flex items-center justify-between">
-                <div>
-                    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-700 transition">Cerner SOAP Scribe</h3>
-                    <p class="text-sm text-slate-500 mt-1">cerner-soap-scribe.onrender.com</p>
+           class="card-hover block bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:border-blue-300 transition group mb-10">
+            <div class="flex items-start justify-between gap-4">
+                <div class="flex items-start gap-4">
+                    <div class="shrink-0 w-11 h-11 rounded-lg bg-blue-50 flex items-center justify-center text-xl">🩺</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-700 transition">Cerner SOAP Scribe</h3>
+                        <p class="text-sm text-slate-500 mt-1">Generate structured SOAP notes formatted for Cerner charting.</p>
+                        <p class="text-xs text-slate-400 mt-2">cerner-soap-scribe.onrender.com</p>
+                    </div>
                 </div>
-                <span class="text-blue-600 text-xl">→</span>
+                <span class="text-blue-600 text-xl mt-2">→</span>
             </div>
         </a>
+
+        <!-- Info strip -->
+        <div class="grid sm:grid-cols-3 gap-4 mb-4">
+            <div class="bg-white border border-slate-200 rounded-xl p-5">
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Format</p>
+                <p class="text-sm text-slate-600">SOAP note structure, ready to paste into Cerner.</p>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-xl p-5">
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Access</p>
+                <p class="text-sm text-slate-600">Opens in a new tab, hosted separately on Render.</p>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-xl p-5">
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Status</p>
+                <div class="flex items-center gap-2 text-sm text-slate-600">
+                    <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
+                    Live
+                </div>
+            </div>
+        </div>
+
+        <p class="text-xs text-slate-400 mt-8">Note: this is a documentation aid, not a substitute for clinical judgment. Always review generated notes before entering them into a patient record.</p>
     </main>
 
-    <footer class="bg-white border-t border-slate-200 py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-6 text-sm text-slate-400 text-center">
-            &copy; EastWest Help
+  <footer class="w-full bg-slate-900 border-t border-slate-800 mt-12">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <!-- Brand -->
+        <div>
+          <p class="font-bold text-xl text-white tracking-tight">EastWest <span class="text-[#38bdf8]">Help</span></p>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed">Property management services for landlords and tenants across California and Tennessee.</p>
+          <div class="mt-4 flex items-center gap-2 text-xs text-slate-500">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
+            All systems operational
+          </div>
         </div>
-    </footer>
+        <!-- Navigation -->
+        <nav aria-label="Footer">
+          <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Navigate</p>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="/" class="hover:text-[#38bdf8] transition-colors">Home</a></li>
+            <li><a href="/medical" class="hover:text-[#38bdf8] transition-colors">Medical</a></li>
+            <li><a href="/property" class="hover:text-[#38bdf8] transition-colors">Property Services</a></li>
+            <li><a href="/tenant" class="hover:text-[#38bdf8] transition-colors">Tenant Requests</a></li>
+            <li><a href="/intake" class="hover:text-[#38bdf8] transition-colors">Tenant Intake</a></li>
+          </ul>
+        </nav>
+        <!-- Accessibility -->
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Accessibility</p>
+          <p class="text-sm text-slate-400 leading-relaxed">EastWest Help is committed to making this site accessible to all users. We have worked to meet WCAG 2.1 AA standards including sufficient color contrast, keyboard navigation, and screen reader support. If you encounter an issue, please reach out via our <a href="/tenant" class="text-[#38bdf8] hover:underline">Tenant Requests</a> page.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom bar -->
+    <div class="border-t border-slate-800">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+        <p class="text-xs text-slate-500">&copy; <span id="footer-year">2026</span> EastWest Help. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
     <script>
       (function() {
@@ -75,6 +140,8 @@
           apply(!isDark);
           localStorage.setItem('theme', !isDark ? 'dark' : 'light');
         });
+        const yearEl = document.getElementById('footer-year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
       })();
     </script>
 </body>
