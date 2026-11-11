@@ -18,11 +18,11 @@
     tenant: "For maintenance requests, questions, or feedback, use our Tenant Portal. For emergencies, call <strong>(213) 302-6757</strong> immediately — no portal entry needed. <a href='/tenant'>Open Tenant Portal →</a>",
     intake: "Ready to apply? Our New Tenant Intake form takes about 5 minutes. We'll need basic info and ID verification (call us for that part — we don't collect SSN or driver's license numbers online for security). <a href='/intake'>Start Application →</a>",
     ai: "We design and deploy AI-driven architectures — support agents, financial auditing automation, and operational monitoring. Every solution is built for scale. Want to discuss a project? <a href='#engagement'>Contact us below →</a>",
-    contact: "You can reach us at <strong>info@eastwesthelp.com</strong> or call <strong>(213) 302-6757</strong>. For non-emergencies, the contact form at the bottom of this page works great too.",
+    contact: "You can reach us at <strong>info@eastwesthelp.com</strong>. For non-emergencies, the contact form at the bottom of this page works great too.",
     emergency: "<div style='background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:12px;margin-top:8px;font-size:12px;color:#991b1b'><strong style='display:block;margin-bottom:4px;font-size:13px'>🚨 This sounds like an emergency</strong>For genuine emergencies (flood, fire, gas leak, lockout, no heat/water), call us immediately:<br><a href='tel:2133026757' style='color:#dc2626;font-weight:600;text-decoration:none'>(213) 302-6757</a><br>Do NOT use the portal for emergencies.</div>",
     pricing: "Pricing depends on the service. Property document prep starts at a flat fee per notice/lease. AI consulting is scoped per project. <a href='#engagement'>Reach out for a quote →</a>",
     location: "We're based in Los Angeles, CA, and serve landlords and tenants across California and Tennessee. We operate remotely for most AI consulting work.",
-    hours: "We're available Monday–Friday, 9am–6pm PT. The tenant portal and this chat are always open. For emergencies, call (213) 302-6757 anytime.",
+    hours: "We're available Monday–Friday, 9am–6pm PT. The tenant portal and this chat are always open. For emergencies, tap Emergency below.",
     fallback: "I'm not sure I caught that. I can help with: property services, tenant repairs, new applications, AI consulting, or general questions. What would you like to know?"
   };
 
