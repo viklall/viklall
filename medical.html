@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medical | EastWest Help</title>
-    <meta name="description" content="Medical documentation tools and resources from EastWest Help.">
+    <meta name="description" content="Clinical workflow automation from EastWest Help: records export and EHR data transfer with human review.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' };</script>
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
@@ -40,47 +40,41 @@
 
         <!-- Hero -->
         <div class="mb-12">
-            <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-3 py-1 rounded-full mb-4">Medical Tools</span>
-            <h2 class="text-4xl font-extrabold tracking-tight mb-3">Medical</h2>
-            <p class="text-slate-600 text-lg leading-relaxed max-w-2xl">A growing set of tools for clinical documentation and workflow support. Start with the SOAP note scribe below — more will land here over time.</p>
+            <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-3 py-1 rounded-full mb-4">Medical</span>
+            <h2 class="text-4xl font-extrabold tracking-tight mb-3">Clinical workflow automation</h2>
+            <p class="text-slate-600 text-lg leading-relaxed max-w-2xl">Practical AI and automation for clinical documentation and records, with validation and human review at every step.</p>
         </div>
 
-        <!-- Tool card -->
-        <a href="https://cerner-soap-scribe.onrender.com/" target="_blank" rel="noopener noreferrer"
-           class="card-hover block bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:border-blue-300 transition group mb-10">
-            <div class="flex items-start justify-between gap-4">
-                <div class="flex items-start gap-4">
-                    <div class="shrink-0 w-11 h-11 rounded-lg bg-blue-50 flex items-center justify-center text-xl">🩺</div>
-                    <div>
-                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-700 transition">Cerner SOAP Scribe</h3>
-                        <p class="text-sm text-slate-500 mt-1">Generate structured SOAP notes formatted for Cerner charting.</p>
-                        <p class="text-xs text-slate-400 mt-2">cerner-soap-scribe.onrender.com</p>
+        <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm mb-6">
+            <div class="flex items-start gap-4">
+                <div class="shrink-0 w-11 h-11 rounded-lg bg-blue-50 flex items-center justify-center text-xl" aria-hidden="true">📁</div>
+                <div class="flex-1">
+                    <div class="flex flex-wrap items-center gap-3 mb-1">
+                        <h3 class="text-lg font-bold text-slate-900">Clinical Records Export</h3>
+                        <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700">In progress</span>
                     </div>
+                    <p class="text-sm text-slate-600 leading-relaxed">Bulk export of clinical notes from a web-based EHR into organized PDFs, with a tracking sheet and a verification pass.</p>
+                    <a href="/#engagement" class="inline-block mt-4 text-sm font-semibold text-blue-700 hover:text-blue-800">Talk to us →</a>
                 </div>
-                <span class="text-blue-600 text-xl mt-2">→</span>
             </div>
-        </a>
-
-        <!-- Info strip -->
-        <div class="grid sm:grid-cols-3 gap-4 mb-4">
-            <div class="bg-white border border-slate-200 rounded-xl p-5">
-                <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Format</p>
-                <p class="text-sm text-slate-600">SOAP note structure, ready to paste into Cerner.</p>
-            </div>
-            <div class="bg-white border border-slate-200 rounded-xl p-5">
-                <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Access</p>
-                <p class="text-sm text-slate-600">Opens in a new tab, hosted separately on Render.</p>
-            </div>
-            <div class="bg-white border border-slate-200 rounded-xl p-5">
-                <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Status</p>
-                <div class="flex items-center gap-2 text-sm text-slate-600">
-                    <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
-                    Live
+        </div>
+        <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm mb-6">
+            <div class="flex items-start gap-4">
+                <div class="shrink-0 w-11 h-11 rounded-lg bg-blue-50 flex items-center justify-center text-xl" aria-hidden="true">🔄</div>
+                <div class="flex-1">
+                    <div class="flex flex-wrap items-center gap-3 mb-1">
+                        <h3 class="text-lg font-bold text-slate-900">EHR Data Transfer Automation</h3>
+                        <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600">Research</span>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed">Moving data from one web-based clinical tool into an EHR, with validation checks and human review.</p>
+                    <a href="/#engagement" class="inline-block mt-4 text-sm font-semibold text-blue-700 hover:text-blue-800">Talk to us →</a>
                 </div>
             </div>
         </div>
 
-        <p class="text-xs text-slate-400 mt-8">Note: this is a documentation aid, not a substitute for clinical judgment. Always review generated notes before entering them into a patient record.</p>
+        <p class="text-sm text-slate-500 mt-8">Earlier tool: <a href="https://cerner-soap-scribe.onrender.com/" target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">Cerner SOAP Scribe</a> (opens in a new tab).</p>
+
+        <p class="text-xs text-slate-400 mt-6">Automation supports clinical documentation work and does not replace clinical judgment. Output is reviewed by a person before it goes into any patient record.</p>
     </main>
 
   <footer class="w-full bg-slate-900 border-t border-slate-800 mt-12">
