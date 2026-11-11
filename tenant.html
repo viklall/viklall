@@ -74,6 +74,135 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">For Tenants</h1>
       <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">Finding and maintaining your rental home should be simple, transparent, and stress-free.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href="#request" class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-blue-700 hover:bg-blue-800 rounded-xl transition-all shadow-sm">Submit a Request</a>
+        <a href="intake.html" class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-blue-700 dark:text-blue-300 bg-white dark:bg-slate-800 border border-blue-200 dark:border-slate-700 hover:bg-blue-50 dark:hover:bg-slate-700 rounded-xl transition-all">New Tenant Application</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TENANT REQUEST FORM + COMMUNICATION PROTOCOL -->
+  <section id="request" class="py-16 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">Contact Your Property Manager</h2>
+      <p class="text-slate-600 dark:text-slate-300 mb-8">Submit a repair request, ask a question, or leave feedback. We'll get back to you promptly.</p>
+
+      <!-- COMMUNICATION PROTOCOL BLOCK -->
+      <div class="mb-8 rounded-xl border border-slate-200 dark:border-slate-700 border-l-4 border-l-sky-400 bg-white dark:bg-slate-800 p-6 shadow-sm">
+        <div class="text-sm font-semibold uppercase tracking-wide text-sky-600 dark:text-sky-400 mb-3">Tenant Communication Protocol</div>
+        <p class="text-slate-700 dark:text-slate-200 mb-5">All communication must follow the designated channels below. Requests submitted outside these channels may experience delayed response times.</p>
+        <div class="space-y-5">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl mt-0.5" aria-hidden="true">🔧</span>
+            <div>
+              <p class="font-semibold text-slate-800 dark:text-slate-100 mb-1">Maintenance Requests — Portal First, Always</p>
+              <p class="text-slate-600 dark:text-slate-300 text-sm">Submit via this page before contacting us by any other means: <a href="https://eastwesthelp.com/tenant" class="text-sky-600 dark:text-sky-400 underline font-medium">eastwesthelp.com/tenant</a></p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="text-2xl mt-0.5" aria-hidden="true">✉️</span>
+            <div>
+              <p class="font-semibold text-slate-800 dark:text-slate-100 mb-1">General Inquiries — Email</p>
+              <p class="text-slate-600 dark:text-slate-300 text-sm">Non-urgent questions: <span class="font-medium text-slate-700 dark:text-slate-200">eastwesthelp1@gmail.com</span></p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="text-2xl mt-0.5" aria-hidden="true">📞</span>
+            <div>
+              <p class="font-semibold text-slate-800 dark:text-slate-100 mb-1">Phone — Urgent Maintenance Emergencies Only</p>
+              <p class="text-slate-600 dark:text-slate-300 text-sm">Call <span class="font-medium text-slate-700 dark:text-slate-200">(213) 302-6757</span> for active property emergencies (major leak, no heat, no hot water, electrical hazard). We will respond immediately — no portal entry required for genuine emergencies. For non-emergency repairs, please submit via the portal first so we can track and schedule properly.</p>
+            </div>
+          </div>
+        </div>
+        <p class="mt-5 text-slate-500 dark:text-slate-400 italic text-sm">For life-safety emergencies (fire, gas leak, flood) call 911 first.</p>
+      </div>
+
+      <!-- REQUEST FORM (formsubmit.co) -->
+      <form id="tenant-form" action="https://formsubmit.co/info@eastwesthelp.com" method="POST" class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
+        <input type="hidden" name="_subject" id="fs-subject" value="Tenant Request" />
+        <input type="hidden" name="_captcha" value="true" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+        <input type="hidden" name="_next" value="https://eastwesthelp.com/tenant?submitted=1" />
+        <input type="hidden" name="_blacklist" value="viagra, casino, crypto investment, click here, make money, free offer, winner, congratulations, loan, refinance, SEO, buy now, discount, limited time, act now, unsub" />
+        <input type="hidden" name="_autoresponse" value="Thank you for reaching out to EastWest Property Services. We received your request and will be in touch shortly. For emergencies call 911." />
+
+        <p class="text-xs text-slate-500 dark:text-slate-400 mb-4"><span class="text-red-500 font-bold">*</span> Required fields</p>
+
+        <div class="mb-5">
+          <label for="request-type" class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">What's this about?</label>
+          <select id="request-type" name="request_type" class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2.5">
+            <option value="" disabled selected>Select request type...</option>
+            <option value="repair">Repair / Maintenance</option>
+            <option value="question">Question</option>
+            <option value="feedback">Feedback</option>
+          </select>
+        </div>
+
+        <fieldset id="repair-section" class="mb-5 rounded-lg border border-slate-200 dark:border-slate-700 p-4" style="display:none">
+          <legend class="px-1 text-sm font-medium text-slate-700 dark:text-slate-200">How urgent is this repair?</legend>
+          <div class="grid sm:grid-cols-3 gap-3 mb-4">
+            <label class="cursor-pointer">
+              <input type="radio" name="urgency" value="low" class="peer sr-only" />
+              <span class="block rounded-lg border border-slate-300 dark:border-slate-600 p-3 text-sm text-slate-700 dark:text-slate-200 peer-checked:border-green-500 peer-checked:bg-green-50 dark:peer-checked:bg-green-900/30 peer-focus-visible:ring-2 peer-focus-visible:ring-blue-500">🟢 Not urgent<br /><span class="text-xs opacity-70">Can wait a few days</span></span>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="urgency" value="medium" class="peer sr-only" />
+              <span class="block rounded-lg border border-slate-300 dark:border-slate-600 p-3 text-sm text-slate-700 dark:text-slate-200 peer-checked:border-amber-500 peer-checked:bg-amber-50 dark:peer-checked:bg-amber-900/30 peer-focus-visible:ring-2 peer-focus-visible:ring-blue-500">🟡 Moderate<br /><span class="text-xs opacity-70">Within 48 hours</span></span>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="urgency" value="high" class="peer sr-only" />
+              <span class="block rounded-lg border border-slate-300 dark:border-slate-600 p-3 text-sm text-slate-700 dark:text-slate-200 peer-checked:border-red-500 peer-checked:bg-red-50 dark:peer-checked:bg-red-900/30 peer-focus-visible:ring-2 peer-focus-visible:ring-blue-500">🔴 Emergency<br /><span class="text-xs opacity-70">Needs immediate attention</span></span>
+            </label>
+          </div>
+          <p class="text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Your Availability for Repair Access</p>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div>
+              <label for="access-days" class="block text-xs text-slate-600 dark:text-slate-300 mb-1">Days You're Available</label>
+              <input id="access-days" type="text" name="access_days" class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2.5" placeholder="e.g. Mon, Wed, Fri" />
+            </div>
+            <div>
+              <label for="access-time" class="block text-xs text-slate-600 dark:text-slate-300 mb-1">Available Time Window</label>
+              <select id="access-time" name="access_time" class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2.5">
+                <option value="" disabled selected>Select...</option>
+                <option>Morning (8am – 12pm)</option>
+                <option>Afternoon (12pm – 5pm)</option>
+                <option>Evening (5pm – 8pm)</option>
+                <option>Anytime</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label for="t-name" class="block text-xs text-slate-600 dark:text-slate-300 mb-1">Your Name <span class="text-red-500">*</span></label>
+            <input id="t-name" type="text" name="name" required class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2.5" placeholder="Full name" />
+          </div>
+          <div>
+            <label for="t-unit" class="block text-xs text-slate-600 dark:text-slate-300 mb-1">Unit / Address</label>
+            <input id="t-unit" type="text" name="unit" class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2.5" placeholder="e.g. 123 Main St, Unit 2" />
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label for="t-phone" class="block text-xs text-slate-600 dark:text-slate-300 mb-1">Phone</label>
+            <input id="t-phone" type="tel" name="phone" class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2.5" placeholder="(555) 000-0000" />
+          </div>
+          <div>
+            <label for="t-email" class="block text-xs text-slate-600 dark:text-slate-300 mb-1">Email <span class="text-red-500">*</span></label>
+            <input id="t-email" type="email" name="email" required class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2.5" placeholder="you@email.com" />
+          </div>
+        </div>
+
+        <div class="mb-5">
+          <label for="t-message" class="block text-xs text-slate-600 dark:text-slate-300 mb-1">Details</label>
+          <textarea id="t-message" name="message" rows="4" class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2.5" placeholder="Describe your request, issue, or feedback..."></textarea>
+        </div>
+
+        <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-white bg-blue-700 hover:bg-blue-800 rounded-xl transition-all shadow-sm">Send →</button>
+        <p class="text-slate-600 dark:text-slate-300 text-xs mt-3">For emergencies (fire, flood, gas leak) call 911 first, then contact us.</p>
+      </form>
     </div>
   </section>
 
@@ -212,6 +341,33 @@
       </div>
     </div>
   </footer>
+  <div id="success-banner" style="display:none" role="status" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-green-600 text-white text-sm font-semibold px-6 py-3 rounded-xl shadow-lg">
+    ✅ Your request was received — we will be in touch shortly.
+  </div>
+  <script>
+    // Tenant request form: show repair options, build the email subject, show success banner
+    (function() {
+      const type = document.getElementById('request-type');
+      const repair = document.getElementById('repair-section');
+      const form = document.getElementById('tenant-form');
+      if (type && repair) {
+        type.addEventListener('change', () => { repair.style.display = type.value === 'repair' ? 'block' : 'none'; });
+      }
+      if (form) {
+        form.addEventListener('submit', () => {
+          const label = type && type.value ? type.value.charAt(0).toUpperCase() + type.value.slice(1) : 'Request';
+          const unit = document.getElementById('t-unit');
+          document.getElementById('fs-subject').value = 'Tenant ' + label + (unit && unit.value ? ' — ' + unit.value : '');
+        });
+      }
+      if (window.location.search.includes('submitted=1')) {
+        const b = document.getElementById('success-banner');
+        b.style.display = 'block';
+        setTimeout(() => { b.style.display = 'none'; }, 6000);
+        window.history.replaceState({}, '', window.location.pathname);
+      }
+    })();
+  </script>
   <!-- Shared Scripts -->
   <script>
     // Mobile menu toggle
