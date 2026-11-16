@@ -18,6 +18,7 @@
     }
     </script>
     <style>
+      html { scroll-behavior: smooth; }
       .dark body { background: #0f172a; color: #e2e8f0; }
       .dark header, .dark footer { background: #1e293b !important; border-color: #334155 !important; }
       .dark .bg-white { background: #1e293b !important; }
@@ -28,24 +29,25 @@
       .dark .shadow-sm, .dark .shadow { box-shadow: 0 1px 3px rgba(0,0,0,0.5) !important; }
       .dark input:not([type=hidden]), .dark textarea, .dark select { background: #0f172a !important; color: #f1f5f9 !important; border-color: #475569 !important; }
       .dark input::placeholder, .dark textarea::placeholder { color: #94a3b8 !important; }
+      .dark .btn-secondary { background: transparent !important; color: #e2e8f0 !important; border-color: #475569 !important; }
+      .dark .btn-secondary:hover { background: #1e293b !important; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-slate-50 text-slate-800 antialiased">
 
     <header class="bg-white text-slate-900 shadow-sm border-b border-slate-200">
-        <nav class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
-            <h1 class="text-3xl font-extrabold tracking-tighter text-blue-400">EastWest Help</h1>
-            <div class="space-x-8 text-sm font-semibold tracking-wide">
-                <a href="#about" class="text-slate-700 hover:text-blue-600 uppercase font-medium">Services</a>
-                <a href="#engagement" class="text-slate-700 hover:text-blue-600 uppercase font-medium">Contact</a>
+        <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
+            <a href="/" class="text-xl font-bold tracking-tight text-slate-900">EastWest <span class="text-blue-600">Help</span></a>
+            <div class="hidden md:flex items-center gap-7 text-sm font-medium">
+                <a href="#about" class="text-slate-600 hover:text-blue-600 transition-colors">Services</a>
+                <a href="/property" class="text-slate-600 hover:text-blue-600 transition-colors">Landlords</a>
+                <a href="/tenant" class="text-slate-600 hover:text-blue-600 transition-colors">Tenants</a>
+                <a href="/intake" class="text-slate-600 hover:text-blue-600 transition-colors">Apply</a>
+                <a href="/medical" class="text-slate-600 hover:text-blue-600 transition-colors">Medical</a>
             </div>
-            <div class="flex gap-2 items-center">
-                <a href="/medical" class="bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition shadow-sm">🩺 Medical</a>
-                <a href="/japan-tax" class="bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition shadow-sm">🇯🇵 Japan Tax</a>
-                <a href="/intake" class="bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition shadow-sm">📝 Intake</a>
-                <a href="/property" class="bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition shadow-sm">🏠 Landlords</a>
-                <a href="/tenant" class="bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition shadow-sm">🔧 Tenants</a>
-                <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-colors ml-1" aria-label="Toggle dark mode">
+            <div class="flex items-center gap-3">
+                <a href="#engagement" class="bg-blue-700 hover:bg-blue-800 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition shadow-sm">Contact</a>
+                <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-colors" aria-label="Toggle dark mode">
                   <svg id="theme-icon-sun" class="w-4 h-4 text-amber-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                   <svg id="theme-icon-moon" class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
                 </button>
@@ -53,61 +55,48 @@
         </nav>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 py-12">
-        <section id="about" class="mb-16">
+    <main class="max-w-6xl mx-auto px-6">
 
-            <!-- Top row: Who We Are text + 2 service cards -->
-            <div class="grid md:grid-cols-4 gap-6 mb-6 items-start">
-                <!-- Left: Who We Are -->
-                <div class="md:col-span-1">
-                    <h2 class="text-4xl font-extrabold mb-4 tracking-tight">Who We Are</h2>
-                    <p class="text-slate-600 leading-relaxed text-sm">
-                        We are an autonomous digital partner designed for one thing: scale. As the operational engine of EastWestHelp, designing and deploying AI-driven architectures to solve your toughest technical bottlenecks so you can focus on growth.
-                    </p>
-                    <div class="mt-4 grid grid-cols-3 gap-2">
-                        <div class="bg-blue-600 text-white p-2 rounded-lg text-center">
-                            <p class="text-xs font-bold uppercase">LA</p>
-                            <p class="text-sm font-mono" id="weather-la">--°C</p>
-                        </div>
-                        <div class="bg-indigo-700 text-white p-2 rounded-lg text-center">
-                            <p class="text-xs font-bold uppercase">TYO</p>
-                            <p class="text-sm font-mono" id="weather-tyo">--°C</p>
-                        </div>
-                        <div class="bg-orange-600 text-white p-2 rounded-lg text-center">
-                            <p class="text-xs font-bold uppercase">KOL</p>
-                            <p class="text-sm font-mono" id="weather-kol">--°C</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Middle: Landlord card -->
-                <a href="/property" class="group block bg-white border border-slate-200 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-md hover:border-blue-300 transition-all duration-200">
-                    <p class="text-blue-500 text-xs font-bold uppercase tracking-widest mb-2">🏠 Landlords</p>
-                    <h3 class="text-slate-900 text-xl font-bold mb-3">Property Services</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Notices, eviction filings, leases, and LACDA paperwork — prepared fast for CA and TN landlords.</p>
-                    <span class="text-blue-500 text-sm font-semibold group-hover:text-blue-400">Get documents →</span>
-                </a>
-
-                <!-- Right: Tenant card -->
-                <a href="/tenant" class="group block bg-white border border-slate-200 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-md hover:border-sky-300 transition-all duration-200">
-                    <p class="text-sky-500 text-xs font-bold uppercase tracking-widest mb-2">🔧 Tenants</p>
-                    <h3 class="text-slate-900 text-xl font-bold mb-3">Tenant Requests</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Submit repair requests, ask questions, or leave feedback. Tell us when you're home and we'll handle the rest.</p>
-                    <span class="text-sky-500 text-sm font-semibold group-hover:text-sky-400">Submit a request →</span>
-                </a>
-                <a href="/intake" class="group block bg-white border border-slate-200 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-md hover:border-emerald-300 transition-all duration-200">
-                    <p class="text-emerald-500 text-xs font-bold uppercase tracking-widest mb-2">📝 Applicants</p>
-                    <h3 class="text-slate-900 text-xl font-bold mb-3">Tenant Intake Form</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">Apply for your next home in minutes. Provide your details, income, references, and move-in preferences — we'll review and reach out.</p>
-                    <span class="text-emerald-500 text-sm font-semibold group-hover:text-emerald-400">Apply now →</span>
-                </a>
+        <!-- Hero -->
+        <section class="pt-20 pb-14 max-w-3xl">
+            <p class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-4">Applied AI</p>
+            <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight mb-6">AI automation and document support for modern operators.</h2>
+            <p class="text-lg text-slate-600 leading-relaxed mb-8">We design and deploy AI-driven systems to clear technical bottlenecks, and we prepare property management documents for landlords and tenants in California and Tennessee.</p>
+            <div class="flex flex-wrap gap-3">
+                <a href="#engagement" class="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-lg transition shadow-sm">Get in touch</a>
+                <a href="#about" class="btn-secondary bg-white text-slate-800 border border-slate-300 hover:bg-slate-50 font-semibold px-6 py-3 rounded-lg transition">Our services</a>
             </div>
-
         </section>
 
-        <section id="engagement" class="mb-16 grid md:grid-cols-2 gap-8">
+        <!-- Services -->
+        <section id="about" class="pb-20 scroll-mt-8">
+            <h2 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-6">Services</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="/property" class="group block bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1 hover:shadow-md hover:border-blue-300 transition-all duration-200">
+                    <p class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-3">Landlords</p>
+                    <h3 class="text-slate-900 text-xl font-bold mb-3">Property Services</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-5">Notices, eviction filings, leases, and LACDA paperwork, prepared fast for California and Tennessee landlords.</p>
+                    <span class="text-blue-600 text-sm font-semibold group-hover:text-blue-500">Get documents &rarr;</span>
+                </a>
+                <a href="/tenant" class="group block bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1 hover:shadow-md hover:border-blue-300 transition-all duration-200">
+                    <p class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-3">Tenants</p>
+                    <h3 class="text-slate-900 text-xl font-bold mb-3">Tenant Requests</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-5">Submit repair requests, ask questions, or leave feedback. Tell us when you're home and we'll handle the rest.</p>
+                    <span class="text-blue-600 text-sm font-semibold group-hover:text-blue-500">Submit a request &rarr;</span>
+                </a>
+                <a href="/intake" class="group block bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1 hover:shadow-md hover:border-blue-300 transition-all duration-200">
+                    <p class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-3">Applicants</p>
+                    <h3 class="text-slate-900 text-xl font-bold mb-3">Tenant Intake Form</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-5">Apply for your next home in minutes. Provide your details, income, references, and move-in preferences, and we'll review and reach out.</p>
+                    <span class="text-blue-600 text-sm font-semibold group-hover:text-blue-500">Apply now &rarr;</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="engagement" class="pb-20 grid md:grid-cols-2 gap-8 scroll-mt-8">
             <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                <h2 class="text-2xl font-bold text-blue-600 mb-4">Stay Ahead with AI Insights</h2>
+                <h2 class="text-2xl font-bold text-slate-900 mb-3">Stay Ahead with AI Insights</h2>
                 <p class="text-slate-600 mb-6">Get weekly automation workflows and AI tips delivered directly to your inbox.</p>
                 <form action="https://formsubmit.co/info@eastwesthelp.com" method="POST" class="space-y-4">
                     <input type="hidden" name="_captcha" value="true">
@@ -116,12 +105,12 @@
                     <input type="hidden" name="_next" value="https://eastwesthelp.com/thankyou">
                     <input type="hidden" name="_blacklist" value="viagra, casino, crypto investment, click here, make money, free offer, winner, congratulations, loan, refinance, SEO, buy now, discount, limited time, act now, unsub" />
                     <input type="hidden" name="_autoresponse" value="Thank you for subscribing to EastWest Help AI Insights. You will receive updates on AI automation, workflows, and market developments." />
-                    <input type="email" name="email" placeholder="Your email address" aria-label="Email address" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
-                    <button type="submit" class="bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition" aria-label="Subscribe to newsletter">Subscribe</button>
+                    <input type="email" name="email" placeholder="Your email address" aria-label="Email address" required class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    <button type="submit" class="bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition" aria-label="Subscribe to newsletter">Subscribe</button>
                 </form>
             </div>
             <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                <h2 class="text-2xl font-bold text-blue-600 mb-4">Questions?</h2>
+                <h2 class="text-2xl font-bold text-slate-900 mb-3">Questions?</h2>
                 <p class="text-slate-600 mb-6">Fill out the form below to reach me directly.</p>
                 <form action="https://formsubmit.co/info@eastwesthelp.com" method="POST" class="space-y-4">
                     <input type="hidden" name="_captcha" value="true">
@@ -131,27 +120,23 @@
                     <input type="hidden" name="_autoresponse" value="Thank you for contacting EastWest Help. We received your message and will respond within one business day." />
                     <input type="hidden" name="_next" value="https://eastwesthelp.com/thankyou">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input type="text" name="name" placeholder="Your Full Name" aria-label="Full name" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <input type="email" name="email" placeholder="Your Email Address" aria-label="Email address" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <input type="text" name="name" placeholder="Your Full Name" aria-label="Full name" required class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <input type="email" name="email" placeholder="Your Email Address" aria-label="Email address" required class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
                     </div>
-                    <textarea name="message" placeholder="Your Message" aria-label="Message" required rows="2" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
-                    <button type="submit" class="bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition" aria-label="Send message">Send Message</button>
+                    <textarea name="message" placeholder="Your Message" aria-label="Message" required rows="3" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+                    <button type="submit" class="bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition" aria-label="Send message">Send Message</button>
                 </form>
             </div>
         </section>
     </main>
 
-  <footer class="w-full bg-slate-900 border-t border-slate-800 mt-12">
-    <div class="max-w-7xl mx-auto px-6 py-12">
+  <footer class="w-full bg-slate-900 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-6 py-12">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
         <!-- Brand -->
         <div>
-          <p class="font-space-grotesk font-bold text-xl text-white tracking-tight">EastWest <span class="text-[#38bdf8]">Help</span></p>
-          <p class="mt-3 text-sm text-slate-400 leading-relaxed">Property management services for landlords and tenants across California and Tennessee.</p>
-          <div class="mt-4 flex items-center gap-2 text-xs text-slate-500">
-            <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
-            All systems operational
-          </div>
+          <p class="font-bold text-xl text-white tracking-tight">EastWest <span class="text-[#38bdf8]">Help</span></p>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed">AI automation and document preparation for landlords, tenants, and operators in California and Tennessee.</p>
         </div>
         <!-- Navigation -->
         <nav aria-label="Footer">
@@ -161,54 +146,31 @@
             <li><a href="/property" class="hover:text-[#38bdf8] transition-colors">Property Services</a></li>
             <li><a href="/tenant" class="hover:text-[#38bdf8] transition-colors">Tenant Requests</a></li>
             <li><a href="/intake" class="hover:text-[#38bdf8] transition-colors">Tenant Intake</a></li>
+            <li><a href="/medical" class="hover:text-[#38bdf8] transition-colors">Medical</a></li>
           </ul>
         </nav>
         <!-- Accessibility -->
         <div>
           <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Accessibility</p>
-          <p class="text-sm text-slate-400 leading-relaxed">EastWest Help is committed to making this site accessible to all users. We have worked to meet WCAG 2.1 AA standards including sufficient color contrast, keyboard navigation, and screen reader support. If you encounter an issue, please reach out via our <a href="/tenant" class="text-[#38bdf8] hover:underline">Tenant Requests</a> page.</p>
+          <p class="text-sm text-slate-400 leading-relaxed">We want this site to be usable by everyone. If you run into a problem, please <a href="#engagement" class="text-[#38bdf8] hover:underline">contact us</a> and we will work to fix it.</p>
         </div>
       </div>
     </div>
     <!-- Bottom bar -->
     <div class="border-t border-slate-800">
-      <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="max-w-6xl mx-auto px-6 py-4">
         <p class="text-xs text-slate-500">&copy; <span id="footer-year">2026</span> EastWest Help. All rights reserved.</p>
-        <p class="text-xs text-slate-600 border border-slate-700 px-3 py-1 rounded-full" data-last-updated>
-          Last updated: <span id="last-updated-date">--</span>
-        </p>
       </div>
     </div>
   </footer>
 
 <script>
-// Live Weather via Open-Meteo (free, no key)
-async function fetchWeather() {
-  const cities = [
-    { id: 'weather-la',  lat: 34.05,  lon: -118.24 },
-    { id: 'weather-tyo', lat: 35.68,  lon: 139.69  },
-    { id: 'weather-kol', lat: 22.57,  lon: 88.36   },
-  ];
-  for (const c of cities) {
-    try {
-      const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${c.lat}&longitude=${c.lon}&current_weather=true`);
-      const d = await r.json();
-      const temp = Math.round(d.current_weather.temperature);
-      const code = d.current_weather.weathercode;
-      const icon = code <= 1 ? '☀️' : code <= 3 ? '⛅' : code < 60 ? '☁️' : '🌧️';
-      document.getElementById(c.id).textContent = `${icon} ${temp}°C`;
-    } catch(e) { console.warn('weather fetch failed', c.id, e); }
-  }
-}
-
-fetchWeather();
-
-
-// Dynamic Last Updated
+// Auto-updating copyright year
 (function() {
-  const el = document.getElementById('last-updated-date');
-  if (el) el.textContent = new Date().toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-})();</script>
+  const el = document.getElementById('footer-year');
+  if (el) el.textContent = new Date().getFullYear();
+})();
+</script>
     <script>
     // Dark Mode Toggle
     (function() {
@@ -234,19 +196,3 @@ fetchWeather();
     <script src="/chat.js" defer></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
