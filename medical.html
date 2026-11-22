@@ -3,32 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medical | EastWest Help</title>
-    <meta name="description" content="Clinical workflow automation from EastWest Help: records export and EHR data transfer with human review.">
+    <title>Healthcare Data | EastWest Help</title>
+    <meta name="description" content="Healthcare data automation from EastWest Help: clinical records export and EHR data transfer with human review.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' };</script>
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
     <style>
+      html { scroll-behavior: smooth; }
       .dark body { background: #0f172a; color: #e2e8f0; }
       .dark header, .dark footer { background: #1e293b !important; border-color: #334155 !important; }
       .dark .bg-white { background: #1e293b !important; }
       .dark .bg-slate-50, .dark .bg-slate-100 { background: #0f172a !important; }
+      .dark .bg-blue-50 { background: #1e3a5f !important; }
       .dark .text-slate-900, .dark .text-slate-800 { color: #f1f5f9 !important; }
       .dark .text-slate-700, .dark .text-slate-600 { color: #cbd5e1 !important; }
       .dark .border-slate-200, .dark .border-slate-300 { border-color: #334155 !important; }
       .dark .shadow-sm, .dark .shadow { box-shadow: 0 1px 3px rgba(0,0,0,0.5) !important; }
-      .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
-      .card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+      .dark .btn-secondary { background: transparent !important; color: #e2e8f0 !important; border-color: #475569 !important; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-slate-50 text-slate-800 antialiased">
 
     <header class="bg-white text-slate-900 shadow-sm border-b border-slate-200">
-        <nav class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
-            <a href="/"><h1 class="text-3xl font-extrabold tracking-tighter text-blue-400">EastWest Help</h1></a>
-            <div class="flex gap-2 items-center">
-                <a href="/" class="bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition shadow-sm">← Home</a>
-                <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-colors ml-1" aria-label="Toggle dark mode">
+        <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
+            <a href="/" class="text-xl font-bold tracking-tight text-slate-900">EastWest <span class="text-blue-600">Help</span></a>
+            <div class="hidden md:flex items-center gap-7 text-sm font-medium">
+                <a href="/property" class="text-slate-600 hover:text-blue-600 transition-colors">Property</a>
+                <a href="/#accounting" class="text-slate-600 hover:text-blue-600 transition-colors">Accounting</a>
+                <a href="/#data-integration" class="text-slate-600 hover:text-blue-600 transition-colors">Data Integration</a>
+                <a href="/#analytics" class="text-slate-600 hover:text-blue-600 transition-colors">Analytics</a>
+                <a href="/medical" class="text-blue-600 transition-colors">Healthcare</a>
+                <a href="/#contact" class="text-slate-600 hover:text-blue-600 transition-colors">Contact</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="/#contact" class="bg-blue-700 hover:bg-blue-800 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition shadow-sm">Get in Touch</a>
+                <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-colors" aria-label="Toggle dark mode">
                   <svg id="theme-icon-sun" class="w-4 h-4 text-amber-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                   <svg id="theme-icon-moon" class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
                 </button>
@@ -36,80 +45,79 @@
         </nav>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 py-16">
+    <main class="max-w-6xl mx-auto px-6">
 
         <!-- Hero -->
-        <div class="mb-12">
-            <span class="inline-block text-xs font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-3 py-1 rounded-full mb-4">Medical</span>
-            <h2 class="text-4xl font-extrabold tracking-tight mb-3">Clinical workflow automation</h2>
-            <p class="text-slate-600 text-lg leading-relaxed max-w-2xl">Practical AI and automation for clinical documentation and records, with validation and human review at every step.</p>
-        </div>
+        <section class="pt-20 pb-12 max-w-3xl">
+            <p class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-4">Healthcare Data</p>
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight mb-6">Healthcare data automation</h1>
+            <p class="text-lg text-slate-600 leading-relaxed">Clinical records export and EHR data transfer automation for healthcare practices, with validation and human review at every step.</p>
+        </section>
 
-        <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm mb-6">
-            <div class="flex items-start gap-4">
-                <div class="shrink-0 w-11 h-11 rounded-lg bg-blue-50 flex items-center justify-center text-xl" aria-hidden="true">📁</div>
-                <div class="flex-1">
-                    <div class="flex flex-wrap items-center gap-3 mb-1">
-                        <h3 class="text-lg font-bold text-slate-900">Clinical Records Export</h3>
-                        <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700">In progress</span>
+        <!-- Offerings -->
+        <section class="pb-12 max-w-3xl">
+            <div class="grid gap-6">
+                <div class="bg-white border border-slate-200 rounded-2xl p-7 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="shrink-0 w-11 h-11 rounded-lg bg-blue-50 flex items-center justify-center text-xl" aria-hidden="true">📁</div>
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-3 mb-2">
+                                <h2 class="text-xl font-bold text-slate-900">Clinical Records Export</h2>
+                                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700">In progress</span>
+                            </div>
+                            <p class="text-sm text-slate-600 leading-relaxed">Bulk export of clinical notes from a web-based EHR into organized PDFs, with a tracking sheet and a verification pass.</p>
+                        </div>
                     </div>
-                    <p class="text-sm text-slate-600 leading-relaxed">Bulk export of clinical notes from a web-based EHR into organized PDFs, with a tracking sheet and a verification pass.</p>
-                    <a href="/#engagement" class="inline-block mt-4 text-sm font-semibold text-blue-700 hover:text-blue-800">Talk to us →</a>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl p-7 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="shrink-0 w-11 h-11 rounded-lg bg-blue-50 flex items-center justify-center text-xl" aria-hidden="true">🔄</div>
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-3 mb-2">
+                                <h2 class="text-xl font-bold text-slate-900">EHR Data Transfer Automation</h2>
+                                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600">Research</span>
+                            </div>
+                            <p class="text-sm text-slate-600 leading-relaxed">Moving data from one web-based clinical tool into an EHR, with validation checks and human review.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm mb-6">
-            <div class="flex items-start gap-4">
-                <div class="shrink-0 w-11 h-11 rounded-lg bg-blue-50 flex items-center justify-center text-xl" aria-hidden="true">🔄</div>
-                <div class="flex-1">
-                    <div class="flex flex-wrap items-center gap-3 mb-1">
-                        <h3 class="text-lg font-bold text-slate-900">EHR Data Transfer Automation</h3>
-                        <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600">Research</span>
-                    </div>
-                    <p class="text-sm text-slate-600 leading-relaxed">Moving data from one web-based clinical tool into an EHR, with validation checks and human review.</p>
-                    <a href="/#engagement" class="inline-block mt-4 text-sm font-semibold text-blue-700 hover:text-blue-800">Talk to us →</a>
-                </div>
+
+            <div class="mt-8">
+                <a href="/#contact" class="inline-block bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-lg transition shadow-sm">Get in Touch</a>
             </div>
-        </div>
 
-        <p class="text-sm text-slate-500 mt-8">Earlier tool: <a href="https://cerner-soap-scribe.onrender.com/" target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">Cerner SOAP Scribe</a> (opens in a new tab).</p>
-
-        <p class="text-xs text-slate-400 mt-6">Automation supports clinical documentation work and does not replace clinical judgment. Output is reviewed by a person before it goes into any patient record.</p>
+            <p class="text-sm text-slate-500 mt-8">Earlier tool: <a href="https://cerner-soap-scribe.onrender.com/" target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">Cerner SOAP Scribe</a> (opens in a new tab).</p>
+            <p class="text-xs text-slate-400 mt-4">Automation supports clinical documentation work and does not replace clinical judgment. Output is reviewed by a person before it goes into any patient record.</p>
+        </section>
     </main>
 
-  <footer class="w-full bg-slate-900 border-t border-slate-800 mt-12">
-    <div class="max-w-7xl mx-auto px-6 py-12">
+  <footer class="w-full bg-slate-900 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-6 py-12">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-        <!-- Brand -->
         <div>
           <p class="font-bold text-xl text-white tracking-tight">EastWest <span class="text-[#38bdf8]">Help</span></p>
-          <p class="mt-3 text-sm text-slate-400 leading-relaxed">Property management services for landlords and tenants across California and Tennessee.</p>
-          <div class="mt-4 flex items-center gap-2 text-xs text-slate-500">
-            <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
-            All systems operational
-          </div>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed">EastWest Help | Applied AI</p>
+          <p class="mt-2 text-sm text-slate-400">info@eastwesthelp.com</p>
         </div>
-        <!-- Navigation -->
         <nav aria-label="Footer">
           <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Navigate</p>
           <ul class="space-y-2 text-sm text-slate-400">
             <li><a href="/" class="hover:text-[#38bdf8] transition-colors">Home</a></li>
-            <li><a href="/medical" class="hover:text-[#38bdf8] transition-colors">Medical</a></li>
             <li><a href="/property" class="hover:text-[#38bdf8] transition-colors">Property Services</a></li>
-            <li><a href="/tenant" class="hover:text-[#38bdf8] transition-colors">Tenant Requests</a></li>
-            <li><a href="/intake" class="hover:text-[#38bdf8] transition-colors">Tenant Intake</a></li>
+            <li><a href="/medical" class="hover:text-[#38bdf8] transition-colors">Healthcare Data</a></li>
+            <li><a href="/#contact" class="hover:text-[#38bdf8] transition-colors">Contact</a></li>
           </ul>
         </nav>
-        <!-- Accessibility -->
         <div>
           <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Accessibility</p>
-          <p class="text-sm text-slate-400 leading-relaxed">EastWest Help is committed to making this site accessible to all users. We have worked to meet WCAG 2.1 AA standards including sufficient color contrast, keyboard navigation, and screen reader support. If you encounter an issue, please reach out via our <a href="/tenant" class="text-[#38bdf8] hover:underline">Tenant Requests</a> page.</p>
+          <p class="text-sm text-slate-400 leading-relaxed">We want this site to be usable by everyone. If you run into a problem, please <a href="/#contact" class="text-[#38bdf8] hover:underline">contact us</a> and we will work to fix it.</p>
         </div>
       </div>
     </div>
-    <!-- Bottom bar -->
     <div class="border-t border-slate-800">
-      <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="max-w-6xl mx-auto px-6 py-4">
         <p class="text-xs text-slate-500">&copy; <span id="footer-year">2026</span> EastWest Help. All rights reserved.</p>
       </div>
     </div>
@@ -126,13 +134,14 @@
           sun.classList.toggle('hidden', !dark);
           moon.classList.toggle('hidden', dark);
         }
-        const saved = localStorage.getItem('theme');
+        let saved = null;
+        try { saved = localStorage.getItem('theme'); } catch (e) {}
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         apply(saved ? saved === 'dark' : prefersDark);
         toggle.addEventListener('click', function() {
           const isDark = root.classList.contains('dark');
           apply(!isDark);
-          localStorage.setItem('theme', !isDark ? 'dark' : 'light');
+          try { localStorage.setItem('theme', !isDark ? 'dark' : 'light'); } catch (e) {}
         });
         const yearEl = document.getElementById('footer-year');
         if (yearEl) yearEl.textContent = new Date().getFullYear();

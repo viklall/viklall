@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <title>Landlord Document Support | EastWest Help</title>
-  <meta name="description" content="Notices, leases and eviction paperwork for California and Tennessee landlords. Document preparation only, not legal advice.">
+  <title>Property Services | EastWest Help</title>
+  <meta name="description" content="Tenant requests, tenant applications, and landlord document support from EastWest Help. Document preparation only, not legal advice.">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,9 +22,32 @@
       }
     }
   </script>
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
   <style>
     body { font-family: 'Inter', sans-serif; }
     h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
+    .anchor { scroll-margin-top: 5rem; }
+    .form-input {
+      background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px;
+      color: #1e293b; padding: 10px 14px; width: 100%; font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus { outline: none; border-color: #38bdf8; }
+    .form-input::placeholder { color: #94a3b8; }
+    .dark .form-input { background: #1e293b; border-color: #475569; color: #f1f5f9; }
+    .dark .form-input::placeholder { color: #64748b; }
+    .btn { background: #1d4ed8; color: #ffffff;
+      font-weight: 700; padding: 12px 28px; border-radius: 8px; border: none;
+      cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem;
+      transition: opacity 0.2s; width: 100%; }
+    .btn:hover { background: #1e40af; }
+    .section-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #38bdf8; margin-bottom: 4px; }
+    .req { color: #dc2626; }
+    .field-label { display: block; color: #334155; font-size: 0.875rem; font-weight: 500; margin-bottom: 6px; }
+    .dark .field-label { color: #cbd5e1; }
+    .section-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+    .dark .section-card { background: #1e293b; border-color: #334155; }
   </style>
 </head>
 <body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased transition-colors duration-300">
@@ -33,17 +56,17 @@
   <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 dark:bg-slate-900/90 dark:border-slate-700 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
-        <a href="index.html" class="flex items-center gap-2">
+        <a href="/" class="flex items-center gap-2">
           <div class="w-8 h-8 bg-sky-400 rounded-lg flex items-center justify-center">
             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
           <span class="text-xl font-bold text-slate-800 dark:text-white" style="font-family:'Space Grotesk',sans-serif;">EastWest Help</span>
         </a>
         <nav class="hidden md:flex items-center gap-6">
-          <a href="index.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Home</a>
-          <a href="property.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Property</a>
-          <a href="tenant.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Tenant</a>
-          <a href="intake.html" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Intake</a>
+          <a href="/" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Home</a>
+          <a href="#tenants" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">For Tenants</a>
+          <a href="#landlords" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">For Landlords &amp; Owners</a>
+          <a href="/#contact" class="text-sm font-medium text-slate-600 hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Contact</a>
           <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle dark mode">
             <svg id="theme-icon-sun" class="w-5 h-5 text-amber-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
             <svg id="theme-icon-moon" class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
@@ -54,7 +77,7 @@
             <svg id="theme-icon-sun-mobile" class="w-5 h-5 text-amber-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
             <svg id="theme-icon-moon-mobile" class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
           </button>
-          <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">
+          <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800" aria-label="Open menu">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
           </button>
         </div>
@@ -62,33 +85,417 @@
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
       <div class="px-4 py-3 space-y-2">
-        <a href="index.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Home</a>
-        <a href="property.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Property</a>
-        <a href="tenant.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Tenant</a>
-        <a href="intake.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Intake</a>
+        <a href="/" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Home</a>
+        <a href="#tenants" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">For Tenants</a>
+        <a href="#landlords" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">For Landlords &amp; Owners</a>
+        <a href="/#contact" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800">Contact</a>
       </div>
     </div>
   </header>
 
+  <!-- Hero -->
   <section class="bg-gradient-to-br from-sky-50 to-white dark:from-slate-900 dark:to-slate-950 py-16 lg:py-20">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-5">Landlord Document Support</h1>
-      <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-6">We prepare the notices, leases, and eviction paperwork California and Tennessee landlords need — accurate, jurisdiction-specific, and fast.</p>
-      <div class="flex flex-wrap justify-center gap-2"><span class="text-xs border border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full">Los Angeles County</span><span class="text-xs border border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full">All CA Counties</span><span class="text-xs border border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full">Memphis / Shelby County TN</span><span class="text-xs border border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full">Section 8 / LACDA / HACLA</span></div>
-      <a href="#contact" class="inline-flex items-center justify-center mt-8 px-6 py-3 text-base font-semibold text-white bg-blue-700 hover:bg-blue-800 rounded-xl transition-all shadow-sm">Request Your Documents</a>
+      <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-5">Property Services</h1>
+      <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">Tenant requests, tenant applications, and landlord document support in one place. We automate intake, notices, and records so owners and managers spend less time on admin.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href="#tenants" class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-blue-700 hover:bg-blue-800 rounded-xl transition-all shadow-sm">For Tenants</a>
+        <a href="#landlords" class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-blue-700 dark:text-blue-300 bg-white dark:bg-slate-800 border border-blue-200 dark:border-slate-700 hover:bg-blue-50 dark:hover:bg-slate-700 rounded-xl transition-all">For Landlords &amp; Owners</a>
+      </div>
     </div>
   </section>
 
-  <!-- REQUEST FORM (formsubmit.co) -->
-  <section id="contact" class="py-16 bg-white dark:bg-slate-950 transition-colors duration-300">
+  <!-- ============ FOR TENANTS ============ -->
+  <section id="tenants" class="anchor pt-16 pb-4 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6">
+      <p class="text-sky-600 dark:text-sky-400 text-xs font-bold uppercase tracking-widest mb-2">For Tenants</p>
+      <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">Tenant Services</h2>
+      <p class="text-slate-600 dark:text-slate-300">Submit a request, pay your rent, or apply for your next home.</p>
+      <div class="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
+        <a href="#tenant-request" class="text-blue-700 dark:text-blue-300 hover:underline">Submit a request</a>
+        <span class="text-slate-400" aria-hidden="true">&middot;</span>
+        <a href="#pay-rent" class="text-blue-700 dark:text-blue-300 hover:underline">Pay rent</a>
+        <span class="text-slate-400" aria-hidden="true">&middot;</span>
+        <a href="#apply" class="text-blue-700 dark:text-blue-300 hover:underline">Tenant application</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TENANT REQUEST FORM + COMMUNICATION PROTOCOL -->
+  <section id="tenant-request" class="anchor pt-10 pb-16 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6">
+      <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Contact Your Property Manager</h3>
+      <p class="text-slate-600 dark:text-slate-300 mb-8">Submit a repair request, ask a question, or leave feedback. We'll get back to you promptly.</p>
+
+      <!-- COMMUNICATION PROTOCOL BLOCK -->
+      <div class="mb-8 rounded-xl border border-slate-200 dark:border-slate-700 border-l-4 border-l-sky-400 bg-white dark:bg-slate-800 p-6 shadow-sm">
+        <div class="text-sm font-semibold uppercase tracking-wide text-sky-600 dark:text-sky-400 mb-3">Tenant Communication Protocol</div>
+        <p class="text-slate-700 dark:text-slate-200 mb-5">All communication must follow the designated channels below. Requests submitted outside these channels may experience delayed response times.</p>
+        <div class="space-y-5">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl mt-0.5" aria-hidden="true">🔧</span>
+            <div>
+              <p class="font-semibold text-slate-800 dark:text-slate-100 mb-1">Maintenance Requests — Portal First, Always</p>
+              <p class="text-slate-600 dark:text-slate-300 text-sm">Submit via this page before contacting us by any other means: <a href="https://eastwesthelp.com/property#tenant-request" class="text-sky-600 dark:text-sky-400 underline font-medium">eastwesthelp.com/property</a></p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="text-2xl mt-0.5" aria-hidden="true">✉️</span>
+            <div>
+              <p class="font-semibold text-slate-800 dark:text-slate-100 mb-1">General Inquiries — Email</p>
+              <p class="text-slate-600 dark:text-slate-300 text-sm">Non-urgent questions: <span class="font-medium text-slate-700 dark:text-slate-200">eastwesthelp1@gmail.com</span></p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="text-2xl mt-0.5" aria-hidden="true">📞</span>
+            <div>
+              <p class="font-semibold text-slate-800 dark:text-slate-100 mb-1">Phone — Urgent Maintenance Emergencies Only</p>
+              <p class="text-slate-600 dark:text-slate-300 text-sm">For active property emergencies (major leak, no heat, no hot water, electrical hazard), submit the form below with <span class="font-medium text-slate-700 dark:text-slate-200">Emergency</span> urgency and email <span class="font-medium text-slate-700 dark:text-slate-200">info@eastwesthelp.com</span> with “EMERGENCY” in the subject, or call the phone number we gave you. For fire, gas leak or any life-safety danger, call 911 first. For non-emergency repairs, please submit via the portal first so we can track and schedule properly.</p>
+            </div>
+          </div>
+        </div>
+        <p class="mt-5 text-slate-500 dark:text-slate-400 italic text-sm">For life-safety emergencies (fire, gas leak, flood) call 911 first.</p>
+      </div>
+
+      <!-- REQUEST FORM (formsubmit.co) -->
+      <form id="tenant-form" action="https://formsubmit.co/info@eastwesthelp.com" method="POST" class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
+        <input type="hidden" name="_subject" id="fs-subject" value="Tenant Request" />
+        <input type="hidden" name="_captcha" value="true" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+        <input type="hidden" name="_next" value="https://eastwesthelp.com/property?submitted=tenant" />
+        <input type="hidden" name="_blacklist" value="viagra, casino, crypto investment, click here, make money, free offer, winner, congratulations, loan, refinance, SEO, buy now, discount, limited time, act now, unsub" />
+        <input type="hidden" name="_autoresponse" value="Thank you for reaching out to EastWest Property Services. We received your request and will be in touch shortly. For emergencies call 911." />
+
+        <p class="text-xs text-slate-500 dark:text-slate-400 mb-4"><span class="text-red-500 font-bold">*</span> Required fields</p>
+
+        <div class="mb-5">
+          <label for="request-type" class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">What's this about?</label>
+          <select id="request-type" name="request_type" class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2.5">
+            <option value="" disabled selected>Select request type...</option>
+            <option value="repair">Repair / Maintenance</option>
+            <option value="question">Question</option>
+            <option value="feedback">Feedback</option>
+          </select>
+        </div>
+
+        <fieldset id="repair-section" class="mb-5 rounded-lg border border-slate-200 dark:border-slate-700 p-4" style="display:none">
+          <legend class="px-1 text-sm font-medium text-slate-700 dark:text-slate-200">How urgent is this repair?</legend>
+          <div class="grid sm:grid-cols-3 gap-3 mb-4">
+            <label class="cursor-pointer">
+              <input type="radio" name="urgency" value="low" class="peer sr-only" />
+              <span class="block rounded-lg border border-slate-300 dark:border-slate-600 p-3 text-sm text-slate-700 dark:text-slate-200 peer-checked:border-green-500 peer-checked:bg-green-50 dark:peer-checked:bg-green-900/30 peer-focus-visible:ring-2 peer-focus-visible:ring-blue-500">🟢 Not urgent<br /><span class="text-xs opacity-70">Can wait a few days</span></span>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="urgency" value="medium" class="peer sr-only" />
+              <span class="block rounded-lg border border-slate-300 dark:border-slate-600 p-3 text-sm text-slate-700 dark:text-slate-200 peer-checked:border-amber-500 peer-checked:bg-amber-50 dark:peer-checked:bg-amber-900/30 peer-focus-visible:ring-2 peer-focus-visible:ring-blue-500">🟡 Moderate<br /><span class="text-xs opacity-70">Within 48 hours</span></span>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="urgency" value="high" class="peer sr-only" />
+              <span class="block rounded-lg border border-slate-300 dark:border-slate-600 p-3 text-sm text-slate-700 dark:text-slate-200 peer-checked:border-red-500 peer-checked:bg-red-50 dark:peer-checked:bg-red-900/30 peer-focus-visible:ring-2 peer-focus-visible:ring-blue-500">🔴 Emergency<br /><span class="text-xs opacity-70">Needs immediate attention</span></span>
+            </label>
+          </div>
+          <p class="text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Your Availability for Repair Access</p>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div>
+              <label for="access-days" class="block text-xs text-slate-600 dark:text-slate-300 mb-1">Days You're Available</label>
+              <input id="access-days" type="text" name="access_days" class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2.5" placeholder="e.g. Mon, Wed, Fri" />
+            </div>
+            <div>
+              <label for="access-time" class="block text-xs text-slate-600 dark:text-slate-300 mb-1">Available Time Window</label>
+              <select id="access-time" name="access_time" class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2.5">
+                <option value="" disabled selected>Select...</option>
+                <option>Morning (8am – 12pm)</option>
+                <option>Afternoon (12pm – 5pm)</option>
+                <option>Evening (5pm – 8pm)</option>
+                <option>Anytime</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label for="t-name" class="block text-xs text-slate-600 dark:text-slate-300 mb-1">Your Name <span class="text-red-500">*</span></label>
+            <input id="t-name" type="text" name="name" required class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2.5" placeholder="Full name" />
+          </div>
+          <div>
+            <label for="t-unit" class="block text-xs text-slate-600 dark:text-slate-300 mb-1">Unit / Address</label>
+            <input id="t-unit" type="text" name="unit" class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2.5" placeholder="e.g. 123 Main St, Unit 2" />
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label for="t-phone" class="block text-xs text-slate-600 dark:text-slate-300 mb-1">Phone</label>
+            <input id="t-phone" type="tel" name="phone" class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2.5" placeholder="(555) 000-0000" />
+          </div>
+          <div>
+            <label for="t-email" class="block text-xs text-slate-600 dark:text-slate-300 mb-1">Email <span class="text-red-500">*</span></label>
+            <input id="t-email" type="email" name="email" required class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2.5" placeholder="you@email.com" />
+          </div>
+        </div>
+
+        <div class="mb-5">
+          <label for="t-message" class="block text-xs text-slate-600 dark:text-slate-300 mb-1">Details</label>
+          <textarea id="t-message" name="message" rows="4" class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2.5" placeholder="Describe your request, issue, or feedback..."></textarea>
+        </div>
+
+        <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-white bg-blue-700 hover:bg-blue-800 rounded-xl transition-all shadow-sm">Send →</button>
+        <p class="text-slate-600 dark:text-slate-300 text-xs mt-3">For emergencies (fire, flood, gas leak) call 911 first, then contact us.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- PAY RENT -->
+  <section id="pay-rent" class="anchor py-16 bg-white dark:bg-slate-950">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">Request Your Documents</h2>
+      <div class="text-center mb-10">
+        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Pay Your Rent</h3>
+        <p class="text-slate-600 dark:text-slate-400 max-w-xl mx-auto">Choose your preferred payment method below. For questions about your balance or late fees, email <a href="mailto:info@eastwesthelp.com" class="text-blue-600 dark:text-blue-400 font-semibold">info@eastwesthelp.com</a>.</p>
+      </div>
+      <div class="grid gap-6 max-w-md mx-auto">
+        <div class="group block bg-slate-50 dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 hover:border-purple-400 dark:hover:border-purple-500 hover:shadow-xl hover:-translate-y-1 transition-all text-center">
+          <div class="w-14 h-14 rounded-2xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">Pay with Zelle</h4>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">We accept Zelle payments. Email <a href="mailto:info@eastwesthelp.com" class="text-purple-600 dark:text-purple-400 font-semibold underline">info@eastwesthelp.com</a> for the payment address.</p>
+        </div>
+      </div>
+      <div class="mt-8 text-center">
+        <p class="text-xs text-slate-500 dark:text-slate-500">Prefer to pay by check? Email <a href="mailto:info@eastwesthelp.com" class="underline">info@eastwesthelp.com</a> for the mailing address. Please include your unit number on the memo line.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TENANT APPLICATION (INTAKE) -->
+  <section id="apply" class="anchor py-16 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6">
+
+      <div class="mb-8">
+        <h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">New Tenant <span class="text-sky-400">Application</span></h3>
+        <p class="text-slate-600 dark:text-slate-400 text-base">Please complete as much of the application as you can. All fields are optional.</p>
+      </div>
+
+      <form action="https://formsubmit.co/info@eastwesthelp.com" method="POST">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_blacklist" value="viagra, casino, crypto pump, loan offer">
+        <input type="hidden" name="_autoresponse" value="Thank you for submitting your tenant intake application to EastWest Help. We have received it and will contact you shortly.">
+        <input type="hidden" name="_next" value="https://eastwesthelp.com/property?submitted=intake">
+        <input type="hidden" name="_subject" value="New Tenant Intake Application">
+
+        <!-- SECTION 1: APPLICANT INFO -->
+        <div class="section-card">
+          <div class="section-label">Section 1</div>
+          <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-5">Applicant Information</h4>
+          <input type="hidden" name="■■■ SECTION 1 — APPLICANT INFORMATION ■■■" value="―――――――――――">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="sm:col-span-2">
+              <label class="field-label" for="full_name">Full Name</label>
+              <input class="form-input" type="text" id="full_name" name="Full Name" aria-label="Full Name" placeholder="First Middle Last">
+            </div>
+            <div>
+              <label class="field-label" for="email">Email</label>
+              <input class="form-input" type="email" id="email" name="Email" aria-label="Email" placeholder="you@example.com">
+            </div>
+            <div>
+              <label class="field-label" for="phone">Phone</label>
+              <input class="form-input" type="tel" id="phone" name="Phone" aria-label="Phone" placeholder="(555) 555-5555">
+            </div>
+            <div class="sm:col-span-2">
+              <label class="field-label" for="current_address">Current Address</label>
+              <input class="form-input" type="text" id="current_address" name="Current Address" aria-label="Current Address" placeholder="Street, City, State, ZIP">
+            </div>
+            <div>
+              <label class="field-label" for="time_at_address">Time at Current Address</label>
+              <input class="form-input" type="text" id="time_at_address" name="Time at Current Address" aria-label="Time at Current Address" placeholder="e.g. 2 years">
+            </div>
+            <div>
+              <label class="field-label" for="move_in_date">Desired Move-In Date</label>
+              <input class="form-input" type="date" id="move_in_date" name="Desired Move-In Date" aria-label="Desired Move-In Date">
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 2: IDENTIFICATION -->
+        <div class="section-card">
+          <div class="section-label">Section 2</div>
+          <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Identification</h4>
+          <div class="rounded-lg border-l-4 border-sky-400 bg-sky-50 dark:bg-sky-900/20 p-4">
+            <p class="text-slate-700 dark:text-slate-300 text-sm">📞 For your security, do not enter these online. We will contact you after you submit, or you can call the phone number we gave you, to provide the following two numbers: <span class="font-semibold">Driver's License number</span> and <span class="font-semibold">Social Security number</span>.</p>
+            <p class="text-slate-700 dark:text-slate-300 text-sm mt-3">If we don't answer, it's okay to leave them on our secure voicemail — please speak slowly and include your full name.</p>
+            <p class="text-slate-700 dark:text-slate-300 text-sm mt-3">For your security, please do not enter them online.</p>
+          </div>
+        </div>
+
+        <!-- SECTION 3: EMPLOYMENT & INCOME -->
+        <div class="section-card">
+          <div class="section-label">Section 3</div>
+          <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-5">Employment &amp; Income</h4>
+          <input type="hidden" name="■■■ SECTION 3 — EMPLOYMENT AND INCOME ■■■" value="―――――――――――">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="field-label" for="employer_name">Employer / Company Name</label>
+              <input class="form-input" type="text" id="employer_name" name="Employer Name" aria-label="Employer Name" placeholder="Company name">
+            </div>
+            <div>
+              <label class="field-label" for="employer_contact">Supervisor / Contact Person</label>
+              <input class="form-input" type="text" id="employer_contact" name="Employer Contact Person" aria-label="Employer Contact Person" placeholder="Name">
+            </div>
+            <div class="sm:col-span-2">
+              <label class="field-label" for="employer_address">Employer Address</label>
+              <input class="form-input" type="text" id="employer_address" name="Employer Address" aria-label="Employer Address" placeholder="Street, City, State, ZIP">
+            </div>
+            <div>
+              <label class="field-label" for="employer_phone">Employer Phone</label>
+              <input class="form-input" type="tel" id="employer_phone" name="Employer Phone" aria-label="Employer Phone" placeholder="(555) 555-5555">
+            </div>
+            <div>
+              <label class="field-label" for="position">Position / Title</label>
+              <input class="form-input" type="text" id="position" name="Position" aria-label="Position" placeholder="Job title">
+            </div>
+            <div>
+              <label class="field-label" for="employment_length">Length of Employment</label>
+              <input class="form-input" type="text" id="employment_length" name="Length of Employment" aria-label="Length of Employment" placeholder="e.g. 3 years">
+            </div>
+            <div>
+              <label class="field-label" for="monthly_income">Monthly Gross Income</label>
+              <input class="form-input" type="text" id="monthly_income" name="Monthly Gross Income" aria-label="Monthly Gross Income" placeholder="$">
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 4: HOUSEHOLD -->
+        <div class="section-card">
+          <div class="section-label">Section 4</div>
+          <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-5">Household</h4>
+          <input type="hidden" name="■■■ SECTION 4 — HOUSEHOLD ■■■" value="―――――――――――">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="field-label" for="occupants">Number of Occupants</label>
+              <input class="form-input" type="number" id="occupants" name="Number of Occupants" aria-label="Number of Occupants" min="1" placeholder="e.g. 3">
+            </div>
+            <div class="sm:col-span-2">
+              <label class="field-label" for="vehicles">Vehicle(s) — Make / Model / Plate</label>
+              <input class="form-input" type="text" id="vehicles" name="Vehicles" aria-label="Vehicles" placeholder="e.g. Toyota Camry, 7ABC123">
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 5: PET INFORMATION -->
+        <div class="section-card">
+          <div class="section-label">Section 5</div>
+          <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-5">Pet Information</h4>
+          <input type="hidden" name="■■■ SECTION 5 — PET INFORMATION ■■■" value="―――――――――――">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="field-label" for="has_pets">Do you have pets?</label>
+              <select class="form-input" id="has_pets" name="Has Pets" aria-label="Do you have pets">
+                <option value="" disabled selected>Select one</option>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+            </div>
+            <div>
+              <label class="field-label" for="pet_type">Pet Type</label>
+              <input class="form-input" type="text" id="pet_type" name="Pet Type" aria-label="Pet Type" placeholder="e.g. Dog, Cat">
+            </div>
+            <div>
+              <label class="field-label" for="pet_breed">Breed</label>
+              <input class="form-input" type="text" id="pet_breed" name="Pet Breed" aria-label="Pet Breed" placeholder="e.g. Labrador">
+            </div>
+            <div>
+              <label class="field-label" for="pet_count">Number of Pets</label>
+              <input class="form-input" type="number" id="pet_count" name="Number of Pets" aria-label="Number of Pets" min="0" placeholder="e.g. 1">
+            </div>
+            <div>
+              <label class="field-label" for="pet_weight">Weight (approx.)</label>
+              <input class="form-input" type="text" id="pet_weight" name="Pet Weight" aria-label="Pet Weight" placeholder="e.g. 40 lbs">
+            </div>
+            <div>
+              <label class="field-label" for="pet_fixed">Spayed / Neutered?</label>
+              <select class="form-input" id="pet_fixed" name="Spayed or Neutered" aria-label="Spayed or Neutered">
+                <option value="" disabled selected>Select one</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 6: REFERENCES -->
+        <div class="section-card">
+          <div class="section-label">Section 6</div>
+          <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-5">References</h4>
+          <input type="hidden" name="■■■ SECTION 6 — REFERENCES ■■■" value="―――――――――――">
+
+          <p class="text-slate-600 dark:text-slate-400 text-sm font-medium mb-3">Reference 1 — Prior Landlord (if applicable)</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+            <div>
+              <label class="field-label" for="ref1_name">Name</label>
+              <input class="form-input" type="text" id="ref1_name" name="Reference 1 Name" aria-label="Reference 1 Name">
+            </div>
+            <div>
+              <label class="field-label" for="ref1_rel">Relationship</label>
+              <input class="form-input" type="text" id="ref1_rel" name="Reference 1 Relationship" aria-label="Reference 1 Relationship" placeholder="e.g. Prior landlord">
+            </div>
+            <div>
+              <label class="field-label" for="ref1_phone">Phone</label>
+              <input class="form-input" type="tel" id="ref1_phone" name="Reference 1 Phone" aria-label="Reference 1 Phone">
+            </div>
+          </div>
+
+          <p class="text-slate-600 dark:text-slate-400 text-sm font-medium mb-3">Reference 2 — Personal or Professional</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <label class="field-label" for="ref2_name">Name</label>
+              <input class="form-input" type="text" id="ref2_name" name="Reference 2 Name" aria-label="Reference 2 Name">
+            </div>
+            <div>
+              <label class="field-label" for="ref2_rel">Relationship</label>
+              <input class="form-input" type="text" id="ref2_rel" name="Reference 2 Relationship" aria-label="Reference 2 Relationship" placeholder="e.g. Colleague">
+            </div>
+            <div>
+              <label class="field-label" for="ref2_phone">Phone</label>
+              <input class="form-input" type="tel" id="ref2_phone" name="Reference 2 Phone" aria-label="Reference 2 Phone">
+            </div>
+          </div>
+        </div>
+
+        <!-- CONSENT + SUBMIT -->
+        <div class="section-card">
+          <label class="flex items-start gap-3 cursor-pointer mb-5">
+            <input type="checkbox" name="Verification Consent" value="Yes" required aria-label="Verification Consent" class="mt-1 h-4 w-4">
+            <span class="text-slate-700 dark:text-slate-300 text-sm">I authorize verification of the information provided in this application, including contacting employers, landlords, and references. <span class="req">*</span></span>
+          </label>
+          <button type="submit" class="btn" aria-label="Submit Application">Submit Application</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FOR LANDLORDS & OWNERS ============ -->
+  <section id="landlords" class="anchor pt-16 pb-4 bg-white dark:bg-slate-950 transition-colors duration-300 border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-sky-600 dark:text-sky-400 text-xs font-bold uppercase tracking-widest mb-2">For Landlords &amp; Owners</p>
+      <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">Landlord Document Support</h2>
+      <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mb-6">We prepare the notices, leases, and eviction paperwork California and Tennessee landlords need: accurate, jurisdiction-specific, and fast.</p>
+      <div class="flex flex-wrap gap-2"><span class="text-xs border border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full">Los Angeles County</span><span class="text-xs border border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full">All CA Counties</span><span class="text-xs border border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full">Memphis / Shelby County TN</span><span class="text-xs border border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full">Section 8 / LACDA / HACLA</span></div>
+    </div>
+  </section>
+
+  <!-- LANDLORD REQUEST FORM (formsubmit.co) -->
+  <section id="landlord-request" class="anchor py-12 bg-white dark:bg-slate-950 transition-colors duration-300">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Request Your Documents</h3>
       <p class="text-xs text-slate-500 dark:text-slate-400 mb-6"><span class="text-red-500 font-bold">*</span> Required fields</p>
       <form action="https://formsubmit.co/info@eastwesthelp.com" method="POST" class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
         <input type="hidden" name="_subject" value="Landlord Document Request" />
         <input type="hidden" name="_captcha" value="true" />
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-        <input type="hidden" name="_next" value="https://eastwesthelp.com/property?submitted=1" />
+        <input type="hidden" name="_next" value="https://eastwesthelp.com/property?submitted=landlord" />
         <input type="hidden" name="_blacklist" value="viagra, casino, crypto investment, click here, make money, free offer, winner, congratulations, loan, refinance, SEO, buy now, discount, limited time, act now, unsub" />
         <input type="hidden" name="_autoresponse" value="Thank you for contacting EastWest Property Services. We received your document request and will follow up within one business day. Please do not reply to this email — contact us at info@eastwesthelp.com." />
         <div class="grid md:grid-cols-3 gap-4 mb-4">
@@ -109,21 +516,21 @@
           <div>
             <label for="p-doc" class="block text-xs text-slate-600 dark:text-slate-300 mb-1">Document Needed <span class="text-red-500">*</span></label>
             <select id="p-doc" name="document_type" required class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-3 py-2.5">
-                <option value="" disabled selected>Select...</option>
-                <option>3-Day Notice to Pay Rent or Quit</option>
-                <option>3-Day Notice to Perform or Quit</option>
-                <option>3-Day Unconditional Notice to Quit</option>
-                <option>30/60-Day Notice to Vacate</option>
-                <option>Notice of Entry</option>
-                <option>Rent Increase Notice</option>
-                <option>UD / Eviction Filing Package</option>
-                <option>Memphis Detainer Warrant</option>
-                <option>Lease Agreement</option>
-                <option>Lease Renewal</option>
-                <option>Security Deposit Itemization</option>
-                <option>Property Management Agreement</option>
-                <option>LACDA / Housing Authority Letter</option>
-                <option>Other / Not Sure</option>
+              <option value="" disabled selected>Select...</option>
+              <option>3-Day Notice to Pay Rent or Quit</option>
+              <option>3-Day Notice to Perform or Quit</option>
+              <option>3-Day Unconditional Notice to Quit</option>
+              <option>30/60-Day Notice to Vacate</option>
+              <option>Notice of Entry</option>
+              <option>Rent Increase Notice</option>
+              <option>UD / Eviction Filing Package</option>
+              <option>Memphis Detainer Warrant</option>
+              <option>Lease Agreement</option>
+              <option>Lease Renewal</option>
+              <option>Security Deposit Itemization</option>
+              <option>Property Management Agreement</option>
+              <option>LACDA / Housing Authority Letter</option>
+              <option>Other / Not Sure</option>
             </select>
           </div>
           <div>
@@ -138,115 +545,110 @@
   </section>
 
   <!-- WHAT WE PREPARE -->
-  <section class="py-16 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+  <section id="what-we-prepare" class="anchor py-16 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6">What We Prepare</h2>
+      <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">What We Prepare</h3>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6">
-          <div>
-            <div class="font-bold text-sm mb-3 text-amber-600">📋 Notices</div>
-            <ul class="space-y-1.5 text-sm text-slate-600 dark:text-slate-300">
-              <li>3-Day Pay or Quit</li>
-              <li>3-Day Perform or Quit</li>
-              <li>3-Day Unconditional Quit</li>
-              <li>30/60-Day Notice to Vacate</li>
-              <li>Notice of Entry</li>
-              <li>Rent Increase Notice</li>
-              <li>Change of Terms</li>
-              <li>Proof of Service</li>
-            </ul>
-          </div>
-          <div>
-            <div class="font-bold text-sm mb-3 text-red-600">⚖️ Eviction / UD</div>
-            <ul class="space-y-1.5 text-sm text-slate-600 dark:text-slate-300">
-              <li>UD Complaint (UD-100)</li>
-              <li>Summons (UD-105)</li>
-              <li>Case Cover Sheet (CM-010)</li>
-              <li>Request for Default (UD-107)</li>
-              <li>Default Judgment (UD-110)</li>
-              <li>Writ of Possession (EJ-130)</li>
-              <li>AB 2347 Declaration</li>
-              <li>Memphis Detainer Warrant</li>
-              <li>UD Filing Checklist</li>
-            </ul>
-          </div>
-          <div>
-            <div class="font-bold text-sm mb-3 text-green-600">📄 Leases</div>
-            <ul class="space-y-1.5 text-sm text-slate-600 dark:text-slate-300">
-              <li>Residential Lease</li>
-              <li>Lease Renewal</li>
-              <li>Pet Addendum</li>
-              <li>Co-Tenant Addendum</li>
-              <li>Section 8 / HCV Addendum</li>
-              <li>Move-In/Out Checklist</li>
-            </ul>
-          </div>
-          <div>
-            <div class="font-bold text-sm mb-3 text-sky-600">🏠 Management</div>
-            <ul class="space-y-1.5 text-sm text-slate-600 dark:text-slate-300">
-              <li>PM Agreement</li>
-              <li>Security Deposit Statement</li>
-              <li>Rent Ledger</li>
-              <li>Demand Letter</li>
-              <li>Maintenance Request Log</li>
-              <li>LACDA / HACLA Letters</li>
-            </ul>
-          </div>
+        <div>
+          <div class="font-bold text-sm mb-3 text-amber-600">📋 Notices</div>
+          <ul class="space-y-1.5 text-sm text-slate-600 dark:text-slate-300">
+            <li>3-Day Pay or Quit</li>
+            <li>3-Day Perform or Quit</li>
+            <li>3-Day Unconditional Quit</li>
+            <li>30/60-Day Notice to Vacate</li>
+            <li>Notice of Entry</li>
+            <li>Rent Increase Notice</li>
+            <li>Change of Terms</li>
+            <li>Proof of Service</li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold text-sm mb-3 text-red-600">⚖️ Eviction / UD</div>
+          <ul class="space-y-1.5 text-sm text-slate-600 dark:text-slate-300">
+            <li>UD Complaint (UD-100)</li>
+            <li>Summons (UD-105)</li>
+            <li>Case Cover Sheet (CM-010)</li>
+            <li>Request for Default (UD-107)</li>
+            <li>Default Judgment (UD-110)</li>
+            <li>Writ of Possession (EJ-130)</li>
+            <li>AB 2347 Declaration</li>
+            <li>Memphis Detainer Warrant</li>
+            <li>UD Filing Checklist</li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold text-sm mb-3 text-green-600">📄 Leases</div>
+          <ul class="space-y-1.5 text-sm text-slate-600 dark:text-slate-300">
+            <li>Residential Lease</li>
+            <li>Lease Renewal</li>
+            <li>Pet Addendum</li>
+            <li>Co-Tenant Addendum</li>
+            <li>Section 8 / HCV Addendum</li>
+            <li>Move-In/Out Checklist</li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold text-sm mb-3 text-sky-600">🏠 Management</div>
+          <ul class="space-y-1.5 text-sm text-slate-600 dark:text-slate-300">
+            <li>PM Agreement</li>
+            <li>Security Deposit Statement</li>
+            <li>Rent Ledger</li>
+            <li>Demand Letter</li>
+            <li>Maintenance Request Log</li>
+            <li>LACDA / HACLA Letters</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="w-full bg-slate-900 border-t border-slate-800 mt-12">
+  <footer class="w-full bg-slate-900 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-6 py-12">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-        <!-- Brand -->
         <div>
-          <p class="font-space-grotesk font-bold text-xl text-white tracking-tight">EastWest <span class="text-[#38bdf8]">Help</span></p>
-          <p class="mt-3 text-sm text-slate-400 leading-relaxed">Property management services for landlords and tenants across California and Tennessee.</p>
-          <div class="mt-4 flex items-center gap-2 text-xs text-slate-500">
-            <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
-            All systems operational
-          </div>
+          <p class="font-bold text-xl text-white tracking-tight">EastWest <span class="text-[#38bdf8]">Help</span></p>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed">EastWest Help | Applied AI</p>
+          <p class="mt-2 text-sm text-slate-400">info@eastwesthelp.com</p>
         </div>
-        <!-- Navigation -->
         <nav aria-label="Footer">
           <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Navigate</p>
           <ul class="space-y-2 text-sm text-slate-400">
             <li><a href="/" class="hover:text-[#38bdf8] transition-colors">Home</a></li>
             <li><a href="/property" class="hover:text-[#38bdf8] transition-colors">Property Services</a></li>
-            <li><a href="/tenant" class="hover:text-[#38bdf8] transition-colors">Tenant Requests</a></li>
-            <li><a href="/intake" class="hover:text-[#38bdf8] transition-colors">Tenant Intake</a></li>
+            <li><a href="/medical" class="hover:text-[#38bdf8] transition-colors">Healthcare Data</a></li>
+            <li><a href="/#contact" class="hover:text-[#38bdf8] transition-colors">Contact</a></li>
           </ul>
         </nav>
-        <!-- Accessibility -->
         <div>
           <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Accessibility</p>
-          <p class="text-sm text-slate-400 leading-relaxed">EastWest Help is committed to making this site accessible to all users. We have worked to meet WCAG 2.1 AA standards including sufficient color contrast, keyboard navigation, and screen reader support. If you encounter an issue, please reach out via our <a href="/tenant" class="text-[#38bdf8] hover:underline">Tenant Requests</a> page.</p>
+          <p class="text-sm text-slate-400 leading-relaxed">We want this site to be usable by everyone. If you run into a problem, please <a href="/#contact" class="text-[#38bdf8] hover:underline">contact us</a> and we will work to fix it.</p>
         </div>
       </div>
     </div>
-    <!-- Bottom bar -->
     <div class="border-t border-slate-800">
-      <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="max-w-7xl mx-auto px-6 py-4">
         <p class="text-xs text-slate-500">&copy; <span id="footer-year">2026</span> EastWest Help. All rights reserved.</p>
-        <p class="text-xs text-slate-600 border border-slate-700 px-3 py-1 rounded-full" data-last-updated>
-          Last updated: <span id="last-updated-date">--</span>
-        </p>
       </div>
     </div>
   </footer>
-  <!-- Shared Scripts -->
+
+  <div id="success-banner" style="display:none" role="status" class="fixed top-4 left-1/2 -translate-x-1/2 z-[60] bg-green-600 text-white text-sm font-semibold px-6 py-3 rounded-xl shadow-lg">
+    ✅ <span id="success-text">Your request was received — we will be in touch shortly.</span>
+  </div>
+
   <script>
     // Mobile menu toggle
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenuBtn && mobileMenu) {
-      mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-    }
+    (function() {
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      if (btn && menu) {
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+      }
+    })();
 
-    // Dark Mode Toggle
+    // Dark mode toggle
     (function() {
       const html = document.documentElement;
       const toggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
@@ -261,41 +663,61 @@
         });
       }
       function setTheme(dark) {
-        if (dark) html.classList.add('dark');
-        else html.classList.remove('dark');
-        localStorage.setItem('theme', dark ? 'dark' : 'light');
+        html.classList.toggle('dark', dark);
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
         updateIcons(dark);
       }
-      const saved = localStorage.getItem('theme');
+      let saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (e) {}
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const isDark = saved === 'dark' || (!saved && prefersDark);
-      setTheme(isDark);
+      setTheme(saved === 'dark' || (!saved && prefersDark));
       toggleBtns.forEach(btn => {
         if (btn) btn.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
       });
     })();
 
-    // Dynamic Last Updated
+    // Footer year
     (function() {
-      const dateEl = document.getElementById('last-updated-date');
       const yearEl = document.getElementById('footer-year');
-      if (dateEl) {
-        const now = new Date();
-        dateEl.textContent = now.toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-      }
       if (yearEl) yearEl.textContent = new Date().getFullYear();
     })();
-  </script>
-  <div id="success-banner" style="display:none" role="status" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-green-600 text-white text-sm font-semibold px-6 py-3 rounded-xl shadow-lg">
-    ✅ Your request was received — we will be in touch shortly.
-  </div>
-  <script>
-    if (window.location.search.includes('submitted=1')) {
-      const b = document.getElementById('success-banner');
-      b.style.display = 'block';
-      setTimeout(() => { b.style.display = 'none'; }, 6000);
+
+    // Tenant request form: show repair options and build the email subject
+    (function() {
+      const type = document.getElementById('request-type');
+      const repair = document.getElementById('repair-section');
+      const form = document.getElementById('tenant-form');
+      if (type && repair) {
+        type.addEventListener('change', () => { repair.style.display = type.value === 'repair' ? 'block' : 'none'; });
+      }
+      if (form) {
+        form.addEventListener('submit', () => {
+          const label = type && type.value ? type.value.charAt(0).toUpperCase() + type.value.slice(1) : 'Request';
+          const unit = document.getElementById('t-unit');
+          document.getElementById('fs-subject').value = 'Tenant ' + label + (unit && unit.value ? ' — ' + unit.value : '');
+        });
+      }
+    })();
+
+    // Success banner after a form submission (?submitted=tenant|intake|landlord)
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const which = params.get('submitted');
+      if (!which) return;
+      const messages = {
+        tenant: 'Your request was received — we will be in touch shortly.',
+        landlord: 'Your document request was received — we will follow up within one business day.',
+        intake: 'Your application has been submitted. We will contact you shortly.'
+      };
+      const targets = { tenant: 'tenant-request', landlord: 'landlord-request', intake: 'apply' };
+      const banner = document.getElementById('success-banner');
+      document.getElementById('success-text').textContent = messages[which] || messages.tenant;
+      banner.style.display = 'block';
+      setTimeout(() => { banner.style.display = 'none'; }, 6000);
       window.history.replaceState({}, '', window.location.pathname);
-    }
+      const target = document.getElementById(targets[which] || 'tenants');
+      if (target) target.scrollIntoView();
+    })();
   </script>
   <script src="/chat.js" defer></script>
 </body>

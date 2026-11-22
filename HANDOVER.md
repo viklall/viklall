@@ -13,11 +13,9 @@
 | File | URL |
 |---|---|
 | `index.html` | eastwesthelp.com |
-| `property.html` | /property |
-| `tenant.html` | /tenant |
-| `intake.html` | /intake (new tenant application, added July 2026) |
+| `property.html` | /property (tenant request, tenant application, rent payment, landlord document request; sections #tenants and #landlords) |
+| `medical.html` | /medical (Healthcare Data) |
 | `thankyou.html` | /thankyou |
-| `.github/workflows/refresh.yml` | news cron, Mondays 6am UTC |
 
 ## Widgets — no API keys exist or are needed
 - Weather (LA/TYO/KOL): client-side JS, Open-Meteo free API, no key
@@ -37,7 +35,7 @@
 - All submit to formsubmit.co → `info@eastwesthelp.com` → Cloudflare email routing → `eastwesthelp1@gmail.com`
 - Every form must include: `_captcha=true`, `_honey` honeypot, `_blacklist`, `_autoresponse`, `_next`
 - Intake form also uses `_template=table` plus hidden "■■■ SECTION N ■■■" divider fields so the email groups by section
-- `_next` values: property → `/property?submitted=1`, tenant → `/tenant?submitted=1`, intake → `/intake?submitted=1`, index → `/thankyou`
+- `_next` values: property page (all three forms) → `/property?submitted=tenant|intake|landlord`, index → `/thankyou`
 - Success banner shows on `?submitted=1`, auto-dismisses after 6 sec
 - No `mailto:` links anywhere; required fields get red `*` and a `* Required fields` note; aria-labels on all inputs
 
