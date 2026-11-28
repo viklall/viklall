@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Bid Desk | EastWest Help</title>
+    <meta name="description" content="EastWest Help's Government Bid Desk helps small California contractors in IT, managed services, and facilities find fitting public-sector bids and prepare proposals. Serving Los Angeles, Ventura, and Kern counties.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class' };</script>
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <style>
+      html { scroll-behavior: smooth; }
+      .anchor { scroll-margin-top: 2rem; }
+      .dark body { background: #0f172a; color: #e2e8f0; }
+      .dark header, .dark footer { background: #1e293b !important; border-color: #334155 !important; }
+      .dark .bg-white { background: #1e293b !important; }
+      .dark .bg-slate-50, .dark .bg-slate-100 { background: #0f172a !important; }
+      .dark .bg-blue-50 { background: #1e3a5f !important; }
+      .dark .text-slate-900, .dark .text-slate-800 { color: #f1f5f9 !important; }
+      .dark .text-slate-700, .dark .text-slate-600 { color: #cbd5e1 !important; }
+      .dark .text-slate-500 { color: #94a3b8 !important; }
+      .dark .border-slate-200, .dark .border-slate-300 { border-color: #334155 !important; }
+      .dark .shadow-sm, .dark .shadow { box-shadow: 0 1px 3px rgba(0,0,0,0.5) !important; }
+      .dark input:not([type=hidden]):not([type=checkbox]), .dark textarea, .dark select { background: #0f172a !important; color: #f1f5f9 !important; border-color: #475569 !important; }
+      .dark input::placeholder, .dark textarea::placeholder { color: #94a3b8 !important; }
+      .dark #mobile-menu a.block:hover { background: #0f172a !important; }
+      .dark .btn-secondary { background: transparent !important; color: #e2e8f0 !important; border-color: #475569 !important; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <header class="bg-white text-slate-900 shadow-sm border-b border-slate-200">
+        <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
+            <a href="/" class="text-xl font-bold tracking-tight text-slate-900 whitespace-nowrap">EastWest <span class="text-blue-600">Help</span></a>
+            <div class="hidden lg:flex items-center gap-5 text-sm font-medium whitespace-nowrap">
+                <a href="/property" class="text-slate-600 hover:text-blue-600 transition-colors">Property</a>
+                <a href="/#accounting" class="text-slate-600 hover:text-blue-600 transition-colors">Accounting</a>
+                <a href="/#data-integration" class="text-slate-600 hover:text-blue-600 transition-colors">Data Integration</a>
+                <a href="/#analytics" class="text-slate-600 hover:text-blue-600 transition-colors">Analytics</a>
+                <a href="/medical" class="text-slate-600 hover:text-blue-600 transition-colors">Healthcare</a>
+                <a href="/biddesk" class="text-blue-600 transition-colors">Bid Desk</a>
+                <a href="/#contact" class="text-slate-600 hover:text-blue-600 transition-colors">Contact</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="#request" class="hidden lg:inline-block bg-blue-700 hover:bg-blue-800 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition shadow-sm whitespace-nowrap">Request a bid list</a>
+                <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-colors" aria-label="Toggle dark mode">
+                  <svg id="theme-icon-sun" class="w-4 h-4 text-amber-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                  <svg id="theme-icon-moon" class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                </button>
+                <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 flex items-center justify-center rounded-lg text-slate-600 hover:bg-slate-100" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white">
+            <div class="max-w-6xl mx-auto px-6 py-3 space-y-1 text-sm font-medium">
+                <a href="/property" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-50">Property</a>
+                <a href="/#accounting" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-50">Accounting</a>
+                <a href="/#data-integration" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-50">Data Integration</a>
+                <a href="/#analytics" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-50">Analytics</a>
+                <a href="/medical" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-50">Healthcare</a>
+                <a href="/biddesk" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-50">Bid Desk</a>
+                <a href="/#contact" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-50">Contact</a>
+                <a href="#request" class="mt-2 inline-block bg-blue-700 hover:bg-blue-800 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition shadow-sm">Request a bid list</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6">
+
+        <!-- Hero -->
+        <section class="pt-20 pb-12 max-w-3xl">
+            <p class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-4">Government Bid Desk</p>
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight mb-6">Public-sector bids, matched to your company</h1>
+            <p class="text-lg text-slate-600 leading-relaxed">We help small IT, managed services, and facilities firms in Los Angeles, Ventura, and Kern counties find government bids that fit, and get proposals ready to submit.</p>
+        </section>
+
+        <!-- What we do -->
+        <section class="pb-12 max-w-3xl">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4">What we do</h2>
+            <p class="text-slate-600 leading-relaxed mb-4">We scan federal bids on SAM.gov, state bids on Cal eProcure, and local city, county, school, and special-district bid sites. When a bid looks like a fit for your company, we flag it, help you weigh a go or no-go, and help prepare the proposal — the compliance matrix, the narrative, and the forms.</p>
+            <p class="text-slate-600 leading-relaxed">You set the pricing, sign, and submit. We stay in a support role.</p>
+        </section>
+
+        <!-- Offers -->
+        <section class="pb-16">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">How we can help</h2>
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div class="bg-white border border-slate-200 rounded-2xl p-7 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="shrink-0 w-11 h-11 rounded-lg bg-blue-50 flex items-center justify-center text-xl" aria-hidden="true">📋</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Matched bid list</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">A short list of open bids that look like a fit for your work and the counties you serve. You can request a free list below.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-2xl p-7 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="shrink-0 w-11 h-11 rounded-lg bg-blue-50 flex items-center justify-center text-xl" aria-hidden="true">🔍</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Bid vetting</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">Help reviewing a bid so you can decide whether to go or pass.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-2xl p-7 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="shrink-0 w-11 h-11 rounded-lg bg-blue-50 flex items-center justify-center text-xl" aria-hidden="true">📝</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Bid preparation</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">Help with the compliance matrix, narrative, and forms. You set the price, sign, and submit.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-2xl p-7 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="shrink-0 w-11 h-11 rounded-lg bg-blue-50 flex items-center justify-center text-xl" aria-hidden="true">🗂️</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Getting ready to bid</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">Help with SAM registration, California Small Business or DVBE certification paperwork, and a capability statement. Decisions on registration or certification are made by the issuing agency, not by us.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Request form -->
+        <section id="request" class="anchor pb-16">
+            <div class="max-w-2xl bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                <h2 class="text-2xl font-bold text-slate-900 mb-3">Request a free list of matched bids</h2>
+                <p class="text-slate-600 mb-6">Tell us a little about your company and we will put together a list of bids that look like a fit.</p>
+                <form id="biddesk-form" action="https://formsubmit.co/info@eastwesthelp.com" method="POST" class="space-y-5">
+                    <input type="hidden" name="_captcha" value="true">
+                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                    <input type="hidden" name="_subject" value="Government Bid Desk — Matched Bid List Request">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_blacklist" value="viagra, casino, crypto investment, click here, make money, free offer, winner, congratulations, loan, refinance, SEO, buy now, discount, limited time, act now, unsub">
+                    <input type="hidden" name="_autoresponse" value="Thank you for contacting EastWest Help. We received your request for a matched bid list and will follow up within one business day.">
+                    <input type="hidden" name="_next" value="https://eastwesthelp.com/biddesk?submitted=list">
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="company" class="block text-sm font-medium text-slate-700 mb-1">Company name</label>
+                            <input type="text" id="company" name="company" autocomplete="organization" required class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label for="contact_name" class="block text-sm font-medium text-slate-700 mb-1">Contact name</label>
+                            <input type="text" id="contact_name" name="contact_name" autocomplete="name" required class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Contact email</label>
+                        <input type="email" id="email" name="email" autocomplete="email" required class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+
+                    <fieldset>
+                        <legend class="block text-sm font-medium text-slate-700 mb-2">Counties served</legend>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" name="counties" value="Los Angeles" class="rounded border-slate-300"> Los Angeles</label>
+                            <label class="flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" name="counties" value="Ventura" class="rounded border-slate-300"> Ventura</label>
+                            <label class="flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" name="counties" value="Kern" class="rounded border-slate-300"> Kern</label>
+                            <label class="flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" id="county-other" name="counties" value="Other" class="rounded border-slate-300"> Other</label>
+                            <input type="text" id="counties_other" name="counties_other" placeholder="If other, which counties?" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        </div>
+                        <p id="counties-error" class="hidden mt-2 text-sm text-red-600">Please choose at least one county.</p>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend class="block text-sm font-medium text-slate-700 mb-2">Kind of work</legend>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" name="work_type" value="IT / managed services" class="rounded border-slate-300"> IT / managed services</label>
+                            <label class="flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" name="work_type" value="Facilities" class="rounded border-slate-300"> Facilities</label>
+                            <label class="flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" id="work-other" name="work_type" value="Other" class="rounded border-slate-300"> Other</label>
+                            <input type="text" id="work_type_other" name="work_type_other" placeholder="If other, what kind of work?" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        </div>
+                        <p id="work-error" class="hidden mt-2 text-sm text-red-600">Please choose at least one kind of work.</p>
+                    </fieldset>
+
+                    <div>
+                        <label for="naics" class="block text-sm font-medium text-slate-700 mb-1">NAICS codes <span class="font-normal text-slate-500">(optional)</span></label>
+                        <input type="text" id="naics" name="naics" placeholder="e.g. 541512, 561210" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+
+                    <button type="submit" class="bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition">Request a free bid list</button>
+                </form>
+            </div>
+            <p class="max-w-2xl text-xs text-slate-500 mt-6 leading-relaxed">EastWest Help is a private company. We are not a government agency and are not affiliated with SAM.gov, Cal eProcure, or any public agency. We do not guarantee a contract award or a certification decision.</p>
+        </section>
+    </main>
+
+  <footer class="w-full bg-slate-900 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div>
+          <p class="font-bold text-xl text-white tracking-tight">EastWest <span class="text-[#38bdf8]">Help</span></p>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed">EastWest Help | Applied AI</p>
+        </div>
+        <nav aria-label="Footer">
+          <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Navigate</p>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="/" class="hover:text-[#38bdf8] transition-colors">Home</a></li>
+            <li><a href="/property" class="hover:text-[#38bdf8] transition-colors">Property Services</a></li>
+            <li><a href="/medical" class="hover:text-[#38bdf8] transition-colors">Healthcare Data</a></li>
+            <li><a href="/biddesk" class="hover:text-[#38bdf8] transition-colors">Government Bid Desk</a></li>
+            <li><a href="/#contact" class="hover:text-[#38bdf8] transition-colors">Contact</a></li>
+          </ul>
+        </nav>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Accessibility</p>
+          <p class="text-sm text-slate-400 leading-relaxed">We want this site to be usable by everyone. If you run into a problem, please <a href="/#contact" class="text-[#38bdf8] hover:underline">contact us</a> and we will work to fix it.</p>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-slate-800">
+      <div class="max-w-6xl mx-auto px-6 py-4">
+        <p class="text-xs text-slate-500">&copy; <span id="footer-year">2026</span> EastWest Help. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+    <div id="success-banner" style="display:none" role="status" class="fixed top-4 left-1/2 -translate-x-1/2 z-[60] bg-green-600 text-white text-sm font-semibold px-6 py-3 rounded-xl shadow-lg">
+      Your request was received. We will follow up within one business day.
+    </div>
+
+    <script>
+      (function() {
+        const root = document.documentElement;
+        const toggle = document.getElementById('theme-toggle');
+        const sun = document.getElementById('theme-icon-sun');
+        const moon = document.getElementById('theme-icon-moon');
+        function apply(dark) {
+          root.classList.toggle('dark', dark);
+          sun.classList.toggle('hidden', !dark);
+          moon.classList.toggle('hidden', dark);
+        }
+        let saved = null;
+        try { saved = localStorage.getItem('theme'); } catch (e) {}
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        apply(saved ? saved === 'dark' : prefersDark);
+        toggle.addEventListener('click', function() {
+          const isDark = root.classList.contains('dark');
+          apply(!isDark);
+          try { localStorage.setItem('theme', !isDark ? 'dark' : 'light'); } catch (e) {}
+        });
+        const yearEl = document.getElementById('footer-year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+      })();
+
+      (function() {
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        if (!btn || !menu) return;
+        btn.addEventListener('click', function() {
+          const open = menu.classList.toggle('hidden') === false;
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        });
+        menu.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            menu.classList.add('hidden');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-label', 'Open menu');
+          });
+        });
+      })();
+
+      (function() {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('submitted') === 'list') {
+          const banner = document.getElementById('success-banner');
+          if (banner) {
+            banner.style.display = 'block';
+            setTimeout(function() { banner.style.display = 'none'; }, 6000);
+          }
+        }
+      })();
+
+      (function() {
+        const form = document.getElementById('biddesk-form');
+        if (!form) return;
+        form.addEventListener('submit', function(e) {
+          const countyChecked = form.querySelectorAll('input[name="counties"]:checked').length > 0;
+          const workChecked = form.querySelectorAll('input[name="work_type"]:checked').length > 0;
+          const countyErr = document.getElementById('counties-error');
+          const workErr = document.getElementById('work-error');
+          countyErr.classList.toggle('hidden', countyChecked);
+          workErr.classList.toggle('hidden', workChecked);
+          if (!countyChecked || !workChecked) e.preventDefault();
+        });
+      })();
+    </script>
+</body>
+</html>
